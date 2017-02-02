@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_MIX/SPI/SPI_FullDuplex_ComPolling/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI Full Duplex Polling example.
   ******************************************************************************
   *
@@ -41,16 +41,16 @@ This example shows how to ensure SPI data buffer transmission/reception in Polli
 mode between two boards.
 
    _________________________                       __________________________
-  |          _______________|                      |_______________          |
-  |          |SPI1          |                      |          SPI1|          |
-  |          |              |                      |              |          |
-  |          |      CLK(PB3)|______________________|(PB3)CLK      |          |
-  |          |              |                      |              |          |
-  |          |     MISO(PB4)|______________________|(PB4)MISO     |          |
-  |          |              |                      |              |          |
-  |          |     MOSI(PB5)|______________________|(PB5)MOSI     |          |
-  |          |              |                      |              |          |
-  |          |______________|                      |______________|          |
+  |       ______ CN10 ______|                      |______ CN10 ______       |
+  |      |SPI1              |                      |             SPI1 |      |
+  |      |                  |                      |                  |      |
+  |      |(pin 31) CLK(PB3) |______________________|(PB3)CLK  (pin 31)|      |
+  |      |                  |                      |                  |      |
+  |      |(pin 27) MISO(PB4)|______________________|(PB4)MISO (pin 27)|      |
+  |      |                  |                      |                  |      |
+  |      |(pin 29) MOSI(PB5)|______________________|(PB5)MOSI (pin 29)|      |
+  |      |                  |                      |                  |      |
+  |      |__________________|                      |__________________|      |
   |      __                 |                      |                         |
   |     |__|                |                      |                         |
   |     USER                |                      |                         |
@@ -84,7 +84,7 @@ If the Slave board is used the "#define MASTER_BOARD" must be commented.
 
 STM32 board's LEDs can be used to monitor the transfer status:
  - LED2 toggles quickly on master board waiting User push-button to be pressed.
- - LED2 turns ON on slave board if transmission/reception is complete and OK.
+ - LED2 turns ON on both board if transmission/reception is complete and OK.
  - LED2 toggles slowly when there is a timeout or an error in transmission/reception process.   
 
 @note SPIx instance used and associated resources can be updated in "main.h"
@@ -120,10 +120,10 @@ STM32 board's LEDs can be used to monitor the transfer status:
   - Take care to cable connection between Master and Slave Board:
     Cable shall be smaller than 5 cm and rigid if possible.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect Master board PB3 to Slave Board PB3 (Arduino D3)
     - Connect Master board PB4 to Slave Board PB4 (Arduino D5)
     - Connect Master board PB5 to Slave Board PB5 (Arduino D4)

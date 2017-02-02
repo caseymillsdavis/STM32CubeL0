@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/TIM/TIM_DMA/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use DMA with TIM2 Update request to
   *          transfer Data from memory to TIM2 Capture Compare Register 3 (CCR3)
   *          using the STM32L0xx TIM LL API.
@@ -155,7 +155,7 @@ __STATIC_INLINE void  Configure_TIM(void)
   /* GPIO TIM2_CH3 configuration */
   LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_10, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_10, LL_GPIO_PULL_DOWN);
-  LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_10, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_10, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetAFPin_8_15(GPIOB, LL_GPIO_PIN_10, LL_GPIO_AF_2);
 
   /******************************************************/
@@ -249,7 +249,7 @@ __STATIC_INLINE void LED_Init(void)
   /* Configure IO in output push-pull mode to drive external LED2 */
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }
 

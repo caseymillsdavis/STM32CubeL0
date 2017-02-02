@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l0xx_hal_lcd.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header file of LCD Controller HAL module.
   ******************************************************************************
   * @attention
@@ -35,7 +35,6 @@
   ******************************************************************************
   */
 
-#if defined (STM32L053xx) || defined (STM32L063xx) || defined (STM32L073xx) || defined (STM32L083xx)
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32L0xx_HAL_LCD_H
@@ -45,6 +44,7 @@
  extern "C" {
 #endif
 
+#if defined (STM32L053xx) || defined (STM32L063xx) || defined (STM32L073xx) || defined (STM32L083xx)
    
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal_def.h"
@@ -434,7 +434,7 @@ typedef struct
 /**
   * @}
   */
-      
+
 /** @defgroup LCD_BUFEN LCD Voltage output buffer enable
   * @{
   */

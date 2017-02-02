@@ -1,9 +1,9 @@
 /**
   ******************************************************************************
-  * @file    RTC/RTC_LowPower_STANDBY/Src/stm32f1xx_it.c
+  * @file    RTC/RTC_LowPower_STANDBY/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.

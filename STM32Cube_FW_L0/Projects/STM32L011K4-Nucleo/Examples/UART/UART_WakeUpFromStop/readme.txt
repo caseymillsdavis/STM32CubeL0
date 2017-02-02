@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_WakeUpFromStop/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART-triggered MCU wake-up from STOP mode.
   ******************************************************************************
   *
@@ -37,10 +37,10 @@
 
 @par Example Description 
 
-This example shows how to configure a UART to wake up the MCU from STOP mode
+This example shows how to configure an UART to wake up the MCU from STOP mode
 when the proper stimulus is received.
 
-Board: STM32L011-Nucleo (embeds a STM32L011K4 device)
+Board: STM32L011K4-Nucleo (embeds a STM32L011K4 device)
 Tx Pin: PA.02 (Arduino A7)
 Rx Pin: PA.03 (Arduino A2)
    _________________________                       _________________________ 
@@ -166,11 +166,11 @@ file depending hardware configuration used.
 @par Hardware and Software environment 
 
   - This example runs on STM32L011xx   
-  - This example has been tested with a couple of STM32L011-Nucleo boards embedding a 
+  - This example has been tested with a couple of STM32L011K4-Nucleo boards embedding a 
     STM32L011K4 device and can be easily tailored to any other supported device 
     and development board.
     
-  - STM32L011-Nucleo set-up
+  - STM32L011K4-Nucleo set-up
     - Connect a wire between 1st board PA.02 (Arduino A7) pin (USART2 Tx) and 2nd board PA.03 (Arduino A2) pin (USART2 Rx)
     - Connect a wire between 1st board PA.03 (Arduino A2) pin (USART2 Rx) and 2nd board PA.02 (Arduino A7) pin (USART2 Tx)
 

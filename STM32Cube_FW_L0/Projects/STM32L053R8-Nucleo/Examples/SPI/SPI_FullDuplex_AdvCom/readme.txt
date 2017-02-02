@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SPI/SPI_FullDuplex_AdvCom/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI Full Duplex Polling example.
   ******************************************************************************
   *
@@ -36,6 +36,14 @@
   @endverbatim
 
 @par Example Description 
+
+This example guides you through the different configuration steps by mean of HAL API
+to transmit/receive SPI data buffer in Polling mode and in an advanced communication mode:
+the master board always sends the command to the slave before any transmission is performed.
+The slave board sends an acknowledge before going further.
+
+- Hardware Description
+
 The communication is done with 2 boards through SPI.
    _________________________                        _________________________
   |           ______________|                      |______________           |
@@ -57,11 +65,7 @@ The communication is done with 2 boards through SPI.
   |                         |                      |                         |
   |_STM32L0 ________________|                      |_STM32L0 ________________|
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure SPI Data buffer transmission and reception using Polling or Interrupt, in 
-an advance communication mode: Master board is always sending command to slave 
-before any transmission and Slave board is sending aknowledge before going 
-further.
+
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -122,7 +126,7 @@ LED2 can be used to monitor the transfer status:
   - SPI/SPI_FullDuplex_AdvCom/Inc/main.h                  Header for main.c module  
   - SPI/SPI_FullDuplex_AdvCom/Src/stm32l0xx_it.c          SPI interrupt handlers
   - SPI/SPI_FullDuplex_AdvCom/Src/main.c                  Main program
-  - SPI/SPI_FullDuplex_AdvCom/Src/system_stm32l0xx.c      STM32F4xx system source file
+  - SPI/SPI_FullDuplex_AdvCom/Src/system_stm32l0xx.c      STM32L0xx system source file
   - SPI/SPI_FullDuplex_AdvCom/Src/stm32l0xx_hal_msp.c     HAL MSP file
   
 

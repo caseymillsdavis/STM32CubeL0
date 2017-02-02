@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    FLASH/FLASH_EraseProgram/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the FLASH Erase and Program example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description 
 
 This example guides you through the different configuration steps by mean of HAL API
-how to erase and program the STM32L0xx internal FLASH memory mounted on STM32L073Z-EVAL.
+how to erase and program the STM32L0xx internal Flash memory mounted on STM32L073Z-EVAL.
   
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -56,7 +56,7 @@ At this stage, all these pages will be erased one by one separately.
 be returned to user (through variable 'pageError').
 
 Once this operation is finished, page word programming operation will be performed 
-in the FLASH memory. The written data is then read back and checked.
+in the Flash memory. The written data is then read back and checked.
 
 The STM32L073Z-EVAL board LEDs can be used to monitor the transfer status:
  - LED1 is ON when there are no errors detected after data programing 

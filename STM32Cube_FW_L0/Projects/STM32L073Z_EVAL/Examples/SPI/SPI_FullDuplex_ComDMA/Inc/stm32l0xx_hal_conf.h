@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l0xx_hal_conf.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL configuration file. 
   ******************************************************************************
   * @attention
@@ -57,6 +57,7 @@
 /* #define HAL_CRYP_MODULE_ENABLED   */
 /* #define HAL_DAC_MODULE_ENABLED    */
 #define HAL_DMA_MODULE_ENABLED
+/* #define HAL_FIREWALL_MODULE_ENABLED */
 #define HAL_FLASH_MODULE_ENABLED
 #define HAL_GPIO_MODULE_ENABLED
 /* #define HAL_I2C_MODULE_ENABLED */
@@ -88,7 +89,7 @@
   *        (when HSE is used as system clock source, directly or through the PLL).  
   */
 #if !defined  (HSE_VALUE) 
-  #define HSE_VALUE    ((uint32_t)8000000) /*!< Value of the External oscillator in Hz */
+  #define HSE_VALUE    ((uint32_t)8000000U) /*!< Value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
 
 #if !defined  (HSE_STARTUP_TIMEOUT)
@@ -100,7 +101,7 @@
   *        This value is the default MSI range value after Reset.
   */
 #if !defined  (MSI_VALUE)
-  #define MSI_VALUE    ((uint32_t)2000000) /*!< Value of the Internal oscillator in Hz*/
+  #define MSI_VALUE    ((uint32_t)2000000U) /*!< Value of the Internal oscillator in Hz*/
 #endif /* MSI_VALUE */
 /**
   * @brief Internal High Speed oscillator (HSI) value.
@@ -108,14 +109,14 @@
   *        (when HSI is used as system clock source, directly or through the PLL). 
   */
 #if !defined  (HSI_VALUE)
-  #define HSI_VALUE    ((uint32_t)16000000) /*!< Value of the Internal oscillator in Hz*/
+  #define HSI_VALUE    ((uint32_t)16000000U) /*!< Value of the Internal oscillator in Hz*/
 #endif /* HSI_VALUE */
 
 /**
   * @brief Internal High Speed oscillator for USB (HSI48) value.
   */
 #if !defined  (HSI48_VALUE) 
-#define HSI48_VALUE ((uint32_t)48000000) /*!< Value of the Internal High Speed oscillator for USB in Hz.
+#define HSI48_VALUE ((uint32_t)48000000U) /*!< Value of the Internal High Speed oscillator for USB in Hz.
                                              The real value may vary depending on the variations
                                              in voltage and temperature.  */
 #endif /* HSI48_VALUE */
@@ -124,7 +125,7 @@
   * @brief Internal Low Speed oscillator (LSI) value.
   */
 #if !defined  (LSI_VALUE) 
- #define LSI_VALUE  ((uint32_t)37000)       /*!< LSI Typical Value in Hz*/
+ #define LSI_VALUE  ((uint32_t)37000U)       /*!< LSI Typical Value in Hz*/
 #endif /* LSI_VALUE */                      /*!< Value of the Internal Low Speed oscillator in Hz
                                              The real value may vary depending on the variations
                                              in voltage and temperature.*/
@@ -133,13 +134,15 @@
   *        This value is used by the UART, RTC HAL module to compute the system frequency
   */
 #if !defined  (LSE_VALUE)
-  #define LSE_VALUE    ((uint32_t)32768) /*!< Value of the External oscillator in Hz*/
+  #define LSE_VALUE    ((uint32_t)32768U) /*!< Value of the External oscillator in Hz*/
 #endif /* LSE_VALUE */
 
-   
+/**
+  * @brief Time out for LSE start up value in ms.
+  */
 #if !defined  (LSE_STARTUP_TIMEOUT)
-  #define LSE_STARTUP_TIMEOUT    ((uint32_t)5000)   /*!< Time out for LSE start up, in ms */
-#endif /* HSE_STARTUP_TIMEOUT */
+  #define LSE_STARTUP_TIMEOUT    ((uint32_t)5000U)   /*!< Time out for LSE start up, in ms */
+#endif /* LSE_STARTUP_TIMEOUT */
 
    
 /* Tip: To avoid modifying this file each time you need to use different HSE,
@@ -149,12 +152,12 @@
 /**
   * @brief This is the HAL system configuration section
   */     
-#define  VDD_VALUE                    ((uint32_t)3300) /*!< Value of VDD in mv */
-#define  TICK_INT_PRIORITY            (((uint32_t)1<<__NVIC_PRIO_BITS) - 1)    /*!< tick interrupt priority */            
-#define  USE_RTOS                     0     
-#define  PREFETCH_ENABLE              1              
-#define  PREREAD_ENABLE               0
-#define  BUFFER_CACHE_DISABLE         0
+#define  VDD_VALUE                    ((uint32_t)3300U) /*!< Value of VDD in mv */
+#define  TICK_INT_PRIORITY            (((uint32_t)1U<<__NVIC_PRIO_BITS) - 1U)    /*!< tick interrupt priority */            
+#define  USE_RTOS                     0U     
+#define  PREFETCH_ENABLE              1U              
+#define  PREREAD_ENABLE               0U
+#define  BUFFER_CACHE_DISABLE         0U
 
 /* ########################## Assert Selection ############################## */
 /**
@@ -203,6 +206,10 @@
 #ifdef HAL_DAC_MODULE_ENABLED
   #include "stm32l0xx_hal_dac.h"
 #endif /* HAL_DAC_MODULE_ENABLED */
+
+#ifdef HAL_FIREWALL_MODULE_ENABLED
+  #include "stm32l0xx_hal_firewall.h"
+#endif /* HAL_FIREWALL_MODULE_ENABLED */
 
 #ifdef HAL_FLASH_MODULE_ENABLED
   #include "stm32l0xx_hal_flash.h"
@@ -290,11 +297,11 @@
   *         If expr is true, it returns no value.
   * @retval None
   */
-  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
+  #define assert_param(expr) ((expr) ? (void)0U : assert_failed((uint8_t *)__FILE__, __LINE__))
 /* Exported functions ------------------------------------------------------- */
   void assert_failed(uint8_t* file, uint32_t line);
 #else
-  #define assert_param(expr) ((void)0)
+  #define assert_param(expr) ((void)0U)
 #endif /* USE_FULL_ASSERT */
 
 #ifdef __cplusplus

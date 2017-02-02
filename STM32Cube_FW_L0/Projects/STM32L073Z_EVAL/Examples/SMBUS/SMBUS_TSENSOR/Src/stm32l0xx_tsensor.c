@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    SMBUS/SMBUS_TSENSOR/Src/stm32l0xx_tsensor.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file provides a set of functions needed to manage the SMBUS  
   *          temperature sensor (STLM75) mounted on STM32303C-EVAL board . 
   *          It implements a high level communication layer for initialized,

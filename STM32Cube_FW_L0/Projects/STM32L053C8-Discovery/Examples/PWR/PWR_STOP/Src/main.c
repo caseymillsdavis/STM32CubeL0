@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_STOP/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx PWR HAL API to enter
   * and exit the stop mode without RTC.
   ******************************************************************************
@@ -139,8 +139,8 @@ static void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2;
   RCC_OscInitStruct.HSICalibrationValue = 0x10;
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -238,8 +238,8 @@ static void SystemClockConfig_STOP(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2;
   RCC_OscInitStruct.HSICalibrationValue = 0x10;
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {

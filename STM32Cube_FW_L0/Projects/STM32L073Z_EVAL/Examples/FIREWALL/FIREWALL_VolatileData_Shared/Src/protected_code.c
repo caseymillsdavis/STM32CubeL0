@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    FIREWALL/FIREWALL_VolatileData_Shared/Src/protected_code.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Definition of functions to be located in Firewall protected code area (in FLASH)
   *******************************************************************************  
   * @attention

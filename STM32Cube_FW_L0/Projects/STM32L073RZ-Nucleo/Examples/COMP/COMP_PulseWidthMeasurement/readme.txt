@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    COMP/COMP_PulseWidthMeasurement/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the COMP COMP Pulse Width measurement example.
   ******************************************************************************
   *
@@ -57,12 +57,12 @@ external signal doesn't respect the VIL and VIH levels.
        TIM2 counter is captured at each transition detection: rising and falling edges
        (each time COMP1 inverting input crosses non-inverting input connected to DAC output)
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
       - With a signal generator, provide the signal on COMP1 non-inverting input (pin PA.01)
       - Generate a square signal at 250Hz with pulses of 2 ms,and check that the LED2 turn on.
       - Generate a square signal at 500Hz with pulses of 1 ms,and check that the LED2 turn off.
 
-STM32L073-Nucleo Rev C board's LED is used to monitor the program execution status:
+STM32L073RZ-Nucleo Rev C board's LED is used to monitor the program execution status:
  - Normal operation: LED2 is turned-on/off in function of ADC conversion
    result.
     - Turn-off if pulse width is out of the expected range 2ms +- 0.5ms
@@ -100,7 +100,7 @@ calibrated or use an external clock.
 
   - This example runs on STM32L073xx devices.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
     
   - In this example, the clock is set to 2 MHz.

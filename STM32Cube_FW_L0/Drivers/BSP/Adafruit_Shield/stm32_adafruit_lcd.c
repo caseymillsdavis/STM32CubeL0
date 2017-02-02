@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32_adafruit_lcd.c
   * @author  MCD Application Team
-  * @version V2.0.0
-  * @date    10-September-2015
+  * @version V2.0.1
+  * @date    04-November-2015
   * @brief   This file includes the driver for Liquid Crystal Display (LCD) module
   *          mounted on the Adafruit 1.8" TFT LCD shield (reference ID 802), 
   *          that is used with the STM32 Nucleo board through SPI interface.     

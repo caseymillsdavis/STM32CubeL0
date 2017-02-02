@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    DAC/DAC_SimpleConversion/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the DAC Simple Conversion example.
   ******************************************************************************
   *
@@ -42,7 +42,7 @@ do a simple conversion in 8 bits right alignment of 0xFF value, the result of
 conversion can be seen by connecting PA4(DAC channel1) to an oscilloscope.
 The observed value is 3.3V.
 
-STM32L073-Nucleo Rev C board's LED can be used to monitor the process status:
+STM32L073RZ-Nucleo Rev C board's LED can be used to monitor the process status:
   - LED2 is slowly blinking (1 sec. period) and example is stopped (using infinite loop)
   when there is an error during process.
 
@@ -69,10 +69,10 @@ STM32L073-Nucleo Rev C board's LED can be used to monitor the process status:
 @par Hardware and Software environment  
   - This example runs on STM32L07xx and STM32L08xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up 	
+  - STM32L073RZ-Nucleo Rev C Set-up 	
     - Connect PA4 (pin 32 in CN7 connector)(DAC Channel1) pin to an oscilloscope.
 
 @par How to use it ? 

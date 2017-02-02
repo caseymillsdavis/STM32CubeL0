@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_OnePulse/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM One Pulse example.      
   ******************************************************************************
   *
@@ -99,10 +99,10 @@ Configuration of TIM3 in One Pulse Mode
    - This example runs on STM32L073xx devices.
    - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
    - Connect the external signal to the TIM3_CH2 pin (PC.07) (CN10 pin19)
    - Connect the TIM3_CH1 pin(PC.06) (CN10 pin4) to an oscilloscope to monitor the waveform.  
    
@@ -112,10 +112,9 @@ Configuration of TIM3 in One Pulse Mode
 @par How to use it ? 
 
 In order to make the program work, you must do the following :
- - Open your preferred toolchain
- - Rebuild all files: Project->Rebuild all
- - Load project image: Project->Download and Debug
- - Run program: Debug->Go(F5) 
+ - Open your preferred toolchain 
+ - Rebuild all files and load your image into target memory
+ - Run the example 
 
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>
  */

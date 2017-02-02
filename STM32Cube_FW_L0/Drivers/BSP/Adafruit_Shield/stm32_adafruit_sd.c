@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32_adafruit_sd.c
   * @author  MCD Application Team
-  * @version V2.0.0
-  * @date    10-September-2015
+  * @version V2.0.1
+  * @date    04-November-2015
   * @brief   This file provides a set of functions needed to manage the SD card
   *          mounted on the Adafruit 1.8" TFT LCD shield (reference ID 802),
   *          that is used with the STM32 Nucleo board through SPI interface.
@@ -809,6 +809,8 @@ SD_CmdAnswer_typedef SD_SendCmd(uint8_t Cmd, uint32_t Arg, uint8_t Crc, uint8_t 
     retr.r4 = SD_IO_WriteByte(SD_DUMMY_BYTE);
     retr.r5 = SD_IO_WriteByte(SD_DUMMY_BYTE);
     break;
+  default :
+    break;
   }  
   return retr;
 }
@@ -846,8 +848,12 @@ uint8_t SD_GetDataResponse(void)
     break;
   case SD_DATA_CRC_ERROR:
     rvalue =  SD_DATA_CRC_ERROR;
+    break;
   case SD_DATA_WRITE_ERROR:
     rvalue = SD_DATA_WRITE_ERROR;
+    break;
+  default:
+    break;
   }
   
   /* Return response */

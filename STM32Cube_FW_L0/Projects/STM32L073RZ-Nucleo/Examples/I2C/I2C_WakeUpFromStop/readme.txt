@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_WakeUpFromStop/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Wake Up from Stop mode example
   ******************************************************************************
   *
@@ -39,32 +39,30 @@
 
 This example describes how to perform I2C data buffer transmission/reception between 
 two boards using an interrupt when the device is in STOP mode.
-The communication is done with 2 Boards through I2C.
 
-   _________________________                        _________________________
-  |           ______________|                      |_________________        |
-  |          | I2C1         |                      |          I2C1   |       |
-  |          |              |                      |                 |       |
-  |          |      SCL(PB8)|______________________|(PB8)SCL (pin 10)|       |
-  |          |              |                      |          CN5    |       |
-  |          |              |                      |                 |       |
-  |          |              |                      |                 |       |
-  |          |      SDA(PB9)|______________________|(PB9)SDA (pin 9) |       |
-  |          |              |                      |          CN5    |       |
-  |          |______________|                      |_________________|       |
-  |      __                 |                      |             __          |
-  |     |__|                |                      |            |__|         |
-  |     USER             GND|______________________|GND         USER         |
-  |                         |                      |                         |
-  |_STM32L0_NUCLEO__________|                      |_STM32L0_NUCLEO__________| 
+Board: STM32L073RZ-Nucleo Rev C (embeds a STM32L073RZ device)
+SCL Pin: PB8 (CN10, pin 3 (Arduino D15))
+SDA Pin: PB9 (CN10, pin 5 (Arduino D14))
 
-PB8 is connected to pin 3 in CN10 
-PB9 is connected to pin 5 in CN10 
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
 Then the SystemClock_Config() function is used to configure the system
-clock (SYSCLK) to run at 2 MHz. When The system is wakeup from stop mode,
+clock (SYSCLK) to run at 32 MHz. When The system is wakeup from stop mode,
 system clock is 2 Mhz. The I2C peripheral is directly clocked by HSI.
 
 The I2C peripheral configuration is ensured by the HAL_I2C_Init() function.
@@ -95,12 +93,13 @@ I2C Slave which wakes up from stop mode and receives aRxBuffer through HAL_I2C_S
 The second step starts when the user presses the User push-button on the Master Board,
 the I2C Slave after wake up from stop mode at address match, sends aTxBuffer through HAL_I2C_Slave_Transmit_IT()
 to the I2C Master which receives aRxBuffer through HAL_I2C_Master_Receive_IT().
+
 The end of this two steps are monitored through the HAL_I2C_GetState() function
 result.
 Finally, aTxBuffer and aRxBuffer are compared through Buffercmp() in order to 
 check buffers correctness.  
 
-STM32L073-Nucleo Rev C's LEDs can be used to monitor the transfer status on the Master Board :
+STM32L073RZ-Nucleo Rev C's LEDs can be used to monitor the transfer status on the Master Board :
  - LED2 is ON when the transmission process is complete.
  - LED2 is OFF when the reception process is complete.
  - LED2 is slowly blinking (1 sec. period) in case of error in initialization or 
@@ -108,10 +107,6 @@ transmission/reception process
 
 @note I2Cx instance used and associated resources can be updated in "main.h"
 file depending hardware configuration used.
-
- @note Timeout is set to 10 Seconds which means that if no communication occurs 
-       during 10 Seconds, a Timeout Error will be generated.
-
 
 @note Care must be taken when using HAL_Delay(), this function provides accurate delay (in milliseconds)
       based on variable incremented in SysTick ISR. This implies that if HAL_Delay() is called from
@@ -124,26 +119,26 @@ file depending hardware configuration used.
 
 @par Directory contents 
 
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Inc/stm32l0xx_hal_conf.h    HAL configuration file
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Inc/stm32l0xx_it.h          I2C interrupt handlers header file
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Inc/main.h                  Header for main.c module  
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Src/stm32l0xx_it.c          I2C interrupt handlers
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Src/main.c                  Main program
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Src/system_stm32l0xx.c      STM32L0xx system source file
-  - I2C/I2C_TwoBoards_WakeUpFromStop/Src/stm32l0xx_hal_msp.c     HAL MSP file    
+  - I2C/I2C_WakeUpFromStop/Inc/stm32l0xx_hal_conf.h    HAL configuration file
+  - I2C/I2C_WakeUpFromStop/Inc/stm32l0xx_it.h          I2C interrupt handlers header file
+  - I2C/I2C_WakeUpFromStop/Inc/main.h                  Header for main.c module  
+  - I2C/I2C_WakeUpFromStop/Src/stm32l0xx_it.c          I2C interrupt handlers
+  - I2C/I2C_WakeUpFromStop/Src/main.c                  Main program
+  - I2C/I2C_WakeUpFromStop/Src/system_stm32l0xx.c      STM32L0xx system source file
+  - I2C/I2C_WakeUpFromStop/Src/stm32l0xx_hal_msp.c     HAL MSP file    
 
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L07xx and STM32L08xx devices.
+  - This example runs on STM32L073xx and STM32L08xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.    
 
-  -STM32L073-Nucleo Rev C Set-up
-    - Connect Master board PB8 (Arduino SCL/D15) to Slave Board PB8 (Arduino SCL/D15)
-    - Connect Master board PB9 (Arduino SDA) to Slave Board PB9 (Arduino SDA)
-    - Connect Master board GND to Slave Board GND
+  - STM32L073RZ-Nucleo Rev C Set-up
+    - Connect I2C_SCL line of Master board (PB8, CN10, pin 3 (Arduino D15)) to I2C_SCL line of Slave Board (PB8, CN10, pin 3 (Arduino D15)).
+    - Connect I2C_SDA line of Master board (PB9, CN10, pin 5 (Arduino D14)) to I2C_SDA line of Slave Board (PB9, CN10, pin 5 (Arduino D14)).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

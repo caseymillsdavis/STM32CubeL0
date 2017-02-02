@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComDMA/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx I2C HAL API to transmit
   *          and receive a data buffer with a communication process based on
   *          DMA transfer.
@@ -88,8 +88,8 @@ int main(void)
 {
 #ifdef MASTER_BOARD
   GPIO_InitTypeDef  GPIO_InitStruct;
-#endif
 
+#endif
   /* STM32L0xx HAL library initialization:
        - Configure the Flash prefetch, Flash preread and Buffer caches
        - Systick timer is configured by default as source of time base, but user 
@@ -107,8 +107,6 @@ int main(void)
   /* Configure LED3 */
   BSP_LED_Init(LED3);
 
-
-
   /*##-1- Configure the I2C peripheral ######################################*/
   I2cHandle.Instance              = I2Cx;
   I2cHandle.Init.Timing           = I2C_TIMING;
@@ -125,13 +123,13 @@ int main(void)
     /* Initialization Error */
     Error_Handler();
   }
-  
+
   /* Enable the Analog I2C Filter */
   HAL_I2CEx_ConfigAnalogFilter(&I2cHandle,I2C_ANALOGFILTER_ENABLE);
 
 #ifdef MASTER_BOARD
-  
-  /* Configure PA.12 (Arduino D2) button */
+
+  /* Configure PA.12 (Arduino D2) */
   GPIO_InitStruct.Pin = GPIO_PIN_12;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT; 
@@ -156,27 +154,29 @@ int main(void)
   /*##-2- Start the transmission process #####################################*/  
   /* While the I2C in reception process, user can transmit data through 
      "aTxBuffer" buffer */
-  while(HAL_I2C_Master_Transmit_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
+  do
   {
-    /* Error_Handler() function is called when Timeout error occurs.
-       When Acknowledge failure occurs (Slave don't acknowledge its address)
-       Master restarts communication */
-    if (HAL_I2C_GetError(&I2cHandle) != HAL_I2C_ERROR_AF)
+    if(HAL_I2C_Master_Transmit_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
     {
+      /* Error_Handler() function is called when error occurs. */
       Error_Handler();
     }
+
+    /*##-3- Wait for the end of the transfer #################################*/  
+    /*  Before starting a new communication transfer, you need to check the current   
+        state of the peripheral; if it’s busy you need to wait for the end of current
+        transfer before starting a new one.
+        For simplicity reasons, this example is just waiting till the end of the 
+        transfer, but application may perform other tasks while transfer operation
+        is ongoing. */  
+    while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY)
+    {
+    } 
+
+    /* When Acknowledge failure occurs (Slave don't acknowledge it's address)
+       Master restarts communication */
   }
-  
-  /*##-3- Wait for the end of the transfer ###################################*/  
-  /*  Before starting a new communication transfer, you need to check the current   
-      state of the peripheral; if it’s busy you need to wait for the end of current
-      transfer before starting a new one.
-      For simplicity reasons, this example is just waiting till the end of the
-      transfer, but application may perform other tasks while transfer operation
-      is ongoing. */
-  while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY)
-  {
-  } 
+  while(HAL_I2C_GetError(&I2cHandle) == HAL_I2C_ERROR_AF);
   
   HAL_Delay(1000);
 
@@ -191,16 +191,29 @@ int main(void)
 
 
   /*##-4- Put I2C peripheral in reception process ###########################*/  
-  while(HAL_I2C_Master_Receive_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)
+  do
   {
-    /* Error_Handler() function is called when Timeout error occurs.
-       When Acknowledge failure occurs (Slave don't acknowledge its address)
-       Master restarts communication */
-    if (HAL_I2C_GetError(&I2cHandle) != HAL_I2C_ERROR_AF)
+    if(HAL_I2C_Master_Receive_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)
     {
+      /* Error_Handler() function is called when error occurs. */
       Error_Handler();
     }
+
+    /*##-5- Wait for the end of the transfer #################################*/  
+    /*  Before starting a new communication transfer, you need to check the current   
+        state of the peripheral; if it’s busy you need to wait for the end of current
+        transfer before starting a new one.
+        For simplicity reasons, this example is just waiting till the end of the 
+        transfer, but application may perform other tasks while transfer operation
+        is ongoing. */  
+    while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY)
+    {
+    } 
+
+    /* When Acknowledge failure occurs (Slave don't acknowledge it's address)
+       Master restarts communication */
   }
+  while(HAL_I2C_GetError(&I2cHandle) == HAL_I2C_ERROR_AF);
 
 #else
   
@@ -293,8 +306,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLSource   = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLState    = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLL_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
   {
     /* Initialization Error */
@@ -366,7 +379,14 @@ void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *I2cHandle)
   */
 void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *I2cHandle)
 {
-  Error_Handler();
+  /** Error_Handler() function is called when error occurs.
+    * 1- When Slave don't acknowledge it's address, Master restarts communication.
+    * 2- When Master don't acknowledge the last data transferred, Slave don't care in this example.
+    */
+  if (HAL_I2C_GetError(I2cHandle) != HAL_I2C_ERROR_AF)
+  {
+    Error_Handler();
+  }
 }
 
 /**

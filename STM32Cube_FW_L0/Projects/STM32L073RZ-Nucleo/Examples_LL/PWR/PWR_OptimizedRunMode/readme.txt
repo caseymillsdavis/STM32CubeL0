@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/PWR/PWR_OptimizedRunMode/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR Optimized Run Mode example.
   ******************************************************************************
   *
@@ -96,11 +96,11 @@ User push-button pressed:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device
     and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - LED2 connected to PA.05 pin
     - User push-button connected to pin PC.13 (External line 15 to 10)
 

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/CRC/CRC_UserDefinedPolynomial/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use CRC peripheral for generating 8-bit CRC value
   *          for an input data Buffer, based on a user defined polynomial value,
   *          using the STM32L0xx CRC LL API.
@@ -225,8 +225,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }

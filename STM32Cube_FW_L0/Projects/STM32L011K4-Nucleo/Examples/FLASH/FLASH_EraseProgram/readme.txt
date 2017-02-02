@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    FLASH/FLASH_EraseProgram/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the FLASH Erase and Program example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Application Description 
 
 This application describes how to configure and use the FLASH HAL API to erase and program 
-the internal FLASH memory.
+the internal Flash memory.
   
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -56,9 +56,9 @@ At this stage, all these pages will be erased one by one separately.
 be returned to user (through variable 'pageError').
 
 Once this operation is finished, page word programming operation will be performed 
-in the FLASH memory. The written data is then read back and checked.
+in the Flash memory. The written data is then read back and checked.
 
-The STM32L011-Nucleo board LEDs can be used to monitor the transfer status:
+The STM32L011K4-Nucleo board LEDs can be used to monitor the transfer status:
  - LED3 is ON when there are no errors detected after programmation
  - LED3 is blinking with a 1s period when there are errors dectected after programmation
  - LED3 is blinking (100ms on, 2s off) when there is an issue during erase or program procedure
@@ -85,7 +85,7 @@ The STM32L011-Nucleo board LEDs can be used to monitor the transfer status:
 
   - This example runs on STM32L011xx and STM32L021xx devices.
     
-  - This application has been tested with STM32L011-Nucleo board and can be
+  - This application has been tested with STM32L011K4-Nucleo board and can be
     easily tailored to any other supported device and development board.
       
 @par How to use it ? 

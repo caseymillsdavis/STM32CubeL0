@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComDMA/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx I2C HAL API to transmit
   *          and receive a data buffer with a communication process based on
   *          DMA transfer.
@@ -104,7 +104,6 @@ int main(void)
   BSP_LED_Init(LED_GREEN);
   BSP_LED_Init(LED_RED);
 
-
   /*##-1- Configure the I2C peripheral ######################################*/
   I2cHandle.Instance              = I2Cx;
   I2cHandle.Init.Timing           = I2C_TIMING;
@@ -121,20 +120,23 @@ int main(void)
     /* Initialization Error */
     Error_Handler();
   }
-  
+
   /* Enable the Analog I2C Filter */
   HAL_I2CEx_ConfigAnalogFilter(&I2cHandle,I2C_ANALOGFILTER_ENABLE);
 
 #ifdef MASTER_BOARD
-  
+
   /* Configure Wkup/Tamper push-button */
-  BSP_PB_Init(BUTTON_TAMPER, BUTTON_MODE_GPIO);
+  BSP_PB_Init(BUTTON_TAMPER,BUTTON_MODE_GPIO);
 
   /* Wait for Wkup/Tamper push-button press before starting the Communication */
   while (BSP_PB_GetState(BUTTON_TAMPER) != GPIO_PIN_SET)
   {
   }
-  
+
+  /* Delay to avoid that possible signal rebound is taken as button release */
+  HAL_Delay(50);
+
   /* Wait for Wkup/Tamper push-button release before starting the Communication */
   while (BSP_PB_GetState(BUTTON_TAMPER) != GPIO_PIN_RESET)
   {
@@ -145,49 +147,68 @@ int main(void)
   /*##-2- Start the transmission process #####################################*/  
   /* While the I2C in reception process, user can transmit data through 
      "aTxBuffer" buffer */
-  while(HAL_I2C_Master_Transmit_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
+  do
   {
-    /* Error_Handler() function is called when Timeout error occurs.
-       When Acknowledge failure occurs (Slave don't acknowledge its address)
-       Master restarts communication */
-    if (HAL_I2C_GetError(&I2cHandle) != HAL_I2C_ERROR_AF)
+    if(HAL_I2C_Master_Transmit_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
     {
+      /* Error_Handler() function is called when error occurs. */
       Error_Handler();
     }
+
+    /*##-3- Wait for the end of the transfer #################################*/  
+    /*  Before starting a new communication transfer, you need to check the current   
+        state of the peripheral; if it’s busy you need to wait for the end of current
+        transfer before starting a new one.
+        For simplicity reasons, this example is just waiting till the end of the 
+        transfer, but application may perform other tasks while transfer operation
+        is ongoing. */  
+    while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY)
+    {
+    } 
+
+    /* When Acknowledge failure occurs (Slave don't acknowledge it's address)
+       Master restarts communication */
   }
-  
-  /*##-3- Wait for the end of the transfer ###################################*/  
-  /*  Before starting a new communication transfer, you need to check the current   
-      state of the peripheral; if it’s busy you need to wait for the end of current
-      transfer before starting a new one.
-      For simplicity reasons, this example is just waiting till the end of the
-      transfer, but application may perform other tasks while transfer operation
-      is ongoing. */
-  while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY)
-  {
-  } 
+  while(HAL_I2C_GetError(&I2cHandle) == HAL_I2C_ERROR_AF);
   
   /* Wait for Wkup/Tamper push-button press before starting the Communication */
   while (BSP_PB_GetState(BUTTON_TAMPER) != GPIO_PIN_SET)
   {
   }
+
+  /* Delay to avoid that possible signal rebound is taken as button release */
+  HAL_Delay(50);
   
   /* Wait for Wkup/Tamper push-button release before starting the Communication */
   while (BSP_PB_GetState(BUTTON_TAMPER) != GPIO_PIN_RESET)
   {
   }
 
+
   /*##-4- Put I2C peripheral in reception process ###########################*/  
-  while(HAL_I2C_Master_Receive_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)
+  do
   {
-    /* Error_Handler() function is called when Timeout error occurs.
-       When Acknowledge failure occurs (Slave don't acknowledge its address)
-       Master restarts communication */
-    if (HAL_I2C_GetError(&I2cHandle) != HAL_I2C_ERROR_AF)
+    if(HAL_I2C_Master_Receive_DMA(&I2cHandle, (uint16_t)I2C_ADDRESS, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)
     {
+      /* Error_Handler() function is called when error occurs. */
       Error_Handler();
     }
+
+    /*##-5- Wait for the end of the transfer #################################*/  
+    /*  Before starting a new communication transfer, you need to check the current   
+        state of the peripheral; if it’s busy you need to wait for the end of current
+        transfer before starting a new one.
+        For simplicity reasons, this example is just waiting till the end of the 
+        transfer, but application may perform other tasks while transfer operation
+        is ongoing. */  
+    while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY)
+    {
+    } 
+
+    /* When Acknowledge failure occurs (Slave don't acknowledge it's address)
+       Master restarts communication */
   }
+  while(HAL_I2C_GetError(&I2cHandle) == HAL_I2C_ERROR_AF);
 
 #else
   
@@ -280,12 +301,13 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLSource   = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLState    = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLLMUL_8;
-  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLL_MUL8;
+  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLL_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
   {
     /* Initialization Error */
-    while(1); 
+    while(1)
+    {}
   }
   
   /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
@@ -298,7 +320,8 @@ void SystemClock_Config(void)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1)!= HAL_OK)
   {
     /* Initialization Error */
-    while(1); 
+    while(1)
+    {}
   }
 }
 
@@ -353,8 +376,18 @@ void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *I2cHandle)
   */
 void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *I2cHandle)
 {
-  /* Turn LED_RED on: Transfer error in reception/transmission process */
-  BSP_LED_On(LED_RED); 
+  /** Error_Handler() function is called when error occurs.
+    * 1- When Slave don't acknowledge it's address, Master restarts communication.
+    * 2- When Master don't acknowledge the last data transferred, Slave don't care in this example.
+    */
+  if (HAL_I2C_GetError(I2cHandle) != HAL_I2C_ERROR_AF)
+  {
+    /* Turn Off LED_GREEN */
+    BSP_LED_Off(LED_GREEN);
+
+    /* Turn On LED_RED */
+    BSP_LED_On(LED_RED);
+  }
 }
 
 /**
@@ -413,6 +446,7 @@ void assert_failed(uint8_t* file, uint32_t line)
   }
 }
 #endif
+
 
 /**
   * @}

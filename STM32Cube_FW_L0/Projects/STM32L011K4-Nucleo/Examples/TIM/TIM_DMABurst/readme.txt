@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_DMABurst/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM DMA Burst example.
   ******************************************************************************
   *
@@ -85,11 +85,11 @@ The PWM waveform can be displayed using an oscilloscope.
   - This example runs on STM32L011xx devices.
   - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STMicroelectronics STM32L011-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L011K4-Nucleo 
     board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L011-Nucleo Set-up
+  - STM32L011K4-Nucleo Set-up
     - Connect the TIM2 output channel to an oscilloscope to monitor the different waveforms: 
     - TIM2 CH1 (PA.0 (pin 12 in CN4 connector))
 

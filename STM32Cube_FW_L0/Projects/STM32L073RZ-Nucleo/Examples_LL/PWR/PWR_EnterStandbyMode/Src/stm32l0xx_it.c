@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/PWR/PWR_EnterStandbyMode/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -169,12 +169,12 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void EXTI4_15_IRQHandler(void)
+void USER_BUTTON_IRQHANDLER(void)
 {
   /* Manage Flags */
-  if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_13) != RESET)
+  if(LL_EXTI_IsActiveFlag_0_31(USER_BUTTON_EXTI_LINE) != RESET)
   {
-    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_13);
+    LL_EXTI_ClearFlag_0_31(USER_BUTTON_EXTI_LINE);
 
     /* Manage code in main.c.*/
     UserButton_Callback(); 

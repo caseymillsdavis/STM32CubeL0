@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32l073z_eval.h
   * @author  MCD Application Team
-  * @version V2.0.0
-  * @date    16-November-2015
+  * @version V2.0.1
+  * @date    25-November-2016
   * @brief   This file contains definitions for STM32L073Z_EVAL's Leds, push-buttons
   *          and COM port hardware resources.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:

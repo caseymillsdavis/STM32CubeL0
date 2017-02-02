@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    CRC/CRC_Data_Reversing_16bit_CRC/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use the STM32L0xx CRC HAL API
   *          to compute a 16-bit CRC code from a data bytes (8-bit data) buffer,
   *          based on a user-defined generating polynomial and initialization 

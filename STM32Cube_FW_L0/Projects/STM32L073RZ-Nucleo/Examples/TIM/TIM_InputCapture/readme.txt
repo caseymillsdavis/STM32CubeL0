@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_InputCapture/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_InputCapture example.
   ******************************************************************************
   *
@@ -85,11 +85,11 @@
   - This example runs on STM32L073xx devices.
   - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device 
     and development board.      
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect the external signal to measure to the TIM2 CH2 pin (PB.03).
 
 @par How to use it ? 

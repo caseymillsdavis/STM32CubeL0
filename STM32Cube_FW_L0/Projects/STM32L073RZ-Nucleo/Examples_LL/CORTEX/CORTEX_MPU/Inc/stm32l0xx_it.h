@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/CORTEX/CORTEX_MPU/Inc/stm32l0xx_it.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
@@ -56,7 +56,7 @@ void HardFault_Handler(void);
 void SVC_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-void EXTI4_15_IRQHandler(void);
+void USER_BUTTON_IRQHANDLER(void);
 
 #ifdef __cplusplus
 }

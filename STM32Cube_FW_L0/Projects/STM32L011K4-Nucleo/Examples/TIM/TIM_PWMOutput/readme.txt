@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_PWMOutput/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWM signals generation using TIM2
   ******************************************************************************
   *
@@ -89,11 +89,11 @@ The PWM waveforms can be displayed using an oscilloscope.
   - This example runs on STM32L011xx devices.
   - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STMicroelectronics STM32L011-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L011K4-Nucleo 
     board and can be easily tailored to any other supported device 
     and development board.      
 
-  - STM32L011-Nucleo Set-up
+  - STM32L011K4-Nucleo Set-up
    Connect the following pins to an oscilloscope to monitor the different waveforms:
         - TIM2_CH1 : PA.5 (Arduino A4)
         - TIM2_CH2 : PA.1 (Arduino A1)

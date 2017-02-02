@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/RCC/RCC_UseHSI_PLLasSystemClock/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RCC_UseHSI_PLLasSystemClock example.
   ******************************************************************************
   *
@@ -51,6 +51,7 @@ LED will toggle differently between the 2 configurations (quick toggle with HSI 
 
 To detect a problem with PLL configuration, switch USE_TIMEOUT can be enabled. Then in case of issues, 
 LED will toggle every 1 second.
+Note: "uwFrequency" variable can be added in LiveWatch to monitor the system clock frequency.
 
 @par Directory contents 
 
@@ -66,7 +67,7 @@ LED will toggle every 1 second.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

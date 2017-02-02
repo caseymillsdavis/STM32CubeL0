@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    IWDG/IWDG_Reset/Inc/main.h 
+  * @file    IWDG/IWDG_Reset/Inc/main.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
-  * @brief   Header for main.c module
+  * @version V1.8.0
+  * @date    25-November-2016
+  * @brief   Header for main.c module.
   ******************************************************************************
   * @attention
   *
@@ -34,7 +34,7 @@
   *
   ******************************************************************************
   */
-  
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
 #define __MAIN_H
@@ -42,11 +42,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
 #include "stm32l0538_discovery.h"
- 
+
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+extern void Error_Handler(void);
 
 #endif /* __MAIN_H */
 

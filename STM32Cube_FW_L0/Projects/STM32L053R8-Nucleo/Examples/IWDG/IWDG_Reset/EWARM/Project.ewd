@@ -81,7 +81,7 @@
         </option>
         <option>
           <name>OCProductVersion</name>
-          <state>6.70.1.5793</state>
+          <state>6.70.3.6347</state>
         </option>
         <option>
           <name>OCDynDriverList</name>
@@ -1193,7 +1193,7 @@
         <option>
           <name>CCSTLinkResetList</name>
           <version>1</version>
-          <state>0</state>
+          <state>2</state>
         </option>
         <option>
           <name>CCCpuClockEdit</name>

@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/TIM/TIM_InputCapture/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_InputCapture example.
   ******************************************************************************
   *
@@ -78,10 +78,10 @@ TIM2_CH1 to TIM21_CH1.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - When no signal generator is used TIM2_CH1 can be connected to TIM21_CH1:
       - TIM21_CH1  PB.13: connected to pin 30 of CN10 connector  
       - TIM2_CH1  PA.00: connected to pin 28 of CN7 connector 

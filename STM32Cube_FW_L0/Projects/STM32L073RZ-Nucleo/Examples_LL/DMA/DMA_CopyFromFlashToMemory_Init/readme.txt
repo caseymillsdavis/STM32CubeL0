@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/DMA/DMA_CopyFromFlashToMemory_Init/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the DMA example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example describes how to use a DMA channel to transfer a word data buffer
-from FLASH memory to embedded SRAM memory. Peripherals initialization done
+from Flash memory to embedded SRAM. Peripheral initialization done
 using LL initialization function to demonstrate LL init usage.
 
 At the beginning of the main program the SystemClock_Config() function is used to configure the system
@@ -58,7 +58,7 @@ is enabled and the callback function (customized by user) is called.
 Finally, aSRC_Const_Buffer and aDST_Buffer are compared through Buffercmp() in order to 
 check buffers correctness.  
 
-STM32L073-Nucleo Rev C's LED can be used to monitor the transfer status:
+STM32L073RZ-Nucleo Rev C's LED can be used to monitor the transfer status:
 - LED2 is turn on if DMA data transferred consistency.
 - LED2 is blinking every 1 sec in case of error.
 
@@ -75,7 +75,7 @@ STM32L073-Nucleo Rev C's LED can be used to monitor the transfer status:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

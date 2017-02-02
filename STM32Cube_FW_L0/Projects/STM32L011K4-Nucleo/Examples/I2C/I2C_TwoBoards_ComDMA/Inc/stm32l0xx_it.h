@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_it.h 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
@@ -58,8 +58,8 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-void I2Cx_DMA_RX_IRQHandler(void);
-void I2Cx_DMA_TX_IRQHandler(void);
+void I2Cx_IRQHandler(void);
+void I2Cx_DMA_IRQHandler(void);
 #ifdef __cplusplus
 }
 #endif

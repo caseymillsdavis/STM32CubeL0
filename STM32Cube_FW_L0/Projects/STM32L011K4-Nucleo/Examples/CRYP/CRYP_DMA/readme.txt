@@ -6,8 +6,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CRYP/CRYP_DMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the CRYP AES Algorithm in ECB mode with DMA Example
   ******************************************************************************
   *
@@ -41,7 +41,7 @@
 =================================================================================
 WARNING :
 To run this example, you must use an STM32L021xx device.
-By default, the STM32L011-Nucleo boards (Nucleo32) are equiped with an STM32L011xx 
+By default, the STM32L011K4-Nucleo boards (Nucleo32) are equiped with an STM32L011xx 
 device which doesn't support the AES feature.
 =================================================================================
 
@@ -90,7 +90,7 @@ HyperTerminal using the UART.
 
   - This example runs on STM32L021xx devices.
 
-  - This example has been tested with STM32L011-Nucleo board with socket using STM32L021xx plugged-in  
+  - This example has been tested with STM32L011K4-Nucleo board with socket using STM32L021xx plugged-in  
     and can be easily tailored to any other supported device and development board.
   
   - Hyperterminal configuration:

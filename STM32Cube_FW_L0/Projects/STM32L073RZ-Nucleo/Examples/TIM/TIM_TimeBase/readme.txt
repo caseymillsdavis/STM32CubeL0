@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_TimeBase/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM Time Base example
   ******************************************************************************
   *
@@ -54,7 +54,7 @@ Update rate = TIM2 counter clock / (Period + 1) = 1 Hz,
 So the TIM2 generates an interrupt each 1 s
 
 When the counter value reaches the auto-reload register value, the TIM update 
-interrupt is generated and, in the handler routine, pin GPIOA.5 (connected to LED2 on board STM32L073-Nucleo Rev C)
+interrupt is generated and, in the handler routine, pin GPIOA.5 (connected to LED2 on board STM32L073RZ-Nucleo Rev C)
 is toggled at the following frequency: 0.5Hz.
 
 
@@ -83,11 +83,11 @@ is toggled at the following frequency: 0.5Hz.
   - This example runs on STM32L073xx devices.
   - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device
     and development board.      
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Use LED2 connected to GPIOA.5 pin and connect them on an oscilloscope 
       to show the Time Base signal.  
 

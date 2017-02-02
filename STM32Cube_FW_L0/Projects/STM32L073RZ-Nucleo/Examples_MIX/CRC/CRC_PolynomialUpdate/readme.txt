@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CRC/CRC_PolynomialUpdate/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of CRC operation including user updates on generating polynomial.
   ******************************************************************************
   *
@@ -38,7 +38,8 @@
 @par Example Description 
 
 This example provides a description of how to use CRC peripheral through 
-the STM32L0xx CRC HAL & LL API (LL API usage for performance improvement);
+the STM32L0xx CRC HAL & LL API (LL API used for performance improvement).
+
 The CRC (Cyclic Redundancy Check) calculation unit computes a 8-bit long 
 CRC code of a given buffer of 32-bit data words, based on a user-defined generating polynomial; 
 In this example, the polynomial is first set manually to 0x9B that is X^8 + X^7 + X^4 + X^3 + X + 1;
@@ -86,7 +87,7 @@ STM32 board LED is used to monitor the example status:
 @par Hardware and Software environment
 
   - This example runs on STM32L073xx devices.
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 @par How to use it ? 

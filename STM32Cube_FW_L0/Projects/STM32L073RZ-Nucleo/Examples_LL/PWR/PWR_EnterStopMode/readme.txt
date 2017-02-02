@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/PWR/PWR_EnterStopMode/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR STOP mode example.
   ******************************************************************************
   *
@@ -66,11 +66,11 @@ LED2 is used to monitor the system state as follows:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device
     and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - LED2 connected to PA.05 pin
 
 @par How to use it ? 

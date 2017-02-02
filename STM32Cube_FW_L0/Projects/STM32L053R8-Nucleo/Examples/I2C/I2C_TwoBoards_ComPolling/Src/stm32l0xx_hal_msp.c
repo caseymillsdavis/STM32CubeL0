@@ -2,9 +2,9 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComPolling/Src/stm32l0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
-  * @brief   HAL MSP module.    
+  * @version V1.8.0
+  * @date    25-November-2016
+  * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
   *
@@ -69,30 +69,34 @@
   * @retval None
   */
 void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
-{  
+{
   GPIO_InitTypeDef  GPIO_InitStruct;
+  RCC_PeriphCLKInitTypeDef  RCC_PeriphCLKInitStruct;
   
-  /*##-1- Enable peripherals and GPIO Clocks #################################*/
+  /*##-1- Configure the I2C clock source. The clock is derived from the SYSCLK #*/
+  RCC_PeriphCLKInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2Cx;
+  RCC_PeriphCLKInitStruct.I2c1ClockSelection = RCC_I2CxCLKSOURCE_SYSCLK;
+  HAL_RCCEx_PeriphCLKConfig(&RCC_PeriphCLKInitStruct);
+
+  /*##-2- Enable peripherals and GPIO Clocks #################################*/
   /* Enable GPIO TX/RX clock */
   I2Cx_SCL_GPIO_CLK_ENABLE();
   I2Cx_SDA_GPIO_CLK_ENABLE();
-  /* Enable I2C1 clock */
+  /* Enable I2Cx clock */
   I2Cx_CLK_ENABLE(); 
-  
-  /*##-2- Configure peripheral GPIO ##########################################*/  
+
+  /*##-3- Configure peripheral GPIO ##########################################*/  
   /* I2C TX GPIO pin configuration  */
   GPIO_InitStruct.Pin       = I2Cx_SCL_PIN;
   GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;
   GPIO_InitStruct.Pull      = GPIO_PULLUP;
-  GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_HIGH  ;
-  GPIO_InitStruct.Alternate = I2Cx_SCL_AF;
-  
+  GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = I2Cx_SCL_SDA_AF;
   HAL_GPIO_Init(I2Cx_SCL_GPIO_PORT, &GPIO_InitStruct);
     
   /* I2C RX GPIO pin configuration  */
-  GPIO_InitStruct.Pin = I2Cx_SDA_PIN;
-  GPIO_InitStruct.Alternate = I2Cx_SDA_AF;
-    
+  GPIO_InitStruct.Pin       = I2Cx_SDA_PIN;
+  GPIO_InitStruct.Alternate = I2Cx_SCL_SDA_AF;
   HAL_GPIO_Init(I2Cx_SDA_GPIO_PORT, &GPIO_InitStruct);
 }
 
@@ -106,11 +110,12 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
   */
 void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
 {
+  
   /*##-1- Reset peripherals ##################################################*/
   I2Cx_FORCE_RESET();
   I2Cx_RELEASE_RESET();
 
-  /*##-2- Disable peripherals and GPIO Clocks ################################*/
+  /*##-2- Disable peripherals and GPIO Clocks #################################*/
   /* Configure I2C Tx as alternate function  */
   HAL_GPIO_DeInit(I2Cx_SCL_GPIO_PORT, I2Cx_SCL_PIN);
   /* Configure I2C Rx as alternate function  */

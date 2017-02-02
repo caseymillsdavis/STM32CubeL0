@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/TIM/TIM_DMA/Inc/main.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -42,6 +42,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_ll_bus.h"
 #include "stm32l0xx_ll_rcc.h"
+#include "stm32l0xx_ll_pwr.h"
 #include "stm32l0xx_ll_system.h"
 #include "stm32l0xx_ll_utils.h"
 #include "stm32l0xx_ll_gpio.h"

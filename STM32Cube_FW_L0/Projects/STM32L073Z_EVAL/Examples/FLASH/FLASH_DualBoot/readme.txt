@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    FLASH/FLASH_DualBoot/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the FLASH Dual boot example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description 
 
 This example guides you through the different configuration steps by mean of HAL API on
-how to program bank1 and bank2 of the STM32L0xx internal FLASH memory mounted on STM32L073Z-EVAL
+how to program bank1 and bank2 of the STM32L0xx internal Flash memory mounted on STM32L073Z-EVAL
 and swap between both of them.
 
 ================================================================================
@@ -55,7 +55,7 @@ to run at 32 MHz.
 Below are the steps to run this example:
 1- Choose the FLASH_DualBoot_Bank2 project and generate its binary(ie: FLASH_DualBoot.bin)
 
-2- Configure the FLASH memory at Dual Bank mode using STM32 ST-LINK Utilities 
+2- Configure the Flash memory at Dual Bank mode using STM32 ST-LINK Utilities 
    (Target -> Options Bytes) ( "BFB2" should be unchecked). Load this binary at the bank2 of 
    the flash(at the address 0x08100000) using STM32 ST-LINK Utilities(www.st.com) or any 
    similar tool.

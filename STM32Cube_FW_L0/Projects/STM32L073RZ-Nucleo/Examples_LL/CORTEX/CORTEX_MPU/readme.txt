@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/CORTEX/CORTEX_MPU/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the CORTEX_MPU example.
   ******************************************************************************
   *
@@ -37,9 +37,9 @@
 
 @par Example Description
 
-This example presents the MPU feature. The example purpose is to configure a 
-memory region as privileged read only region and tries to perform read and write 
-operation in different mode.
+This example presents the MPU feature. Its purpose is to configure a memory area
+as privileged read-only area and attempt to perform read and write operations
+in different modes.
 
 If the access is permitted LED2 is toggling. If the access is not permitted, 
 a memory management fault is generated and LED2 is ON.
@@ -61,7 +61,7 @@ user button.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

@@ -13,7 +13,7 @@
       <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STM32L053R8</Device>
+          <Device>STM32L053R8Tx</Device>
           <Vendor>STMicroelectronics</Vendor>
           <PackID>Keil.STM32L0xx_DFP.1.4.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>

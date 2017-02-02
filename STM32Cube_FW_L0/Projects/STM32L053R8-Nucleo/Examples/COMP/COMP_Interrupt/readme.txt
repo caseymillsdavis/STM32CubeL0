@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2012 STMicroelectronics *******************
   * @file    COMP/COMP_Interrupt/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the COMP Interrupt example.
   ******************************************************************************
   *
@@ -38,8 +38,9 @@
 @par Example Description 
 
 This example shows how to configure the COMP peripheral to compare the external
-voltage applied on PA1 with the Internal Voltage Reference. And when the 
-comparator input which is connected to PA1 crosses (either rising or falling edges)
+voltage applied on PA1 with the Internal Voltage Reference.
+
+When the comparator input (connected to PA1) crosses (either rising or falling edges)
 the internal reference voltage VREFINT (1.22V), the comparator 1 generates an interrupt 
 and toggles LED2.
 

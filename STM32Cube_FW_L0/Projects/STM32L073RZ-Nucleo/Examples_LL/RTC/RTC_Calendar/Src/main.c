@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/RTC/RTC_Calendar/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx RTC LL API to configure
   *          Time and Date.
   *          Peripheral initialization done using LL unitary services functions.
@@ -58,7 +58,7 @@
 /* Defines related to Clock configuration */
 /* Uncomment to enable the adequate Clock Source */
 #define RTC_CLOCK_SOURCE_LSI
-/*#define RTC_CLOCK_SOURCE_LSE*/
+//#define RTC_CLOCK_SOURCE_LSE
 
 #ifdef RTC_CLOCK_SOURCE_LSI
 /* ck_apre=LSIFreq/(ASYNC prediv + 1) with LSIFreq=37 kHz RC */
@@ -88,6 +88,7 @@ uint32_t Timeout = 0; /* Variable used for Timeout management */
 
 /* Private function prototypes -----------------------------------------------*/
 void     SystemClock_Config(void);
+void     Configure_RTC_Clock(void);
 void     Configure_RTC(void);
 void     Configure_RTC_Calendar(void);
 uint32_t Enter_RTC_InitMode(void);
@@ -113,11 +114,14 @@ int main(void)
   /* Initialize LED2 */
   LED_Init();
 
-  /*##-2- Check if Data stored in BackUp register1: No Need to reconfigure RTC#*/
+  /*##-Configure the RTC peripheral #######################################*/
+  Configure_RTC_Clock();
+
+  /*##-Check if Data stored in BackUp register1: No Need to reconfigure RTC#*/
   /* Read the Back Up Register 1 Data */
   if (LL_RTC_BAK_GetRegister(RTC, LL_RTC_BKP_DR1) != RTC_BKP_DATE_TIME_UPDTATED)
   {
-    /*##-1- Configure the RTC peripheral #######################################*/
+    /*##-Configure the RTC peripheral #######################################*/
     Configure_RTC();
 
     /* Configure RTC Calendar */
@@ -136,14 +140,11 @@ int main(void)
 }
 
 /**
-  * @brief  Configure RTC.
-  * @note   Peripheral configuration is minimal configuration from reset values.
-  *         Thus, some useless LL unitary functions calls below are provided as
-  *         commented examples - setting is default configuration from reset.
+  * @brief  Configure RTC clock.
   * @param  None
   * @retval None
   */
-void Configure_RTC(void)
+void Configure_RTC_Clock(void)
 {
   /*##-1- Enables the PWR Clock and Enables access to the backup domain #######*/
   /* To change the source clock of the RTC feature (LSE, LSI), you have to:
@@ -180,10 +181,6 @@ void Configure_RTC(void)
 #endif /* USE_TIMEOUT */
     }
     LL_RCC_SetRTCClockSource(LL_RCC_RTC_CLKSOURCE_LSE);
-    
-    /*##-3- Enable RTC peripheral Clocks #######################################*/
-    /* Enable RTC Clock */ 
-    LL_RCC_EnableRTC();
   }
 #elif defined(RTC_CLOCK_SOURCE_LSI)
   /* Enable LSI */
@@ -205,29 +202,44 @@ void Configure_RTC(void)
     }  
 #endif /* USE_TIMEOUT */
   }
-  LL_RCC_ForceBackupDomainReset();
-  LL_RCC_ReleaseBackupDomainReset();
-  LL_RCC_SetRTCClockSource(LL_RCC_RTC_CLKSOURCE_LSI);
-
-  /*##-3- Enable RTC peripheral Clocks #######################################*/
-  /* Enable RTC Clock */ 
-  LL_RCC_EnableRTC();
+  /* Reset backup domain only if LSI is not yet selected as RTC clock source */
+  if (LL_RCC_GetRTCClockSource() != LL_RCC_RTC_CLKSOURCE_LSI)
+  {
+    LL_RCC_ForceBackupDomainReset();
+    LL_RCC_ReleaseBackupDomainReset();
+    LL_RCC_SetRTCClockSource(LL_RCC_RTC_CLKSOURCE_LSI);
+  }
 
 #else
 #error "configure clock for RTC"
 #endif
+}
 
-  /*##-4- Disable RTC registers write protection ##############################*/
+/**
+  * @brief  Configure RTC.
+  * @note   Peripheral configuration is minimal configuration from reset values.
+  *         Thus, some useless LL unitary functions calls below are provided as
+  *         commented examples - setting is default configuration from reset.
+  * @param  None
+  * @retval None
+  */
+void Configure_RTC(void)
+{
+  /*##-1- Enable RTC peripheral Clocks #######################################*/
+  /* Enable RTC Clock */ 
+  LL_RCC_EnableRTC();
+
+  /*##-2- Disable RTC registers write protection ##############################*/
   LL_RTC_DisableWriteProtection(RTC);
 
-  /*##-5- Enter in initialization mode #######################################*/
+  /*##-3- Enter in initialization mode #######################################*/
   if (Enter_RTC_InitMode() != RTC_ERROR_NONE)   
   {
     /* Initialization Error */
     LED_Blinking(LED_BLINK_ERROR);
   }
 
-  /*##-6- Configure RTC ######################################################*/
+  /*##-4- Configure RTC ######################################################*/
   /* Configure RTC prescaler and RTC data registers */
   /* Set Hour Format */
   LL_RTC_SetHourFormat(RTC, LL_RTC_HOURFORMAT_AMPM);
@@ -245,10 +257,10 @@ void Configure_RTC(void)
   /* Reset value is LL_RTC_ALARM_OUTPUTTYPE_OPENDRAIN */
   //LL_RTC_SetAlarmOutputType(RTC, LL_RTC_ALARM_OUTPUTTYPE_OPENDRAIN);
 
-  /*##-7- Exit of initialization mode #######################################*/
+  /*##-5- Exit of initialization mode #######################################*/
   Exit_RTC_InitMode();
   
-  /*##-8- Enable RTC registers write protection #############################*/
+  /*##-6- Enable RTC registers write protection #############################*/
   LL_RTC_EnableWriteProtection(RTC);
 }
 
@@ -408,8 +420,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }

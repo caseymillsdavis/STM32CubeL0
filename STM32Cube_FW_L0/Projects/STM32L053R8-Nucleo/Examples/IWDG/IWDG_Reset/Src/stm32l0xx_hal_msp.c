@@ -1,13 +1,10 @@
 /**
   ******************************************************************************
-  * @file    IWDG/IWDG_Reset/Src/stm32l0xx_hal_msp.c 
+  * @file    IWDG/IWDG_Reset/Src/stm32l0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL MSP module.
-  *          This file template is located in the HAL folder and should be copied 
-  *          to the user folder.
-  *    
   ******************************************************************************
   * @attention
   *
@@ -35,11 +32,11 @@
   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
-  ******************************************************************************  
-  */ 
+  ******************************************************************************
+  */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l0xx_it.h"
+#include "main.h"
 
 /** @addtogroup STM32L0xx_HAL_Examples
   * @{
@@ -54,20 +51,12 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
 /** @defgroup HAL_MSP_Private_Functions
   * @{
   */
-void HAL_IWDG_MspInit(IWDG_HandleTypeDef* hiwdg)
-{
-  __HAL_RCC_PWR_CLK_ENABLE(); 
-
-  HAL_PWR_EnableBkUpAccess();
-   
-}
 
 /**
   * @brief TIM MSP Initialization 
@@ -79,14 +68,7 @@ void HAL_IWDG_MspInit(IWDG_HandleTypeDef* hiwdg)
   */
 void HAL_TIM_IC_MspInit(TIM_HandleTypeDef *htim)
 {
-  
-  /*## Enable peripherals and GPIO Clocks ####################################*/
-  /* RCC LSI clock enable */
-  __HAL_RCC_LSI_ENABLE();
-  
-  /* Wait till LSI is ready */
-  while (__HAL_RCC_GET_FLAG(RCC_FLAG_LSIRDY) == RESET)
-  {}
+
 
   /* TIMx Peripheral clock enable */
   __HAL_RCC_TIM21_CLK_ENABLE();

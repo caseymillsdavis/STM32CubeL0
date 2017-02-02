@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    TouchSensing\TouchSensing_Linear\Src\stmCriticalSection.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file provides a mechanism for STMStudio host/target
   *          synchronization. Based on a critical section, using few
   *          target resources (in term of code and RAM), but

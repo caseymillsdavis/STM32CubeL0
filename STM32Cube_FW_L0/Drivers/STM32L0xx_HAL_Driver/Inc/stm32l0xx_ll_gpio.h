@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l0xx_ll_gpio.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header file of GPIO LL module.
   ******************************************************************************
   * @attention
@@ -183,7 +183,6 @@ typedef struct
 #define LL_GPIO_SPEED_MEDIUM               LL_GPIO_SPEED_FREQ_MEDIUM
 #define LL_GPIO_SPEED_FAST                 LL_GPIO_SPEED_FREQ_HIGH
 #define LL_GPIO_SPEED_HIGH                 LL_GPIO_SPEED_FREQ_VERY_HIGH
-
 
 /** @defgroup GPIO_LL_EC_PULL Pull Up Pull Down
   * @{

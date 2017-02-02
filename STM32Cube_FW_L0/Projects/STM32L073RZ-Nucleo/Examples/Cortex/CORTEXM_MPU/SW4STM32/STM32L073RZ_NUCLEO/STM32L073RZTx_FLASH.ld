@@ -41,8 +41,9 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 192K
 RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 20K
+FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 192K
+MEMORY_ARRAY (rw)  : ORIGIN = 0x20002000, LENGTH = 32K
 }
 
 /* Define output sections */
@@ -164,6 +165,7 @@ SECTIONS
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
+    ROarraySection : {*(.ROarraySection)} >MEMORY_ARRAY
 }
 
 

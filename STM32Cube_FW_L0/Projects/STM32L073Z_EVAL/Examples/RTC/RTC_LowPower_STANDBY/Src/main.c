@@ -2,9 +2,9 @@
   ******************************************************************************
   * @file    RTC/RTC_LowPower_STANDBY/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
-  * @brief   This sample code shows how to use STM32F1xx RTC HAL API to enter
+  * @version V1.8.0
+  * @date    25-November-2016
+  * @brief   This sample code shows how to use STM32L0xx RTC HAL API to enter
   *          and exit the Standby mode using RTC.
   ******************************************************************************
   * @attention

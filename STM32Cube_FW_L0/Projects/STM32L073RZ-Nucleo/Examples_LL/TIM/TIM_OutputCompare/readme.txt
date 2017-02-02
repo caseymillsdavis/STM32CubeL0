@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/TIM/TIM_OutputCompare/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_OutputCompare example.
   ******************************************************************************
   *
@@ -67,7 +67,7 @@ Generally speaking this delay is calculated as follows:
 CC1_delay = TIM2 counter clock / CCR1
 
 The timer output channel is mapped on the pin PA.05 (connected to LED2 on board
-STM32L073-Nucleo Rev C). Thus LED2 status (on/off) mirrors the timer output
+STM32L073RZ-Nucleo Rev C). Thus LED2 status (on/off) mirrors the timer output
 level (active v.s. inactive).
 
 User push-button can be used to change the output compare mode:
@@ -96,7 +96,7 @@ Initially the output channel is configured in output compare toggle mode.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_OCInactive/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example shows how to configure the Timer to generate four 
   *          delayed signals.
   ******************************************************************************
@@ -97,11 +97,11 @@
 
   - This example runs on STM32L031xx devices.
     
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo 
     board and can be easily tailored to any other supported device 
     and development board.      
 
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
    Connect the following pins to an oscilloscope to monitor the different waveforms:
       - PA.3: wave form of (TIM2_CH1) (connected to Arduino A2)
       - PA.4: wave form of (TIM2_CH2) (connected to Arduino A3)

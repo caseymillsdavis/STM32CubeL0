@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l152c_discovery_lcd.c
   * @author  Microcontroller Division
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file includes driver for the glass LCD Module mounted on 
   *          STM32l152C discovery board MB963
   ******************************************************************************

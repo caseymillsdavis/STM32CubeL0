@@ -1,13 +1,13 @@
 /**
-  @page I2C_TwoBoards_ComIT I2C Two Boards Communication IT example
+  @page I2C_TwoBoards_ComIT I2C Two Boards Communication IT Example
   
   @verbatim
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_TwoBoards_ComIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
-  * @brief   Description of the I2C Two Boards IT Communication example.
+  * @version V1.8.0
+  * @date    25-November-2016
+  * @brief   Description of the I2C Two Boards Communication IT example.
   ******************************************************************************
   *
   * Redistribution and use in source and binary forms, with or without modification,
@@ -37,27 +37,27 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure I2C Data buffer transmission and reception using Interrupt.
-The communication is done with 2 Boards through I2C.
+This example describes how to perform I2C data buffer transmission/reception between 
+two boards using an interrupt.
 
-   _________________________                        _________________________
-  |           ______________|                      |______________           |
-  |          | I2C1         |                      |          I2C1|          |
-  |          |              |                      |              |          |
-  |          |      SCL(PB8)|______________________|(PB8)SCL      |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |      SDA(PB9)|______________________|(PB9)SDA      |          |
-  |          |              |                      |              |          |
-  |          |______________|                      |______________|          |
-  |      __                 |                      |      __                 |
-  |     |__|                |                      |     |__|                |
-  |     USER                |                      |     USER                |
-  |                      GND|______________________|GND                      |
-  |_STM32L0 ________________|                      |_________________STM32L0_|
+Board: STM32L053R8-Nucleo Rev C (embeds a STM32L053R8T6 device)
+SCL Pin: PB8 (CN10, pin 3 (Arduino D15))
+SDA Pin: PB9 (CN10, pin 5 (Arduino D14))
 
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -70,51 +70,48 @@ the configuration of the needed I2C resources according to the used hardware (CL
 GPIO and NVIC). You may update this function to change I2C configuration.
 
 The I2C communication is then initiated.
-The project is splitted in two parts the Master Board and the Slave Board
+The project is split in two parts: the Master Board and the Slave Board
 - Master Board
   The HAL_I2C_Master_Receive_IT() and the HAL_I2C_Master_Transmit_IT() functions 
   allow respectively the reception and the transmission of a predefined data buffer
-  in Master mode.
+  in Master mode using interrupt.
 - Slave Board
   The HAL_I2C_Slave_Receive_IT() and the HAL_I2C_Slave_Transmit_IT() functions 
   allow respectively the reception and the transmission of a predefined data buffer
-  in Slave mode.
+  in Slave mode using interrupt.
 The user can choose between Master and Slave through "#define MASTER_BOARD"
-in the "main.c" file.
-If the Master board is used, the "#define MASTER_BOARD" must be uncommented.
-If the Slave board is used the "#define MASTER_BOARD" must be commented.
+in the "main.c" file:
+- Uncomment "#define MASTER_BOARD" to select Master board.
+- Comment "#define MASTER_BOARD" to select Slave board.
 
 For this example the aTxBuffer is predefined and the aRxBuffer size is same as aTxBuffer.
 
-In a first step after the user press the User Button on the Master Board, I2C Master 
-starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_IT() to 
-I2C Slave which receives aRxBuffer through HAL_I2C_Slave_Receive_IT(). 
-The second step starts when the user press the User Button on the Master Board,
+In a first step after the user press the User push-button on the Master Board,
+I2C Master starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_IT()
+to I2C Slave which receives aRxBuffer through HAL_I2C_Slave_Receive_IT(). 
+The second step starts when the user press the User push-button on the Master Board,
 the I2C Slave sends aTxBuffer through HAL_I2C_Slave_Transmit_IT()
 to the I2C Master which receives aRxBuffer through HAL_I2C_Master_Receive_IT().
 The end of this two steps are monitored through the HAL_I2C_GetState() function
 result.
-Finally, aRxBuffer and aRxBuffer are compared through Buffercmp() in order to 
+Finally, aTxBuffer and aRxBuffer are compared through Buffercmp() in order to 
 check buffers correctness.  
 
-LED2 can be used to monitor the transfer status:
- - LED2 turns OFF on master board waiting the transmission process is complete.
- - LED2 turns ON when the transmission/reception process is correct.
+STM32L053R8-Nucleo Rev C's LED can be used to monitor the transfer status:
+ - LED2 is ON when the transmission process is complete.
+ - LED2 is OFF when the reception process is complete.
+ - LED2 is slowly blinking (1 sec. period) in case of error in initialization or 
+transmission/reception process
 
- @note I2Cx instance used and associated resources can be updated in "main.h"
-       file depending hardware configuration used.
-       
- @note Timeout is set to 10 Seconds which means that if no communication occurs 
-       during 10 Seconds, a Timeout Error will be generated.
+@note I2Cx instance used and associated resources can be updated in "main.h"
+file depending hardware configuration used.
 
-
-@note Care must be taken when using HAL_Delay(), this function provides accurate
-      delay (in milliseconds) based on variable incremented in SysTick ISR. This
-      implies that if HAL_Delay() is called from a peripheral ISR process, then 
-      the SysTick interrupt must have higher priority (numerically lower)
+@note Care must be taken when using HAL_Delay(), this function provides accurate delay (in milliseconds)
+      based on variable incremented in SysTick ISR. This implies that if HAL_Delay() is called from
+      a peripheral ISR process, then the SysTick interrupt must have higher priority (numerically lower)
       than the peripheral interrupt. Otherwise the caller ISR process will be blocked.
       To change the SysTick interrupt priority you have to use HAL_NVIC_SetPriority() function.
-      
+
 @note The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
@@ -131,17 +128,15 @@ LED2 can be used to monitor the transfer status:
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
     
-  - This example has been tested with STM32L053R8-Nucleo RevC and can be
-    easily tailored to any other supported device and development board.
+  - This example has been tested with STM32L053R8-Nucleo Rev C board and can be
+    easily tailored to any other supported device and development board.    
 
-  - STM32L053R8-Nucleo RevC Set-up
-    - Connect Master board PB8 (Arduino SCL/D15) to Slave Board PB8 (Arduino SCL/D15) 
-    - Connect Master board PB9 (Arduino SDA/D14) to Slave Board PB9 (Arduino SDA/D14) 
-    - Connect Master board GND to Slave Board GND
-
+  - STM32L053R8-Nucleo Rev C Set-up
+    - Connect I2C_SCL line of Master board (PB8, CN10, pin 3 (Arduino D15)) to I2C_SCL line of Slave Board (PB8, CN10, pin 3 (Arduino D15)).
+    - Connect I2C_SDA line of Master board (PB9, CN10, pin 5 (Arduino D14)) to I2C_SDA line of Slave Board (PB9, CN10, pin 5 (Arduino D14)).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

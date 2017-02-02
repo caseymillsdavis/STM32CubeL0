@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/WWDG/WWDG_RefreshUntilUserEvent/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the WWDG_RefreshUntilUserEvent example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example describes how to configure WWDG and update counter at regular period 
-and generating an MCU WWDG reset on at User Button pressed. Peripheral initialization 
+and generating an MCU WWDG reset at User Button pressed. Peripheral initialization 
 done using LL unitary services functions for optimization purpose (performance and size).
 
 Example Configuration:
@@ -65,7 +65,7 @@ Waiting a new user button pressed to re-activate the WWDG
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

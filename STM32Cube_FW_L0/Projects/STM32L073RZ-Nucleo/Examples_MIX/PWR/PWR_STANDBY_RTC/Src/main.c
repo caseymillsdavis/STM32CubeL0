@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_STANDBY_RTC/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx PWR HAL API to enter
   *          and exit the Standby mode using RTC.
   ******************************************************************************
@@ -88,42 +88,41 @@ int main(void)
   /* Configure LED2 */
   BSP_LED_Init(LED2);
 
-  /* Check with RCC LL API than RTC is already enabled or not */
-  if (LL_RCC_IsEnabledRTC() == 0)
-  {
-    /* Configure RTC */
-    RTC_Config();
-    
-    /* The Following Wakeup sequence is highly recommended prior to each Standby mode entry
-      mainly  when using more than one wakeup source this is to not miss any wakeup event.
-      - Disable all used wakeup sources,
-      - Clear all related wakeup flags, 
-      - Re-enable all used wakeup sources,
-      - Enter the Standby mode.
-    */
-    /* Disable all used wakeup sources*/
-    HAL_RTCEx_DeactivateWakeUpTimer(&RTCHandle);
-    
-    /* Re-enable all used wakeup sources*/
-    /* ## Setting the Wake up time ############################################*/
-    /* RTC Wakeup Interrupt Generation: 
-      the wake-up counter is set to its maximum value to yield the longuest
-      stand-by time to let the current reach its lowest operating point.
-      The maximum value is 0xFFFF, corresponding to about 33 sec. when 
-      RTC_WAKEUPCLOCK_RTCCLK_DIV = RTCCLK_Div16 = 16
+  /* Configure RTC */
+  RTC_Config();
+  
+  /* Insert 5 seconds delay */
+  HAL_Delay(5000);
+  
+  /* The Following Wakeup sequence is highly recommended prior to each Standby mode entry
+    mainly  when using more than one wakeup source this is to not miss any wakeup event.
+    - Disable all used wakeup sources,
+    - Clear all related wakeup flags, 
+    - Re-enable all used wakeup sources,
+    - Enter the Standby mode.
+  */
+  /* Disable all used wakeup sources*/
+  HAL_RTCEx_DeactivateWakeUpTimer(&RTCHandle);
+  
+  /* Re-enable all used wakeup sources*/
+  /* ## Setting the Wake up time ############################################*/
+  /* RTC Wakeup Interrupt Generation: 
+    the wake-up counter is set to its maximum value to yield the longuest
+    stand-by time to let the current reach its lowest operating point.
+    The maximum value is 0xFFFF, corresponding to about 28 sec. when 
+    RTC_WAKEUPCLOCK_RTCCLK_DIV = RTCCLK_Div16 = 16
 
-      Wakeup Time Base = (RTC_WAKEUPCLOCK_RTCCLK_DIV /(LSI))
-      Wakeup Time = Wakeup Time Base * WakeUpCounter 
-        = (RTC_WAKEUPCLOCK_RTCCLK_DIV /(LSI)) * WakeUpCounter
-        ==> WakeUpCounter = Wakeup Time / Wakeup Time Base
-    
-      To configure the wake up timer to 60s the WakeUpCounter is set to 0xFFFF:
-      Wakeup Time Base = 16 /(~32.000KHz) = ~0.5 ms
-      Wakeup Time = 0.5 ms  * WakeUpCounter
-      Therefore, with wake-up counter =  0xFFFF  = 65,535 
-         Wakeup Time =  0,5 ms *  65,535 = 32,7675 s ~ 33 sec. */
-    HAL_RTCEx_SetWakeUpTimer_IT(&RTCHandle, 0x0FFFF, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
-  }
+    Wakeup Time Base = (RTC_WAKEUPCLOCK_RTCCLK_DIV /(LSI))
+    Wakeup Time = Wakeup Time Base * WakeUpCounter 
+      = (RTC_WAKEUPCLOCK_RTCCLK_DIV /(LSI)) * WakeUpCounter
+      ==> WakeUpCounter = Wakeup Time / Wakeup Time Base
+  
+    To configure the wake up timer to 28s the WakeUpCounter is set to 0xFFFF:
+    Wakeup Time Base = 16 /(~37 kHz RC) = ~0.43 ms
+    Wakeup Time = 0.43 ms  * WakeUpCounter
+    Therefore, with wake-up counter =  0xFFFF  = 65,535 
+       Wakeup Time =  0.43 ms *  65,535 = ~ 28 sec. */
+  HAL_RTCEx_SetWakeUpTimer_IT(&RTCHandle, 0xFFFF, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
 
   /* Reactivate LSI clock if it has been stopped by system reset */
   if (LL_RCC_LSI_IsReady() != 1)
@@ -143,9 +142,6 @@ int main(void)
     /* Clear Standby flag */
     __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SB); 
   }
-  
-  /* Insert 5 seconds delay */
-  HAL_Delay(5000);
   
   /* Clear Wake-up timer flag if it is set    */
   /* Flag will set after exiting from Standby */

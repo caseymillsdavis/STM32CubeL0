@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l152_discovery_lcd.h
   * @author  Microcontroller Division
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains all the functions prototypes for the glass LCD
   *          firmware driver.
   ******************************************************************************

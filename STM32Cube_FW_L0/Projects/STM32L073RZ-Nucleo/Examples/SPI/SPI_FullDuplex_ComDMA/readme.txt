@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SPI/SPI_FullDuplex_ComDMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI Full Duplex DMA example.
   ******************************************************************************
   *
@@ -36,9 +36,9 @@
   @endverbatim
 
 @par Example Description 
-The communication is done with 2 boards through SPI. This example guides you 
-through the different configuration steps by mean of HAL API to ensure SPI Data 
-buffer transmission and reception with DMA.
+
+This example shows how to perform SPI data buffer transmission/reception between 
+two boards via DMA.
 
    _________________________                       __________________________
   |          _______________|                      |_______________          |
@@ -133,10 +133,10 @@ STM32 board's LEDs can be used to monitor the transfer status:
 
   - This example runs on STM32L073xx devices.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect Master board PB13 to Slave Board PB13
     - Connect Master board PB14 to Slave Board PB14
     - Connect Master board PB15 to Slave Board PB15

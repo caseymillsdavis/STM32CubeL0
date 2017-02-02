@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_STOP/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.

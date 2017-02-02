@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/TIM/TIM_OnePulse/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_OnePulse example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example shows how to configure a timer to generate a positive pulse in
-Output Compare mode with a length of tPULSE and after a delay of tDELAY.
+Output Compare mode with a length of tPULSE and after a delay of tDELAY;
 This example is based on the STM32L0xx TIM LL API; peripheral initialization is done
 using LL unitary services functions for optimization purpose (performance and size).
 
@@ -48,9 +48,9 @@ This example uses 2 timer instances:
 
   - TIM21 generates a positive pulse of 50 us after a delay of 50 us. User push-button
     is used to start TIM21 counter. 
-                                             ___
-                                            |   |
-    User push-button _______________________|   |_______________________________
+                     ________________________     ________________________________
+                                             |   |
+    User push-button                         |___|  
                                                             ___________
                                                            |           |
     OC1              ______________________________________|           |________
@@ -66,7 +66,7 @@ This example uses 2 timer instances:
     is controlled through the slave mode controller. TI2FP2 signals is selected as
     trigger input meaning that TIM2 counter starts when a rising edge is detected on
     TI2FP2. The TIM2 output channel is mapped on the pin PA.05 (connected to LED2 on board
-    STM32L073-Nucleo Rev C). Thus LED2 status (on/off) mirrors the timer output level (active v.s. inactive).
+    STM32L073RZ-Nucleo Rev C). Thus LED2 status (on/off) mirrors the timer output level (active v.s. inactive).
                                   ___
                                  |   |
     TI2 _________________________|   |_________________________________________
@@ -98,10 +98,10 @@ the User push-button.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up:
+  - STM32L073RZ-Nucleo Rev C Set-up:
       - TIM21_CH1  PB.13: connected to pin 30 of CN10 connector  
       - TIM2_CH1  PA.05: connected to pin 11 of CN10 connector 
       - TIM2_CH2  PA.01: connected to pin 30 of CN7 connector 

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/DAC/DAC_GenerateConstantSignal_TriggerSW/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use the DAC peripheral to generate
   *          a constant voltage signal.
   *          This example is based on the STM32L0xx DAC LL API;
@@ -74,6 +74,7 @@ __IO uint8_t ubButtonPressCount = 0;
 /* Private function prototypes -----------------------------------------------*/
 void     SystemClock_Config(void);
 void     Configure_DAC(void);
+void     Activate_DAC(void);
 void     LED_Init(void);
 void     LED_On(void);
 void     LED_Off(void);
@@ -109,19 +110,8 @@ int main(void)
   /* Configure DAC channel */
   Configure_DAC();
   
-  /* Activate DAC channel*/
-  /* Enable DAC channel */
-  LL_DAC_Enable(DAC1, LL_DAC_CHANNEL_1);
-  
-  /* Note: In this example, DAC channel trigger is set just after             */
-  /*       DAC channel enable.                                                */
-  /*       However, in user application, depending on accuracy requirements,  */
-  /*       a delay may be required between DAC channel enable and             */
-  /*       DAC channel trigger.                                               */
-  /*       Refer to description of function @ref LL_DAC_Enable().             */
-  
-  /* Enable DAC channel trigger */
-  LL_DAC_EnableTrigger(DAC1, LL_DAC_CHANNEL_1);
+  /* Activate DAC channel */
+  Activate_DAC();
   
   /* Turn-on LED2 */
   LED_On();
@@ -166,19 +156,60 @@ void Configure_DAC(void)
   /* Enable DAC clock */
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_DAC1);
   
-  /* Set the output for the selected DAC channel */
-  //LL_DAC_SetOutputBuffer(DAC1, LL_DAC_CHANNEL_1, LL_DAC_OUTPUT_BUFFER_ENABLE);
-  /* Set the data to be loaded in the data holding register */
-  LL_DAC_ConvertData12RightAligned(DAC1, LL_DAC_CHANNEL_1, 0);
-
   /* Select trigger source */
   LL_DAC_SetTriggerSource(DAC1, LL_DAC_CHANNEL_1, LL_DAC_TRIG_SOFTWARE);
+  
+  /* Set the output for the selected DAC channel */
+  //LL_DAC_SetOutputBuffer(DAC1, LL_DAC_CHANNEL_1, LL_DAC_OUTPUT_BUFFER_ENABLE);
   
   /* Disable DAC channel DMA request */
   // LL_DAC_DisableDMAReq(DAC1, LL_DAC_CHANNEL_1);
   
+  /* Set the data to be loaded in the data holding register */
+  // LL_DAC_ConvertData12RightAligned(DAC1, LL_DAC_CHANNEL_1, 0x000);
+  
   /* Enable interruption DAC channel1 underrun */
   LL_DAC_EnableIT_DMAUDR1(DAC1);
+}
+
+/**
+  * @brief  Perform DAC activation procedure to make it ready to generate
+  *         a voltage (DAC instance: DAC1).
+  * @note   Operations:
+  *         - Enable DAC instance channel
+  *         - Wait for DAC instance channel startup time
+  * @param  None
+  * @retval None
+  */
+void Activate_DAC(void)
+{
+  __IO uint32_t wait_loop_index = 0;
+  
+  /* Enable DAC channel */
+  LL_DAC_Enable(DAC1, LL_DAC_CHANNEL_1);
+  
+  /* Delay for DAC channel voltage settling time from DAC channel startup.    */
+  /* Compute number of CPU cycles to wait for, from delay in us.              */
+  /* Note: Variable divided by 2 to compensate partially                      */
+  /*       CPU processing cycles (depends on compilation optimization).       */
+  /* Note: If system core clock frequency is below 200kHz, wait time          */
+  /*       is only a few CPU processing cycles.                               */
+  wait_loop_index = ((LL_DAC_DELAY_STARTUP_VOLTAGE_SETTLING_US * (SystemCoreClock / (100000 * 2))) / 10);
+  while(wait_loop_index != 0)
+  {
+    wait_loop_index--;
+  }
+  
+  /* Enable DAC channel trigger */
+  /* Note: DAC channel conversion can start from trigger enable:              */
+  /*       - if DAC channel trigger source is set to SW:                      */
+  /*         DAC channel conversion will start after trig order               */
+  /*         using function "LL_DAC_TrigSWConversion()".                      */
+  /*       - if DAC channel trigger source is set to external trigger         */
+  /*         (timer, ...):                                                    */
+  /*         DAC channel conversion can start immediately                     */
+  /*         (after next trig order from external trigger)                    */
+  LL_DAC_EnableTrigger(DAC1, LL_DAC_CHANNEL_1);
 }
 
 /**
@@ -195,8 +226,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }
@@ -355,6 +386,7 @@ void SystemClock_Config(void)
 /******************************************************************************/
 /*   USER IRQ HANDLER TREATMENT                                               */
 /******************************************************************************/
+
 /**
   * @brief  Function to manage IRQ Handler
   * @param  None

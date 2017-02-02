@@ -147,7 +147,7 @@
         </option>
         <option>
           <name>OGUseCmsis</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>OGUseCmsisDspLib</name>
@@ -175,7 +175,6 @@
           <state>USE_HAL_DRIVER</state>
           <state>STM32L053xx</state>
           <state>USE_STM32L0XX_NUCLEO</state>
-          <state>USE_HAL_DRIVER</state>
         </option>
         <option>
           <name>CCPreprocFile</name>
@@ -305,7 +304,6 @@
         <option>
           <name>CCIncludePath2</name>
           <state>$PROJ_DIR$\..\Inc</state>
-          <state>$PROJ_DIR$\..\..\..\..\..\..\Drivers\CMSIS\Include</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\Drivers\CMSIS\Device\ST\STM32L0xx\Include</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Inc</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\STM32L0xx_Nucleo</state>

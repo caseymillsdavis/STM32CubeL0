@@ -1,13 +1,13 @@
 /**
-  @page IWDG_Example Independent Watchdog Example
+  @page IWDG_Reset Independent Watchdog Reset Example
   
   @verbatim
-  ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
+  ********************* COPYRIGHT(c) 2016 STMicroelectronics *******************
   * @file    IWDG/IWDG_Reset/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
-  * @brief   Description of the Independent Watchdog Example.
+  * @version V1.8.0
+  * @date    25-November-2016
+  * @brief   Description of the IWDG Reset.
   ******************************************************************************
   *
   * Redistribution and use in source and binary forms, with or without modification,
@@ -31,27 +31,25 @@
   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
   *
   ******************************************************************************
   @endverbatim
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure IWDG reload counter and to simulate a software fault generating an MCU IWDG
-reset on expiry of a programmed time period.
+This example describes how to ensure IWDG reload counter and simulate a software
+fault that generates an MCU IWDG reset when a programmed time period has elapsed.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
 Then the SystemClock_Config() function is used to configure the system
-clock (SYSCLK) to run at 32 MHz.
+clock (SYSCLK) to run at 2 MHz.
 
-The IWDG timeout is set to 250 ms (the timeout may vary due to LSI frequency 
-dispersion).
+The IWDG timeout is set to 1 second.
 
 First, the TIM21 timer is configured to measure the LSI frequency as the 
 LSI is internally connected to TIM21 CH1, in order to adjust the IWDG clock.
+The LSI frequency value could be monitored on debugger in "uwLsiFreq" variable.
 
 The LSI measurement using the TIM21 is described below:
   - Configure the TIM21 to remap internally the TIM21 CH1 Input Capture to the LSI
@@ -60,33 +58,36 @@ The LSI measurement using the TIM21 is described below:
     period value is stored in a variable and compared to the HCLK clock to get
     its real value. 
 
-Then, the IWDG reload counter is configured as below to obtain 250 ms according 
+Then, the IWDG reload counter is configured as below to obtain 1 second according 
 to the measured LSI frequency after setting the prescaler value:
   
     IWDG counter clock Frequency = LSI Frequency / Prescaler value
 
-The IWDG reload counter is refreshed each 240 ms in the main program infinite 
+The IWDG reload counter is refreshed each 990 ms in the main program infinite 
 loop to prevent a IWDG reset.
   
-LED3 is also toggled each 240 ms indicating that the program is running.
+LED4 is also toggling each 990 ms indicating that the program is running.
 
-An EXTI Line is connected to a GPIO pin, and configured to generate an interrupt
-on the rising edge of the signal.
+An EXTI Line is connected to a GPIO pin, configured to generate an interrupt
+when the User push-button (PA.00) is pressed.
 
 The EXTI Line is used to simulate a software failure: once the EXTI Line event 
-occurs, by pressing the user button(PA.0), the corresponding interrupt  
-is served. 
+occurs by pressing the User push-button (PA.00), the corresponding interrupt is served.
 
 In the ISR, a write to invalid address generates a Hardfault exception 
 containing an infinite loop and preventing to return to main program (the IWDG 
 reload counter is not refreshed).
 As a result, when the IWDG counter reaches 0, the IWDG reset occurs.
-  
-If the IWDG reset is generated, after the system resumes from reset, LED3 turns On for 4 seconds.
+
+If the IWDG reset is generated, after the system resumes from reset, LED3 turns on for 4 seconds.
 If the EXTI Line event does not occur, the IWDG counter is indefinitely refreshed in the main 
 program infinite loop, and there is no IWDG reset.
 
-LED3 will turn OFF, if any error is occurred.
+If the user button is pressed while LED3 is turned on, another Hardfault exception is triggered.
+In this case, since the IWDG has not been reprogrammed yet, the software ends up
+stuck in the hardfault. All LEDs are turned off in this situation. 
+
+LED4 will turn on if any error occurs.
 
 @note Care must be taken when using HAL_Delay(), this function provides accurate
       delay (in milliseconds) based on variable incremented in SysTick ISR. This
@@ -98,22 +99,23 @@ LED3 will turn OFF, if any error is occurred.
 @note The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
-@par Directory contents  
- 
+@par Directory contents 
+
+  - IWDG/IWDG_Reset/Inc/stm32l0xx_hal_conf.h    HAL configuration file
   - IWDG/IWDG_Reset/Inc/stm32l0xx_it.h          Interrupt handlers header file
-  - IWDG/IWDG_Reset/Inc/main.h                  Header for main.c module
+  - IWDG/IWDG_Reset/Inc/main.h                  Header for main.c module  
   - IWDG/IWDG_Reset/Src/stm32l0xx_it.c          Interrupt handlers
   - IWDG/IWDG_Reset/Src/main.c                  Main program
-  - IWDG/IWDG_Reset/Src/stm32l0xx_hal_msp.c     HAL MSP module 
-  - IWDG/IWDG_Reset/Src/system_stm32l0xx.c	STM32L0xx system source file
-     
+  - IWDG/IWDG_Reset/Src/stm32l0xx_hal_msp.c     HAL MSP file
+  - IWDG/IWDG_Reset/Src/system_stm32l0xx.c      STM32L0xx system source file
+
+
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
     
-  - This example has been tested with STM32L0538-DISCO RevB board and can be
-    easily tailored to any other supported device and development board.   
+  - This example has been tested with STM32L053C8-Discovery board and can be
+    easily tailored to any other supported device and development board.
 
 
 @par How to use it ? 
@@ -123,7 +125,7 @@ In order to make the program work, you must do the following :
  - Rebuild all files and load your image into target memory
  - Run the example
  
-   
+ 
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>
  */
  

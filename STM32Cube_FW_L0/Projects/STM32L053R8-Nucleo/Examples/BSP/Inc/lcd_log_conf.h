@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    BSP/Inc/lcd_log_conf.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   lcd_log configuration template file.
   *          This file should be copied to the application folder and modified 
   *          as follows:
@@ -91,7 +91,7 @@
 
 /* Redirect the printf to the LCD */
 #ifdef __GNUC__
-/* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+/* With GCC, small printf (option LD Linker->Libraries->Small printf
    set to 'Yes') calls __io_putchar() */
 #define LCD_LOG_PUTCHAR int __io_putchar(int ch)
 #else

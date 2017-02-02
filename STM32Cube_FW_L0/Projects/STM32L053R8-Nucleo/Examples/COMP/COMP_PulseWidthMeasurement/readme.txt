@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2012 STMicroelectronics *******************
   * @file    COMP/COMP_PulseWidthMeasurement/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the COMP COMP Pulse Width measurement example.
   ******************************************************************************
   *

@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_DMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM DMA example.
   ******************************************************************************
   *
@@ -90,11 +90,11 @@ to transfer Data from memory to TIMER Capture Compare Register 3 (CCR3).
   - This example runs on STM32L031xx devices.
   - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo 
     board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
     - Connect the TIM2 pin to an oscilloscope to monitor the different waveforms: 
     - TIM2 CH3 (PA.2-Arduino A7)
 

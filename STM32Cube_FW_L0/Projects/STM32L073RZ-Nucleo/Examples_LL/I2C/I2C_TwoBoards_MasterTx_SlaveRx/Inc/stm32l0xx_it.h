@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/I2C/I2C_TwoBoards_MasterTx_SlaveRx/Inc/stm32l0xx_it.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
@@ -61,7 +61,7 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 #ifndef SLAVE_BOARD
-void EXTI4_15_IRQHandler(void);
+void USER_BUTTON_IRQHANDLER(void);
 #endif /* MASTER_BOARD */
 
 #ifdef __cplusplus

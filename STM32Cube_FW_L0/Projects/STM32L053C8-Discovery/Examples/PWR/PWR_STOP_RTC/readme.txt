@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_STOP_RTC/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Power Stop Mode using RTC example.
   ******************************************************************************
   *
@@ -103,8 +103,7 @@ The above scenario is repeated in an infinite loop.
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ Rev A.
+  - This example runs on STM32L053xx devices. Rev A.
     
   - This example has been tested with STMicroelectronics STM32L0538-DISCO RevB board  
     RevA and can be easily tailored to any other supported device and development board.

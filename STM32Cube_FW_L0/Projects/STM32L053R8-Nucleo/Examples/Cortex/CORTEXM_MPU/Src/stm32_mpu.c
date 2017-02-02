@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Cortex/CORTEXM_MPU/Src/stm32_mpu.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Access rights configuration using Cortex-M3 MPU regions.
   ******************************************************************************
   * @attention

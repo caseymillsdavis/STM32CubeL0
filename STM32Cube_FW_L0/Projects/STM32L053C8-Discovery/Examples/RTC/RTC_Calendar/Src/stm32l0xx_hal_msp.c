@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    RTC/RTC_Calendar/Src/stm32l0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL MSP module.    
   ******************************************************************************
   * @attention

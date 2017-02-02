@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/I2C/I2C_TwoBoards_WakeUpFromStop_IT/Inc/stm32l0xx_it.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
@@ -60,7 +60,7 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-void EXTI4_15_IRQHandler(void);
+void USER_BUTTON_IRQHANDLER(void);
 #ifdef SLAVE_BOARD
 void I2C3_IRQHandler(void);
 #else

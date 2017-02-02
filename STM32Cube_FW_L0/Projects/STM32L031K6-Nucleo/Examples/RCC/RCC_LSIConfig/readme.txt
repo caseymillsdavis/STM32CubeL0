@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RCC/RCC_LSIConfig/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RCC Clock Config example.
   ******************************************************************************
   *
@@ -40,7 +40,7 @@
 This example describes how to use the RCC HAL API to enable or disable the
 low-speed internal (LSI) RC oscillator (about 40 KHz) at run time.
 
-Board: STM32L031-Nucleo (embeds a STM32L031K6 device)
+Board: STM32L031K6-Nucleo (embeds a STM32L031K6 device)
 Microcontroller Clock Output MCO1 Pin:PA.08
 
    _________________________                   _______________________ 
@@ -97,7 +97,7 @@ In case of configuration error, LED3 is slowly toggling (1 sec. period).
 
   - This example runs on STM32l031xx devices.
     
-  - This example has been tested with STM32L031-Nucleo 
+  - This example has been tested with STM32L031K6-Nucleo 
     board and can be easily tailored to any other supported device
     and development board.
 

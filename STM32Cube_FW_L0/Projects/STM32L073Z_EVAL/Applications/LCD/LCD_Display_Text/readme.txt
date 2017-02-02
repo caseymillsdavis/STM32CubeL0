@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    LCD/LCD_Display_Text/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the LCD Display Text example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Application Description
 
 This example provides a description of how to use the STM32L0xx embedded LCD GLASS 
-controller and how to configures the LCD to display a simple text â€œSTM32L0â€� and activate the
+controller and how to configures the LCD to display a simple text and activate the
 different icons.  
 
 After reset the Blink frequency is equal to LCDCLK/128 and LCD Glass display "BK00128".

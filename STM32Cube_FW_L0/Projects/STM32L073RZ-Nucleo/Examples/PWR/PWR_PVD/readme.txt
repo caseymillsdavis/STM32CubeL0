@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_PVD/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR Programmable Voltage Detector (PVD) example
   ******************************************************************************
   *
@@ -69,11 +69,11 @@ If LED2 is slowly blinking (1 second-period), it means that the system has gener
 
   - This example runs on STM32L07xx and STM32L08xx devices
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device
     and development board.
 
-  - STM32L073-Nucleo Set-up
+  - STM32L073RZ-Nucleo Set-up
     - Remove the jumper JP5
     - Apply an external voltage to the pin4 of CN6 
     - Use LED2 connected to PA.05 pin

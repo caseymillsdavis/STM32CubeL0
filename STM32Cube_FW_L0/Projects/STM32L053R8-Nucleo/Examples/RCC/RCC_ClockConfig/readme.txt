@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RCC/RCC_ClockConfig/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RCC Clock Configuration example.
   ******************************************************************************
   *
@@ -55,7 +55,7 @@ PLL oscillator source is checked using __HAL_RCC_GET_PLL_OSCSOURCE() macro:
            PLL source and consequently we need to Enable it before selecting it as PLL
            source and finally activate the PLL 
         - if defined "HSE_BYPASS": then the input clock will come from the MCO from
-          ST_LINK MCU-STM32F103. This frequency cannot be changed, and it is fixed
+          ST_LINK MCU-STM32L0xx. This frequency cannot be changed, and it is fixed
           at 8 MHz, connected to PF1/PH0-OSC_IN of STM32L0xx device.
           This will require to enable the HSE Bypass before selecting it as PLL
           source and finally activate the PLL

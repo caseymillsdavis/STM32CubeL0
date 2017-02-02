@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_STANDBY/Inc/main.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -50,8 +50,8 @@
 /* #define RTC_CLOCK_SOURCE_LSI*/  /* LSI used as RTC source clock. The RTC Clock
                                       may varies due to LSI frequency dispersion. */
 #ifdef RTC_CLOCK_SOURCE_LSI
-#define RTC_ASYNCH_PREDIV    0x7F
-#define RTC_SYNCH_PREDIV     0x0130
+  #define RTC_ASYNCH_PREDIV    0x7C
+  #define RTC_SYNCH_PREDIV     0x0127
 #endif
 
 #ifdef RTC_CLOCK_SOURCE_LSE

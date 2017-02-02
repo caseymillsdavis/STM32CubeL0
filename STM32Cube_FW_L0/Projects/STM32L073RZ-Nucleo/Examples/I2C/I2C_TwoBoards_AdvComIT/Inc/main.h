@@ -1,9 +1,9 @@
 /**
   ******************************************************************************
-  * @file    I2C/I2C_TwoBoards_AdvComIT/Inc/main.h
+  * @file    I2C/I2C_TwoBoards_AdvComIT/Inc/main.h 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -67,13 +67,13 @@
 #define I2Cx_SCL_SDA_AF                 GPIO_AF4_I2C1
 
 /* Definition for I2Cx's NVIC */
-#define I2Cx_IRQn                    I2C1_IRQn
-#define I2Cx_IRQHandler              I2C1_IRQHandler
+#define I2Cx_IRQn                       I2C1_IRQn
+#define I2Cx_IRQHandler                 I2C1_IRQHandler
 
 /* Size of Transmission buffer */
-#define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
+#define TXBUFFERSIZE                    (COUNTOF(aTxBuffer) - 1)
 /* Size of Reception buffer */
-#define RXBUFFERSIZE                      TXBUFFERSIZE
+#define RXBUFFERSIZE                    TXBUFFERSIZE
 
 /* Exported macro ------------------------------------------------------------*/
 #define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))

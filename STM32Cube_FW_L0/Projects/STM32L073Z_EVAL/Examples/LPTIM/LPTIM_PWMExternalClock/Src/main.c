@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    LPTIM/LPTIM_PWMExternalClock/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to configure and use LPTIM to generate a
   *          PWM at the lowest power consumption, using an external counter
   *          clock, through the STM32L0xx HAL API.

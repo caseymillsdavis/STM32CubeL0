@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_PWMOutput/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWM signals generation using TIM2
   ******************************************************************************
   *
@@ -89,11 +89,11 @@ The PWM waveforms can be displayed using an oscilloscope.
   - This example runs on STM32L073xx devices.
   - In this example, the clock is set to 2 MHz.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C 
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C 
     board and can be easily tailored to any other supported device 
     and development board.      
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
    Connect the following pins to an oscilloscope to monitor the different waveforms:
         - TIM2_CH1 : PA.15 (On Nucleo Board, pin 17 on CN7)
         - TIM2_CH2 : PA.1  (On Nucleo Board, pin 30 on CN7)

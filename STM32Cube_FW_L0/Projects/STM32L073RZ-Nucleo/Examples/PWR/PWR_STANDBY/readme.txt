@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_STANDBY/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR STANDBY example.
   ******************************************************************************
   *
@@ -82,14 +82,14 @@ PWR_WAKEUP_PIN2. Current consumption could be monitored through an amperemeter c
 
 @par Hardware and Software environment
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Wkup/Tamper push button is connected to PC.13, 
       press it will put PC.13 to 3.3V and awakes the board.
     - Connect an amperemeter to JP6 to measure the IDD current
 
   - This example runs on STM32L073xx devices
       
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     evaluation board and can be easily tailored to any other supported device 
     and development board.
 

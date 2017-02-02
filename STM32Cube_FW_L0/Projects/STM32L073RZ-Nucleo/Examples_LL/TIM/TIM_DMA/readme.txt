@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/TIM/TIM_DMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_DMA example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example provides a description of how to use DMA with TIMER update request
-to transfer Data from memory to TIMER Capture Compare Register 3 (CCR3); 
+to transfer Data from memory to TIMER Capture Compare Register 3 (TIMx_CCR3); 
 Example using the STM32L0xx TIM LL API, 
 peripheral initialization done using LL unitary services functions
 for optimization purpose (performance and size).
@@ -77,10 +77,10 @@ Whenever a DMA transfer fails LED2 flashes with a frequency of 1 Hz.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect the TIM2 pins to an oscilloscope to monitor the different waveforms:
       - TIM2_CH3  PB.10: connected to pin 25 of CN10 connector 
 

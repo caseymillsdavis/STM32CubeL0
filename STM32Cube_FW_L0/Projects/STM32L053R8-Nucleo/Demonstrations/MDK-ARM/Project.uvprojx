@@ -12,7 +12,7 @@
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STM32L053R8</Device>
+          <Device>STM32L053R8Tx</Device>
           <Vendor>STMicroelectronics</Vendor>
           <PackID>Keil.STM32L0xx_DFP.1.4.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>

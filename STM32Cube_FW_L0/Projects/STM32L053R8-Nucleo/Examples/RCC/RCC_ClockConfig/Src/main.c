@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    RCC/RCC_ClockConfig/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use the RCC HAL API to configure the
   *          system clock (SYSCLK) and modify the clock settings on run time.
   ******************************************************************************
@@ -91,8 +91,8 @@ int main(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2;
   RCC_OscInitStruct.HSICalibrationValue = 0x10;
   
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -199,8 +199,8 @@ void SystemClockHSE_Config(void)
 #endif /* HSE_CRYSTAL */
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_8;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2; 
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL8;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2; 
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     /* Initialization Error */
@@ -272,8 +272,8 @@ void SystemClockHSI_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2;
   RCC_OscInitStruct.HSICalibrationValue = 0x10;
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_Standby_RTC/Inc/stm32l0xx_it.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention

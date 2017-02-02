@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_STANDBY_RTC/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR STANDBY RTC example.
   ******************************************************************************
   *
@@ -39,7 +39,7 @@
 
 This example shows how to enter the system in STANDBY mode and wake-up from this
 mode using external RESET or RTC Wake-up Timer through 
-the STM32L0xx RTC & RCC HAL & LL API (LL API usage for performance improvement). 
+the STM32L0xx RTC & RCC HAL & LL API (LL API used for performance improvement). 
 It allows to measure the current consumption in STANDBY mode with RTC enabled.
 
 In the associated software, the system clock is set to 2 MHz and the SysTick is 
@@ -48,9 +48,13 @@ The Low Speed Internal (LSI) clock is used as RTC clock source by default.
 EXTI_Line20 is internally connected to the RTC Wakeup event.
 
 The system automatically enters STANDBY mode 5 sec. after start-up. The RTC wake-up 
-is configured to generate an interrupt on rising edge about 33 sec. afterwards.
+is configured to generate an interrupt on rising edge about 28 sec. afterwards.
 Current consumption in STANDBY mode with RTC feature enabled can be measured during that time.
 More than half a minute is chosen to ensure current convergence to its lowest operating point.
+
+Note: Due to LSI frequency variations, wake-up time is not guarantee. Adjustements need to be
+done after getting the real measurement of LSI oscillator (or if available, LSE oscillator can
+be used as well)
 
 After wake-up from STANDBY mode, program execution restarts in the same way as after
 a RESET.
@@ -98,11 +102,11 @@ These steps are repeated in an infinite loop.
 
   - This example runs on STM32L0xx devices
 
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L073-Nucleo Rev C Set-up :
+  - STM32L073RZ-Nucleo Rev C Set-up :
     - LED2 connected to PA.05 pin
 
 @par How to use it ? 

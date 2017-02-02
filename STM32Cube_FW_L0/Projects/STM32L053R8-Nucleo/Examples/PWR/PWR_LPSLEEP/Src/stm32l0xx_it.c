@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_LPSLEEP/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -131,7 +131,7 @@ void SysTick_Handler(void)
   */
 void EXTI4_15_IRQHandler(void)
 {
-  HAL_GPIO_EXTI_IRQHandler(KEY_BUTTON_EXTI_LINE);
+  HAL_GPIO_EXTI_IRQHandler(KEY_BUTTON_PIN);
 }
 
 /**

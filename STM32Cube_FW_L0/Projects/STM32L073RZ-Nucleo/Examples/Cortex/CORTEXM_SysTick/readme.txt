@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CORTEXM/CORTEXM_SysTick/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the CortexM SysTick example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description 
 
   This example shows how to use the default configuration of SysTick with a time 
-  base equal to 1 ms in order to insert a delay between Leds toggling. 
+  base equal to 1 ms in order to insert a delay between LEDs toggling. 
   The system clock is set to 2 MHz for STM32L0xx devices, the SysTick is 
   clocked by the AHB clock(HCLK).
 
@@ -67,7 +67,7 @@
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 @par How to use it ? 

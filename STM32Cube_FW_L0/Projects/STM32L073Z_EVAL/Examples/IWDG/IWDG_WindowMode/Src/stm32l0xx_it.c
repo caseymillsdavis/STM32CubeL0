@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    IWDG/IWDG_WindowMode/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -166,26 +166,14 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief  This function handles External line 15 to 4 interrupt request.
+  * @brief  This function handles external lines 4 to 15 interrupt request.
   * @param  None
   * @retval None
   */
 void EXTI4_15_IRQHandler(void)
 {
-  /* As the following address is invalid (not mapped), a Hardfault exception
-  will be generated with an infinite loop and when the IWDG counter falls to 0
-  the IWDG reset occurs */
-  *(__IO uint32_t *) 0x00040001 = 0xFF;
+  HAL_GPIO_EXTI_IRQHandler(TAMPER_BUTTON_PIN);
 }
-
-/**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
-  */
-/*void PPP_IRQHandler(void)
-{
-}*/
 
 /**
   * @}

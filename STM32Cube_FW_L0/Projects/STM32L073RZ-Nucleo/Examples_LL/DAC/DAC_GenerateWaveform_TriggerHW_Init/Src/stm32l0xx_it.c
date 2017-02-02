@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/DAC/DAC_GenerateWaveform_TriggerHW_Init/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -169,10 +169,10 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void EXTI4_15_IRQHandler(void)
+void USER_BUTTON_IRQHANDLER(void)
 {
   /* Manage Flags */
-  if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_13) != RESET)
+  if(LL_EXTI_IsActiveFlag_0_31(USER_BUTTON_EXTI_LINE) != RESET)
   {
     /* Call interruption treatment function */
     UserButton_Callback();
@@ -180,7 +180,7 @@ void EXTI4_15_IRQHandler(void)
     /* Clear EXTI line flag */
     /* Note: Clear flag after callback function to minimize user button       */
     /*       switch debounce parasitics.                                      */
-    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_13);
+    LL_EXTI_ClearFlag_0_31(USER_BUTTON_EXTI_LINE);
   }
 }
 
@@ -199,6 +199,24 @@ void TIM6_DAC_IRQHandler(void)
     
     /* Call interruption treatment function */
     DacUnderrunError_Callback();
+  }
+}
+
+/**
+  * @brief  This function handles DMA1 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void DMA1_Channel2_3_IRQHandler(void)
+{
+  /* Check whether DMA transfer error caused the DMA interruption */
+  if(LL_DMA_IsActiveFlag_TE2(DMA1) == 1)
+  {
+    /* Clear flag DMA transfer error */
+    LL_DMA_ClearFlag_TE2(DMA1);
+    
+    /* Call interruption treatment function */
+    DacDmaTransferError_Callback();
   }
 }
 

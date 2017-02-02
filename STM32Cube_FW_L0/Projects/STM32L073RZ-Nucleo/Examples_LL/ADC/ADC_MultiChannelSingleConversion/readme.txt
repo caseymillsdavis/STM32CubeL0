@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/ADC/ADC_MultiChannelSingleConversion/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the ADC_MultiChannelSingleConversion example.
   ******************************************************************************
   *
@@ -57,11 +57,10 @@ ADC performs conversion of the three selected channels successively,
 in burst (discontinuous mode not enabled).
 The 3 ADC conversions data are transferred by DMA into the results array
 "aADCxConvertedData".
-After ADC calibration, aADCxConvertedData[0] holds calibration factor.
-After ADC start conversion, data of each sequence rank is at an address of the array:
- - aADCxConvertedData[1]: ADC channel set on rank1 (GPIO as analog input)
- - aADCxConvertedData[2]: ADC channel set on rank2 (VrefInt)
- - aADCxConvertedData[0]: ADC channel set on rank3 (Temperature sensor)
+ADC conversion data of each sequence rank is at an address of the array:
+ - aADCxConvertedData[0]: ADC channel set on rank1 (GPIO as analog input)
+ - aADCxConvertedData[1]: ADC channel set on rank2 (VrefInt)
+ - aADCxConvertedData[2]: ADC channel set on rank3 (Temperature sensor)
 LED is turned on when ADC conversions and DMA transfer of the sequence
 are completed.
 
@@ -109,7 +108,7 @@ Other peripherals used:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

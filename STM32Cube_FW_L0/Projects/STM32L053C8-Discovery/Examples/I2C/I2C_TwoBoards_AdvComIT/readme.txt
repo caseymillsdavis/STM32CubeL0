@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_TwoBoards_AdvComIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C Two Boards Advanced Communication with 
   *          Interrupt example.
   ******************************************************************************
@@ -38,29 +38,27 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure I2C Data buffer transmission and reception using Interrupt.
-   _________________________                        _________________________
-  |           ______________|                      |______________           |
-  |          | I2C1         |                      |          I2C1|          |
-  |          |              |                      |              |          |
-  |          |      SCL(PB8)|______________________|(PB8)SCL      |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |      SDA(PB9)|______________________|(PB9)SDA      |          |
-  |          |              |                      |              |          |
-  |          |______________|                      |______________|          |
-  |      __                 |                      |      __                 |
-  |     |__|                |                      |     |__|                |
-  |     USER                |                      |     USER                |
-  |                      GND|______________________|GND                      |
-  |_STM32L0 ________________|                      |_________________STM32L0_|
+This example describes how to perform I2C data buffer transmission/reception 
+between two boards, using an interrupt.
 
-The communication is done with 2 Boards through I2C and using the following I2C features:
-  - 10-bit addressing mode
-  - Fast speed mode (400KHz)
-  - Interrupting capability
+Board: STM32L053C8-Discovery (embeds a STM32L053C8T6 device)
+SCL Pin: PB8 (P2)
+SDA Pin: PB9 (P2)
+
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -68,12 +66,12 @@ Then the SystemClock_Config() function is used to configure the system
 clock (SYSCLK) to run at 32 MHz.
 
 The I2C peripheral configuration is ensured by the HAL_I2C_Init() function.
-This later is calling the HAL_I2C_MspInit()function which implements
+This later is calling the HAL_I2C_MspInit()function which core is implementing
 the configuration of the needed I2C resources according to the used hardware (CLOCK, 
 GPIO and NVIC). You may update this function to change I2C configuration.
 
 The I2C communication is then initiated.
-The project is splitted in two parts the Master Board and the Slave Board
+The project is split in two parts: the Master Board and the Slave Board
 - Master Board
   The HAL_I2C_Master_Receive_IT() and the HAL_I2C_Master_Transmit_IT() functions 
   allow respectively the reception and the transmission of a predefined data buffer
@@ -88,35 +86,36 @@ in the "main.c" file:
 - Comment "#define MASTER_BOARD" to select Slave board.
 
 For this example two buffers are used 
-- aTxBuffer buffer is used to save the data to be transmitted 
+- aTxBuffer buffer contains the data to be transmitted 
 - aRxBuffer buffer is used to save the received data
-Note that the two buffers have the same size 
+Note that both buffers have same size
                        
-In Master board side:
- - Wait user button to be pressed (used for only synchronization at startup)
- - Requests write operation by sending specific command "MASTER_REQ_WRITE" to Slave
- - Sends the number of data to be written
- - Transmits aTxBuffer buffer to slave
- - Requests read operation by sending specific command "MASTER_REQ_READ" to Slave
- - Sends the number of data to be read
- - Receives data from Slave in aRxBuffer
- - Checks the correctness of data and Toggle LED3 when data is received correctly occurs (each 25 ms)
-   otherwise it turns ON LED3 and communication is stopped (using infinite loop)
+On Master board side:
+ - Wait User push-button to be pressed (used for only synchronization at startup)
+ - Request write operation by sending specific command "MASTER_REQ_WRITE" to Slave
+ - Send the number of data to be written
+ - Transmit aTxBuffer buffer to slave
+ - Request read operation by sending specific command "MASTER_REQ_READ" to Slave
+ - Send the number of data to be read
+ - Receive data from Slave in aRxBuffer
+ - Check the correctness of data and Toggle LED3 when data is received correctly,
+   otherwise LED4 is turned ON and communication is stopped (using infinite loop)
 
-In Slave board side:
- - Receives request from Master
- - Receives the request operation from Master and depending on the operation type (write or read):
+
+On Slave board side:
+ - Receive request from Master
+ - Receive the request operation from Master and depending on the operation type (write or read):
    - If Master requests write operation:
-      - Receives number of data to be written by Master
-      - Receives data from master in aRxBuffer
-      - Checks the correctness of data and Toggle LED3 when data is received correctly (each 25 ms)
-        otherwise it turns ON LED3 and communication is stopped (using infinite loop)
-   - If Master requests read operation:
-      - Receives number of data to be written to Master
-      - Transmits aTxBuffer buffer to master
-
+      - Receive number of data to be written by Master
+      - Receive data from master in aRxBuffer
+      - Check the correctness of data and Toggle LED3 when data is received correctly,
+        otherwise LED4 is turned ON and communication is stopped (using infinite loop)
+   - If Master request read operation:
+      - Receive number of data to be written to Master
+      - Transmit aTxBuffer buffer to master
+   
 These operations are repeated periodically and the start of communication is triggered 
-by pushing the user button of the Master board.       
+by pushing the key button of the Master board.  
 
  @note In Master side, only Acknowledge failure error is handled. When this error
        occurs Master restart the current operation until Slave acknowledges it's
@@ -125,13 +124,12 @@ by pushing the user button of the Master board.
  @note I2Cx instance used and associated resources can be updated in "main.h"
        file depending hardware configuration used.
 
-@note Care must be taken when using HAL_Delay(), this function provides accurate
-      delay (in milliseconds) based on variable incremented in SysTick ISR. This
-      implies that if HAL_Delay() is called from a peripheral ISR process, then 
-      the SysTick interrupt must have higher priority (numerically lower)
+@note Care must be taken when using HAL_Delay(), this function provides accurate delay (in milliseconds)
+      based on variable incremented in SysTick ISR. This implies that if HAL_Delay() is called from
+      a peripheral ISR process, then the SysTick interrupt must have higher priority (numerically lower)
       than the peripheral interrupt. Otherwise the caller ISR process will be blocked.
       To change the SysTick interrupt priority you have to use HAL_NVIC_SetPriority() function.
-      
+
 @note The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
@@ -148,17 +146,15 @@ by pushing the user button of the Master board.
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
     
-  - This example has been tested with STM32L0538-DISCO RevB and can be
-    easily tailored to any other supported device and development board.
+  - This example has been tested with STM32L053C8-Discovery board and can be
+    easily tailored to any other supported device and development board.    
 
-  - STM32L0538-DISCO RevB Set-up
-    - Connect Master board PB8 to Slave Board PB8
-    - Connect Master board PB9 to Slave Board PB9
-    - Connect Master board GND to Slave Board GND
-
+  - STM32L053C8-Discovery Set-up
+    - Connect I2C_SCL line of Master board (PB8, P2) to I2C_SCL line of Slave Board (PB8, P2).
+    - Connect I2C_SDA line of Master board (PB9, P2) to I2C_SDA line of Slave Board (PB9, P2).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

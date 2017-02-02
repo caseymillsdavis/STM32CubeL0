@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/USART/USART_Communication_Tx/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the USART_Communication_Tx example.
   ******************************************************************************
   *
@@ -74,11 +74,11 @@ Program is written so that, any new press on User push-button will lead to new t
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
-    In order to select use of Virtual Com port feature of STLINK for connection between STM32L073-Nucleo Rev C and PC,
+  - STM32L073RZ-Nucleo Rev C Set-up
+    In order to select use of Virtual Com port feature of STLINK for connection between STM32L073RZ-Nucleo Rev C and PC,
     User has to set USE_VCP_CONNECTION define to 1 in main.h file.
     If so, please ensure that USART communication between the target MCU and ST-LINK MCU is properly enabled 
     on HW board in order to support Virtual Com Port (Default HW SB configuration allows use of VCP)

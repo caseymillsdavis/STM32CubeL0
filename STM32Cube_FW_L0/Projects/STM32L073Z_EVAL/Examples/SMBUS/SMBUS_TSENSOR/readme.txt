@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SMBUS/SMBUS_TSENSOR/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SMBUS Temperature Sensor example.
   ******************************************************************************
   *
@@ -132,9 +132,8 @@ and "main.h" files depending hardware configuration used.
 
 In order to make the program work, you must do the following :
  - Open your preferred toolchain 
- - Rebuild all files: Project->Rebuild all
- - Load project image: Project->Download and Debug
- - Run program: Debug->Go(F5) 
+ - Rebuild all files and load your image into target memory
+ - Run the example
 
 
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>

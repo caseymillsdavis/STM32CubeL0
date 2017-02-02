@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/GPIO/GPIO_InfiniteLedToggling_Init/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to configure and use GPIOs through
   *          the STM32L0xx  GPIO LL API.
   *          Peripheral initialization done using LL initialization function.
@@ -100,7 +100,7 @@ void Configure_GPIO(void)
   /* Configure IO in output push-pull mode to drive external LED2 */
   gpio_initstruct.Pin        = LED2_PIN;
   gpio_initstruct.Mode       = LL_GPIO_MODE_OUTPUT;
-  gpio_initstruct.Speed      = LL_GPIO_SPEED_LOW;
+  gpio_initstruct.Speed      = LL_GPIO_SPEED_FREQ_LOW;
   gpio_initstruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   gpio_initstruct.Pull       = LL_GPIO_PULL_NO;
 

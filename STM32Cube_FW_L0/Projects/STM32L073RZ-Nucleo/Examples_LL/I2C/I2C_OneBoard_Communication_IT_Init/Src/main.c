@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/I2C/I2C_OneBoard_Communication_IT_Init/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to send/receive bytes over I2C IP using
   *          the STM32L0xx I2C LL API.
   *          Peripheral initialization done using LL initialization function.
@@ -65,7 +65,7 @@ LL_I2C_InitTypeDef i2c_initstruct;
 /**
   * @brief Define related to SlaveTransmit process
   */
-#define SLAVE_BYTE_TO_SEND       0xA5
+#define SLAVE_BYTE_TO_SEND       (uint8_t)0xA5
 
 /* Private macro -------------------------------------------------------------*/
 
@@ -135,7 +135,7 @@ int main(void)
   *         -1- Enables GPIO clock and configures the I2C1 pins.
   *         -2- Enable the I2C1 peripheral clock and I2C1 clock source.
   *         -3- Configure NVIC for I2C1.
-  *         -4- Configure I2C1 functional parameters.
+  *         -4- Configure and Enable I2C1 functional parameters.
   *         -5- Enable I2C1 address match/error interrupts.
   * @note   Peripheral configuration is minimal configuration from reset values.
   *         Thus, some useless LL unitary functions calls below are provided as
@@ -154,14 +154,14 @@ void Configure_I2C_Slave(void)
   /* Configure SCL Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_8_15(GPIOB, LL_GPIO_PIN_8, LL_GPIO_AF_4);
-  LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_UP);
 
   /* Configure SDA Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_9, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_8_15(GPIOB, LL_GPIO_PIN_9, LL_GPIO_AF_4);
-  LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_9, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_9, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_9, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_9, LL_GPIO_PULL_UP);
 
@@ -237,7 +237,7 @@ void Configure_I2C_Slave(void)
     /* Initialization Error */
     LED_Blinking(LED_BLINK_ERROR);
   }
-  
+
   /* (5) Enable I2C1 address match/error interrupts:
    *  - Enable Address Match Interrupt
    *  - Enable Not acknowledge received interrupt
@@ -266,7 +266,6 @@ void Configure_I2C_Slave(void)
   */
 void Configure_I2C_Master(void)
 {
-
   /* (1) Enables GPIO clock and configures the I2C3 pins **********************/
   /*    (SCL on PC.0, SDA on PC.1)                     **********************/
 
@@ -276,14 +275,14 @@ void Configure_I2C_Master(void)
   /* Configure SCL Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_0, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_0_7(GPIOC, LL_GPIO_PIN_0, LL_GPIO_AF_7);
-  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_0, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_0, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOC, LL_GPIO_PIN_0, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_0, LL_GPIO_PULL_UP);
 
   /* Configure SDA Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_1, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_0_7(GPIOC, LL_GPIO_PIN_1, LL_GPIO_AF_7);
-  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_1, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_1, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOC, LL_GPIO_PIN_1, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_1, LL_GPIO_PULL_UP);
 
@@ -385,8 +384,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }
@@ -474,12 +473,14 @@ void WaitForUserButtonPress(void)
     LL_GPIO_TogglePin(LED2_GPIO_PORT, LED2_PIN);
     LL_mDelay(LED_BLINK_FAST);
   }
+  /* Turn LED2 off */
+  LL_GPIO_ResetOutputPin(LED2_GPIO_PORT, LED2_PIN);
 }
 
 /**
-  * @brief  This Function handle Master events to perform a transmission process
+  * @brief  This Function handle Master events to perform a reception process
   * @note  This function is composed in one step :
-  *        -1- Initiate a Start condition to the Slave device
+  *        -1- Initiate a Start condition to the Slave device.
   * @param  None
   * @retval None
   */
@@ -640,8 +641,7 @@ void Error_Callback(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d
-", file, line) */
+     ex: printf("Wrong parameters value: file %s on line %d", file, line) */
 
   /* Infinite loop */
   while (1)

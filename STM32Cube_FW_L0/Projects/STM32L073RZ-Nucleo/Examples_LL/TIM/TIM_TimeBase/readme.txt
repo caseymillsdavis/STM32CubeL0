@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/TIM/TIM_TimeBase/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_TimeBase example.
   ******************************************************************************
   *
@@ -60,7 +60,7 @@ ARR = (TIM2 counter clock / time base frequency) - 1
 ARR = (TIM2 counter clock / 10) - 1
 
 Update interrupts are enabled. Within the update interrupt service routine pin PA.05
-(connected to LED2 on board STM32L073-Nucleo Rev C) is toggled.
+(connected to LED2 on board STM32L073RZ-Nucleo Rev C) is toggled.
 
 User push-button can be used to modify the time base period from 100 ms
 to 1 s in 100 ms steps. To do so, every time User push-button is pressed, the
@@ -84,7 +84,7 @@ time base frequency = TIM2 counter clock /((PSC + 1)*(ARR + 1))
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

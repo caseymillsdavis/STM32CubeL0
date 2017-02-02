@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_it.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and 
   *          peripherals interrupt service routine.
@@ -168,16 +168,28 @@ void SysTick_Handler(void)
 /*  file (startup_stm32l0xx.s).                                               */
 /******************************************************************************/
 /**
+  * @brief  This function handles I2C event and error interrupt request.  
+  * @param  None
+  * @retval None
+  * @Note   This function is redefined in "main.h" and related to I2C data transmission     
+  */
+void I2Cx_IRQHandler(void)
+{
+  HAL_I2C_EV_IRQHandler(&I2cHandle);
+  HAL_I2C_ER_IRQHandler(&I2cHandle);  
+}
+
+/**
   * @brief  This function handles DMA interrupt request.  
   * @param  None
   * @retval None
   * @Note   This function is redefined in "main.h" and related to DMA Channel 
   *         used for I2C data transmission     
   */
-void I2Cx_DMA_RX_IRQHandler(void)
+void I2Cx_DMA_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(I2cHandle.hdmarx);
-  HAL_DMA_IRQHandler(I2cHandle.hdmatx);  
+  HAL_DMA_IRQHandler(I2cHandle.hdmatx);
 }
 
 /**

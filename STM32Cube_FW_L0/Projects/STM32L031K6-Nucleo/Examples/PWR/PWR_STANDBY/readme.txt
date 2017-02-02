@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_STANDBY/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR STANDBY example.
   ******************************************************************************
   *
@@ -78,11 +78,11 @@ These steps are repeated in an infinite loop.
 
   - This example runs on STM32L031xx and STM32L041xx devices
 
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo
     board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
     - LED3 connected to PB.03 pin.
     - Put a Jumper between PA.02 (Arduino A7) and 5V to generate a rising edge on PWR_WAKEUP_PIN3.
     - Connect an ampere-meter to JP1 instead of the jumper to measure the IDD current.

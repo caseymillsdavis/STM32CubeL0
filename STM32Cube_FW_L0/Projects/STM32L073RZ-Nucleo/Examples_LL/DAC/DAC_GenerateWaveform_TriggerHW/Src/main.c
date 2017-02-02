@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/DAC/DAC_GenerateWaveform_TriggerHW/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use the DAC peripheral to generate
   *          a voltage waveform from digital data stream transfered by DMA.
   *          This example is based on the STM32L0xx DAC LL API;
@@ -144,6 +144,7 @@ void     SystemClock_Config(void);
 void     Configure_DMA(void);
 void     Configure_TIM_TimeBase_DAC_trigger(void);
 void     Configure_DAC(void);
+void     Activate_DAC(void);
 void     LED_Init(void);
 void     LED_On(void);
 void     LED_Off(void);
@@ -184,19 +185,8 @@ int main(void)
   /* Configure DAC channel */
   Configure_DAC();
   
-  /* Activate DAC channel*/
-  /* Enable DAC channel */
-  LL_DAC_Enable(DAC1, LL_DAC_CHANNEL_1);
-  
-  /* Note: In this example, DAC channel trigger is set just after             */
-  /*       DAC channel enable.                                                */
-  /*       However, in user application, depending on accuracy requirements,  */
-  /*       a delay may be required between DAC channel enable and             */
-  /*       DAC channel trigger.                                               */
-  /*       Refer to description of function @ref LL_DAC_Enable().             */
-  
-  /* Enable DAC channel trigger */
-  LL_DAC_EnableTrigger(DAC1, LL_DAC_CHANNEL_1);
+  /* Activate DAC channel */
+  Activate_DAC();
   
   /* Turn-on LED2 */
   LED_On();
@@ -215,10 +205,9 @@ int main(void)
 void Configure_DMA(void)
 {
   /*## Configuration of NVIC #################################################*/ 
-  /* Note: In this example, DMA interruptions are not activated.              */
-  /*       If needed, DMA interruption at transfer complete or error event    */
-  /*       can be activated.                                                  */
-  /*       Refer to DMA examples.                                             */
+  /* Configure NVIC to enable DMA interruptions */
+  NVIC_SetPriority(DMA1_Channel2_3_IRQn, 1); /* DMA IRQ lower priority than DAC IRQ */
+  NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
   
   /*## Configuration of DMA ##################################################*/
   
@@ -260,9 +249,14 @@ void Configure_DMA(void)
                        LL_DMA_CHANNEL_2,
                        WAVEFORM_SAMPLES_SIZE);
   
-  /* Note: In this example, DMA interruptions are not activated.              */
-  /*       If needed, DMA interruption at transfer complete or error event    */
-  /*       can be activated.                                                  */
+  /* Enable DMA transfer interruption: transfer error */
+  LL_DMA_EnableIT_TE(DMA1,
+                     LL_DMA_CHANNEL_2);
+  
+  /* Note: In this example, the only DMA interruption activated is            */
+  /*       tranfer error.                                                     */
+  /*       If needed, DMA interruptions of half of transfer                   */
+  /*       and transfer complete can be activated.                            */
   /*       Refer to DMA examples.                                             */
   
   /*## Activation of DMA #####################################################*/
@@ -306,14 +300,14 @@ void Configure_TIM_TimeBase_DAC_trigger(void)
   /* Retrieve timer clock source frequency */
   /* If APB1 prescaler is different of 1, timers have a factor x2 on their    */
   /* clock source.                                                            */
-   if (LL_RCC_GetAPB1Prescaler() == LL_RCC_APB1_DIV_1)
-   {
-     timer_clock_frequency = SystemCoreClock;
-   }
-   else
-   {
-     timer_clock_frequency = (SystemCoreClock * 2);
-   }
+  if (LL_RCC_GetAPB1Prescaler() == LL_RCC_APB1_DIV_1)
+  {
+    timer_clock_frequency = __LL_RCC_CALC_PCLK1_FREQ(SystemCoreClock, LL_RCC_GetAPB1Prescaler());
+  }
+  else
+  {
+    timer_clock_frequency = (__LL_RCC_CALC_PCLK1_FREQ(SystemCoreClock, LL_RCC_GetAPB1Prescaler()) * 2);
+  }
   
   /* Timer prescaler calculation */
   /* (computation for timer 16 bits, additional + 1 to round the prescaler up) */
@@ -345,7 +339,6 @@ void Configure_TIM_TimeBase_DAC_trigger(void)
   /* Enable counter */
   LL_TIM_EnableCounter(TIM6);
 }
-
 
 /**
   * @brief  Configure DAC (DAC instance: DAC1, DAC instance channel: channel1 )
@@ -379,17 +372,57 @@ void Configure_DAC(void)
   /* Enable DAC clock */
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_DAC1);
   
+  /* Select trigger source */
+  LL_DAC_SetTriggerSource(DAC1, LL_DAC_CHANNEL_1, LL_DAC_TRIG_EXT_TIM6_TRGO);
+  
   /* Set the output for the selected DAC channel */
   //LL_DAC_SetOutputBuffer(DAC1, LL_DAC_CHANNEL_1, LL_DAC_OUTPUT_BUFFER_ENABLE);
-  
-  /* Select trigger source */
-  //LL_DAC_SetTriggerSource(DAC1, LL_DAC_CHANNEL_1, LL_DAC_TRIG_EXT_TIM6_TRGO);
   
   /* Enable DAC channel DMA request */
   LL_DAC_EnableDMAReq(DAC1, LL_DAC_CHANNEL_1);
   
   /* Enable interruption DAC channel1 underrun */
   LL_DAC_EnableIT_DMAUDR1(DAC1);
+}
+
+/**
+  * @brief  Perform DAC activation procedure to make it ready to generate
+  *         a voltage (DAC instance: DAC1).
+  * @note   Operations:
+  *         - Enable DAC instance channel
+  *         - Wait for DAC instance channel startup time
+  * @param  None
+  * @retval None
+  */
+void Activate_DAC(void)
+{
+  __IO uint32_t wait_loop_index = 0;
+  
+  /* Enable DAC channel */
+  LL_DAC_Enable(DAC1, LL_DAC_CHANNEL_1);
+  
+  /* Delay for DAC channel voltage settling time from DAC channel startup.    */
+  /* Compute number of CPU cycles to wait for, from delay in us.              */
+  /* Note: Variable divided by 2 to compensate partially                      */
+  /*       CPU processing cycles (depends on compilation optimization).       */
+  /* Note: If system core clock frequency is below 200kHz, wait time          */
+  /*       is only a few CPU processing cycles.                               */
+  wait_loop_index = ((LL_DAC_DELAY_STARTUP_VOLTAGE_SETTLING_US * (SystemCoreClock / (100000 * 2))) / 10);
+  while(wait_loop_index != 0)
+  {
+    wait_loop_index--;
+  }
+  
+  /* Enable DAC channel trigger */
+  /* Note: DAC channel conversion can start from trigger enable:              */
+  /*       - if DAC channel trigger source is set to SW:                      */
+  /*         DAC channel conversion will start after trig order               */
+  /*         using function "LL_DAC_TrigSWConversion()".                      */
+  /*       - if DAC channel trigger source is set to external trigger         */
+  /*         (timer, ...):                                                    */
+  /*         DAC channel conversion can start immediately                     */
+  /*         (after next trig order from external trigger)                    */
+  LL_DAC_EnableTrigger(DAC1, LL_DAC_CHANNEL_1);
 }
 
 /**
@@ -406,8 +439,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }
@@ -556,6 +589,7 @@ void SystemClock_Config(void)
 /******************************************************************************/
 /*   USER IRQ HANDLER TREATMENT                                               */
 /******************************************************************************/
+
 /**
   * @brief  Function to manage IRQ Handler
   * @param  None
@@ -570,6 +604,18 @@ void UserButton_Callback(void)
     /* Update User push-button variable : to be checked in waiting loop in main program */
     ubButtonPress = 1;
   }
+}
+
+/**
+  * @brief  DMA transfer error callback
+  * @note   This function is executed when the transfer error interrupt
+  *         is generated during DMA transfer
+  * @retval None
+  */
+void DacDmaTransferError_Callback()
+{
+  /* Error detected during DMA transfer */
+  LED_Blinking(LED_BLINK_ERROR);
 }
 
 /**

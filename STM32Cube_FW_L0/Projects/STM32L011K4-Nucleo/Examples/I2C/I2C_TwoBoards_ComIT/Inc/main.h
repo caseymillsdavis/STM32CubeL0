@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComIT/Inc/main.h 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -67,8 +67,8 @@
 #define I2Cx_SCL_SDA_AF                 GPIO_AF1_I2C1
 
 /* Definition for I2Cx's NVIC */
-#define I2Cx_IRQn                    I2C1_IRQn
-#define I2Cx_IRQHandler              I2C1_IRQHandler
+#define I2Cx_IRQn                       I2C1_IRQn
+#define I2Cx_IRQHandler                 I2C1_IRQHandler
 
 /* Size of Transmission buffer */
 #define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)

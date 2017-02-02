@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/I2C/I2C_TwoBoards_MasterRx_SlaveTx_IT/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -222,13 +222,6 @@ void I2C3_IRQHandler(void)
   {
     /* Clear STOP flag value in ISR register */
     LL_I2C_ClearFlag_STOP(I2C3);
-    
-    /* Check TXE flag value in ISR register */
-    if(!LL_I2C_IsActiveFlag_TXE(I2C3))
-    {
-      /* Flush the TXDR register */
-      LL_I2C_ClearFlag_TXE(I2C3);
-    }
 
     /* Call function Slave Complete Callback */
     Slave_Complete_Callback();
@@ -254,12 +247,12 @@ void I2C3_IRQHandler(void)
   * @param  None
   * @retval None
   */
-void EXTI4_15_IRQHandler(void)
+void USER_BUTTON_IRQHANDLER(void)
 {
   /* Manage Flags */
-  if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_13) != RESET)
+  if(LL_EXTI_IsActiveFlag_0_31(USER_BUTTON_EXTI_LINE) != RESET)
   {
-    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_13);
+    LL_EXTI_ClearFlag_0_31(USER_BUTTON_EXTI_LINE);
 
     /* Manage code in main.c.*/
     UserButton_Callback(); 

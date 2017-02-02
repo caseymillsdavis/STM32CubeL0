@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    COMP/COMP_AnalogWatchdog/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Independent Watchdog Example.
   ******************************************************************************
   *
@@ -38,8 +38,8 @@
 
 @par Example Description 
 
-This example shows how to make an analog watchdog using the STM32L0xx COMPs 
-peripherals in window mode:
+This example shows how to make an analog watchdog using the COMP peripherals in window mode.
+
   - The upper threshold is set to VREFINT = 1.22V
   - The lower threshold is set to VREFINT/4 = 1.22V/4 = 0.305V
   - The input voltage is configured to be connected to PB.4
@@ -70,8 +70,7 @@ If the input voltage is within the thresholds, the MCU remains in STOP mode.
      
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
     
   - This example has been tested with STM32L0538-DISCO RevB board and can be
     easily tailored to any other supported device and development board. 

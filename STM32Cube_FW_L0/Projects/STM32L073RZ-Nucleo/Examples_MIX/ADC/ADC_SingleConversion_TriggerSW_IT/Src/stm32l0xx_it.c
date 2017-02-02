@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_MIX/ADC/ADC_SingleConversion_TriggerSW_IT/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -200,16 +200,23 @@ void EXTI4_15_IRQHandler(void)
   */
 void ADC1_COMP_IRQHandler(void)
 {
-  /* Customize process using LL interface to improve the performance         */
-  /* (exhaustive feature management not handled).                            */
+  /* Customize process using LL interface to improve the performance          */
+  /* (exhaustive feature management not handled).                             */
   
-  /* ########## Starting from this point HAL API must not be used ########## */
+  /* ########## Starting from this point HAL API must not be used ########### */
   
-  /* Check whether ADC group regular end of unitary conversions caused       */
+  /* Check whether ADC group regular end of unitary conversion caused         */
+  /* the ADC interruption.                                                    */
   if(LL_ADC_IsActiveFlag_EOC(ADCx) != 0)
   {
     /* Clear flag ADC group regular end of unitary conversion */
     LL_ADC_ClearFlag_EOC(ADCx);
+    
+    /* Clear flag ADC group regular end of sequence conversions */
+    /* Note: Clear this flag optionaly, this flag is set with end of          */
+    /*       unitary conversion since there is only 1 rank in                 */
+    /*       group regular sequencer.                                         */
+    LL_ADC_ClearFlag_EOS(ADCx);
     
     /* Call interruption treatment function */
     AdcGrpRegularUnitaryConvComplete_Callback();

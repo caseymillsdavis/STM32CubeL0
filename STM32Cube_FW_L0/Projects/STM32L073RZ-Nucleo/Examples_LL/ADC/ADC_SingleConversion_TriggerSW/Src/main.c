@@ -2,10 +2,10 @@
   ******************************************************************************
   * @file    Examples_LL/ADC/ADC_SingleConversion_TriggerSW/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use a ADC peripheral to perform
-  *          a single  ADC conversion of a channel, at each software start.
+  *          a single ADC conversion of a channel, at each software start.
   *          Example using programming model: polling 
   *          (for programming models interrupt or DMA transfer, refer to
   *          other examples).
@@ -56,6 +56,14 @@
 /* Private define ------------------------------------------------------------*/
 
 /* Definitions of ADC hardware constraints delays */
+/* Note: Only ADC IP HW delays are defined in ADC LL driver driver,           */
+/*       not timeout values:                                                  */
+/*       Timeout values for ADC operations are dependent to device clock      */
+/*       configuration (system clock versus ADC clock),                       */
+/*       and therefore must be defined in user application.                   */
+/*       Refer to @ref ADC_LL_EC_HW_DELAYS for description of ADC timeout     */
+/*       values definition.                                                   */
+
   /* Timeout values for ADC operations. */
   /* (calibration, enable settling time, disable settling time, ...)          */
   /* Values defined to be higher than worst cases: low clock frequency,       */
@@ -79,7 +87,6 @@
   #define ADC_DISABLE_TIMEOUT_MS           ((uint32_t)   1)
   #define ADC_STOP_CONVERSION_TIMEOUT_MS   ((uint32_t)   1)
   #define ADC_CONVERSION_TIMEOUT_MS        ((uint32_t) 300)
-
 
   /* Delay between ADC end of calibration and ADC enable.                     */
   /* Delay estimation in CPU cycles: Case of ADC enable done                  */
@@ -108,7 +115,7 @@
 __IO uint32_t ubUserButtonPressed = 0;
 
 /* Variables for ADC conversion data */
-__IO uint16_t uhADCxConvertedData = VAR_CONVERTED_DATA_INIT_VALUE; /* ADC group regular conversion data */ 
+__IO uint16_t uhADCxConvertedData = VAR_CONVERTED_DATA_INIT_VALUE; /* ADC group regular conversion data */
 
 /* Variables for ADC conversion data computation to physical values */
 __IO uint16_t uhADCxConvertedData_Voltage_mVolt = 0;  /* Value of voltage calculated from ADC conversion data (unit: mV) */
@@ -163,7 +170,7 @@ int main(void)
   Configure_ADC();
   
   /* Activate ADC */
-  /* Perform ADC activation procedure to make it ready to convert.        */
+  /* Perform ADC activation procedure to make it ready to convert. */
   Activate_ADC();
   
   /* Infinite loop */
@@ -232,9 +239,9 @@ int main(void)
   *         - In this example, all these checks are not necessary but are
   *           implemented anyway to show the best practice usages
   *           corresponding to reference manual procedure.
-  *           (On some STM32 families, setting of ADC features are not
+  *           (On some STM32 series, setting of ADC features are not
   *           conditioned to ADC state. However, in order to be compliant with
-  *           other STM32 families and to show the best practice usages,
+  *           other STM32 series and to show the best practice usages,
   *           ADC state is checked anyway with same constraints).
   *           Software can be optimized by removing some of these checks,
   *           if they are not relevant considering previous settings and actions
@@ -274,15 +281,12 @@ void Configure_ADC(void)
   
   /*## Configuration of ADC hierarchical scope: common to several ADC ########*/
   
-  /* STM32L0xx ADC is using a dedicated asynchronous clock derived from HSI RC oscillator 16MHz */
-  LL_RCC_HSI_Enable();
-
   /* Enable ADC clock (core clock) */
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1);
   
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 family, setting of these features is conditioned to  */
+  /*       On this STM32 serie, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       All ADC instances of the ADC common group must be disabled.        */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -298,11 +302,11 @@ void Configure_ADC(void)
     /*       setting corresponding to default configuration from reset state. */
     
     /* Set ADC clock (conversion clock) common to several ADC instances */
-    /* Note: On this STM32 family, ADC common clock asynchonous prescaler     */
+    /* Note: On this STM32 serie, ADC common clock asynchonous prescaler      */
     /*       is applied to each ADC instance if ADC instance clock is         */
     /*       set to clock source asynchronous                                 */
     /*       (refer to function "LL_ADC_SetClock()" below).                   */
-    //LL_ADC_SetCommonClock(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_CLOCK_ASYNC_DIV1);
+    // LL_ADC_SetCommonClock(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_CLOCK_ASYNC_DIV1);
     
     /* Set ADC measurement path to internal channels */
     // LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_NONE);
@@ -310,7 +314,7 @@ void Configure_ADC(void)
     
   /*## Configuration of ADC hierarchical scope: multimode ####################*/
   
-    /* Note: Feature not available on this STM32 family */ 
+    /* Note: Feature not available on this STM32 serie */ 
     
   }
   
@@ -319,7 +323,7 @@ void Configure_ADC(void)
   
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 family, setting of these features is conditioned to  */
+  /*       On this STM32 serie, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   if (LL_ADC_IsEnabled(ADC1) == 0)
@@ -341,12 +345,12 @@ void Configure_ADC(void)
     // LL_ADC_SetLowPowerMode(ADC1, LL_ADC_LP_MODE_NONE);
     
     /* Set ADC channels sampling time */
-    /* Note: On this STM32 family, sampling time is common all channels of    */
-    /*       the entire ADC instance.                                         */
+    /* Note: On this STM32 serie, sampling time is common to all channels     */
+    /*       of the entire ADC instance.                                      */
     /*       Therefore, sampling time is configured here under ADC instance   */
     /*       scope (not under channel scope as on some other STM32 devices    */
     /*       on which sampling time is channel wise).                         */
-    LL_ADC_SetSamplingTimeCommonChannels(ADC1, LL_ADC_SAMPLINGTIME_41CYCLES_5);
+    LL_ADC_SetSamplingTimeCommonChannels(ADC1, LL_ADC_SAMPLINGTIME_39CYCLES_5);
     
   }
   
@@ -355,7 +359,7 @@ void Configure_ADC(void)
   
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 family, setting of these features is conditioned to  */
+  /*       On this STM32 serie, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on group regular.                                                  */
@@ -378,11 +382,11 @@ void Configure_ADC(void)
     LL_ADC_REG_SetOverrun(ADC1, LL_ADC_REG_OVR_DATA_OVERWRITTEN);
     
     /* Set ADC group regular sequencer */
-    /* Note: On this STM32 family, ADC group regular sequencer is             */
+    /* Note: On this STM32 serie, ADC group regular sequencer is              */
     /*       not fully configurable: sequencer length and each rank           */
     /*       affectation to a channel are fixed by channel HW number.         */
     /*       Refer to description of function                                 */
-    /*       "LL_ADC_REG_SetSequencerCh()".                                   */
+    /*       "LL_ADC_REG_SetSequencerChannels()".                             */
     
     /* Set ADC group regular sequencer discontinuous mode */
     // LL_ADC_REG_SetSequencerDiscont(ADC1, LL_ADC_REG_SEQ_DISCONT_DISABLE);
@@ -395,14 +399,14 @@ void Configure_ADC(void)
   
   /*## Configuration of ADC hierarchical scope: ADC group injected ###########*/
   
-  /* Note: Feature not available on this STM32 family */ 
+  /* Note: Feature not available on this STM32 serie */ 
   
   
   /*## Configuration of ADC hierarchical scope: channels #####################*/
   
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 family, setting of these features is conditioned to  */
+  /*       On this STM32 serie, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on either groups regular or injected.                              */
@@ -410,8 +414,8 @@ void Configure_ADC(void)
       (LL_ADC_REG_IsConversionOngoing(ADC1) == 0)   )
   {
     /* Set ADC channels sampling time */
-    /* Note: On this STM32 family, sampling time is common all channels of    */
-    /*       the entire ADC instance.                                         */
+    /* Note: On this STM32 serie, sampling time is common to all channels     */
+    /*       of the entire ADC instance.                                      */
     /*       See sampling time configured above, at ADC instance scope.       */
     
   }
@@ -419,13 +423,13 @@ void Configure_ADC(void)
   
   /*## Configuration of ADC transversal scope: analog watchdog ###############*/
   
-  /* Note: On this STM32 family, there is only 1 analog watchdog available.    */
+  /* Note: On this STM32 serie, there is only 1 analog watchdog available.    */
   
-  /* Set ADC analog watchdog channels to be monitored */
+  /* Set ADC analog watchdog: channels to be monitored */
   // LL_ADC_SetAnalogWDMonitChannels(ADC1, LL_ADC_AWD_DISABLE);
   
-  /* Set ADC analog watchdog thresholds */
-  // LL_ADC_ConfigAnalogWDThresholds(ADC1, 0xFFF, 0x000);
+  /* Set ADC analog watchdog: thresholds */
+  // LL_ADC_ConfigAnalogWDThresholds(ADC1, __LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B), 0x000);
   
   
   /*## Configuration of ADC transversal scope: oversampling ##################*/
@@ -457,7 +461,7 @@ void Configure_ADC(void)
   *           none: ADC conversion start-stop to be performed
   *                 after this function
   *         - ADC group injected
-  *           Feature not available                                  (feature not available on this STM32 family)
+  *           Feature not available                                  (feature not available on this STM32 serie)
   * @param  None
   * @retval None
   */
@@ -472,7 +476,7 @@ void Activate_ADC(void)
   
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 family, setting of these features is conditioned to  */
+  /*       On this STM32 serie, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -491,7 +495,7 @@ void Activate_ADC(void)
     Timeout = ADC_CALIBRATION_TIMEOUT_MS;
     #endif /* USE_TIMEOUT */
     
-    while (LL_ADC_IsCalibrationOnGoing(ADC1) == 0)
+    while (LL_ADC_IsCalibrationOnGoing(ADC1) != 0)
     {
     #if (USE_TIMEOUT == 1)
       /* Check Systick counter flag to decrement the time-out value */
@@ -509,7 +513,7 @@ void Activate_ADC(void)
     /* Delay between ADC end of calibration and ADC enable.                   */
     /* Note: Variable divided by 2 to compensate partially                    */
     /*       CPU processing cycles (depends on compilation optimization).     */
-    wait_loop_index = (ADC_DELAY_CALIB_ENABLE_CPU_CYCLES / 2);
+    wait_loop_index = (ADC_DELAY_CALIB_ENABLE_CPU_CYCLES >> 1);
     while(wait_loop_index != 0)
     {
       wait_loop_index--;
@@ -551,7 +555,7 @@ void Activate_ADC(void)
   /*       "LL_ADC_REG_StartConversion();"                                    */
   
   /*## Operation on ADC hierarchical scope: ADC group injected ###############*/
-  /* Note: Feature not available on this STM32 family */ 
+  /* Note: Feature not available on this STM32 serie */ 
   
 }
 
@@ -577,10 +581,10 @@ void ConversionStartPoll_ADC_GrpRegular(void)
   /* Start ADC group regular conversion */
   /* Note: Hardware constraint (refer to description of the function          */
   /*       below):                                                            */
-  /*       On this STM32 family, setting of this feature is conditioned to    */
+  /*       On this STM32 serie, setting of this feature is conditioned to     */
   /*       ADC state:                                                         */
   /*       ADC must be enabled without conversion on going on group regular,  */
-  /*       without conversion stop command on going on group regular.         */
+  /*       without ADC disable command on going.                              */
   /* Note: In this example, all these checks are not necessary but are        */
   /*       implemented anyway to show the best practice usages                */
   /*       corresponding to reference manual procedure.                       */
@@ -644,8 +648,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }
@@ -781,6 +785,7 @@ void SystemClock_Config(void)
 /******************************************************************************/
 /*   USER IRQ HANDLER TREATMENT                                               */
 /******************************************************************************/
+
 /**
   * @brief  Function to manage IRQ Handler
   * @param  None

@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/ADC/ADC_ContinuousConversion_TriggerSW_LowPower/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the ADC_ContinuousConversion_TriggerSW_LowPower example.
   ******************************************************************************
   *
@@ -55,9 +55,9 @@ ADC is configured to convert a single channel, in continuous conversion mode,
 from SW trigger.
 ADC low power feature enabled: auto wait and auto power-off.
 These 2 low-power modes can be combined.
-Note: On this STM32 family, ADC low power feature auto power-off is available,
+Note: On this STM32 serie, ADC low power feature auto power-off is available,
       additionally to feature auto wait.
-      This is not the case on all STM32 families.
+      This is not the case on all STM32 series.
 
 Example execution:
 From the first press on push button, the ADC converts the selected channel
@@ -66,7 +66,7 @@ After the first trigger (software start in this example), following conversions
 are not launched successively automatically: the ADC performs 1 conversion
 and remains idle (ADC does not perform any other conversion)
 until conversion data has been processed by user software.
-On this STM32 family, on which ADC low power feature auto power-off is available,
+On this STM32 serie, on which ADC low power feature auto power-off is available,
 ADC is set automatically in mode power-off during idle phase.
 Then, when ADC conversion is required, ADC is set automatically in mode power-on. 
 Note: this is the goal of low power feature auto-wait: to automatically adapt
@@ -113,7 +113,7 @@ Other peripherals used:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

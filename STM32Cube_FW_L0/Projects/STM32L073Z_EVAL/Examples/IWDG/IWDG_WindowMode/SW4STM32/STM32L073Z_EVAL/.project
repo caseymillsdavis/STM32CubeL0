@@ -53,10 +53,6 @@
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c</location>
 		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_dma.c</name>
-			<type>1</type>
-			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_dma.c</location>
-		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_iwdg.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_iwdg.c</location>
@@ -73,14 +69,6 @@
 			<type>1</type>
 			<location>PARENT-2-PROJECT_LOC/readme.txt</location>
 		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim_ex.c</name>
-			<type>1</type>
-			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c</location>
-		</link><link>
-			<name>Example/User/stm32l0xx_hal_msp.c</name>
-			<type>1</type>
-			<location>PARENT-2-PROJECT_LOC/Src/stm32l0xx_hal_msp.c</location>
-		</link><link>
 			<name>Drivers/CMSIS/system_stm32l0xx.c</name>
 			<type>1</type>
 			<location>PARENT-2-PROJECT_LOC/Src/system_stm32l0xx.c</location>
@@ -89,6 +77,10 @@
 			<type>1</type>
 			<location>PARENT-1-PROJECT_LOC/startup_stm32l073xx.s</location>
 		</link>
-		
+		<link>
+			<name />
+			<type />
+			<location />
+		</link>
 	</linkedResources>
 </projectDescription>

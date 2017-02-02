@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_STANDBY_RTC/Inc/main.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -48,7 +48,7 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 #define RTC_ASYNCH_PREDIV    0x7F
-#define RTC_SYNCH_PREDIV     0xF9  /* 32Khz/128 - 1 */
+#define RTC_SYNCH_PREDIV     0x122  /* 37 kHz RC/127 - 1 */
 
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

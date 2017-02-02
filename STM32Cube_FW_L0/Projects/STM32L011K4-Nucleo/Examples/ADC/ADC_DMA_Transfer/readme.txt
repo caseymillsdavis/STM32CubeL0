@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    ADC/ADC_DMA_Transfer/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the ADC DMA Transfer example.
   ******************************************************************************
   *
@@ -74,10 +74,10 @@ according to the voltage applied to pin GPIO_PIN_0 on GPIOA.
 
   - This example runs on STM32L011xx devices.
 
-  - This example has been tested with STM32L011-Nucleo board and can be
+  - This example has been tested with STM32L011K4-Nucleo board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L011-Nucleo Set-up
+  - STM32L011K4-Nucleo Set-up
     Use an external power supply and adjust supply voltage and connect it on PA.00 (Arduino A0)
 
   - To monitor the conversion result, put the "aADCxConvertedData" variable in the live watch.

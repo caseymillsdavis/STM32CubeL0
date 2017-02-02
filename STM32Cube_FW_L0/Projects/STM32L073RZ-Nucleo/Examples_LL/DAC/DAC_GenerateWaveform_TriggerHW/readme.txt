@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/DAC/DAC_GenerateWaveform_TriggerHW/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the DAC_GenerateWaveform_TriggerHW example.
   ******************************************************************************
   *
@@ -37,7 +37,7 @@
 
 @par Example Description
 This example describes how to use the DAC peripheral to generate
-a voltage waveform from digital data stream transfered by DMA; 
+a waveform voltage from digital data stream transfered by DMA; 
 This example is based on the STM32L0xx DAC LL API; 
 peripheral initialization done using LL unitary services functions
 for optimization purpose (performance and size).
@@ -68,7 +68,7 @@ Oscilloscope for monitoring DAC channel output (cf pin below).
 Other peripheral used:
   1 GPIO for push button
   1 GPIO for DAC channel output PA.04 (Arduino connector CN8 pin A2, Morpho connector CN7 pin 32)
-  For waveform generation: 1 DMA channel, 1 timer.
+  For waveform voltage generation: 1 DMA channel, 1 timer.
   
 
 @par Directory contents 
@@ -85,7 +85,7 @@ Other peripheral used:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

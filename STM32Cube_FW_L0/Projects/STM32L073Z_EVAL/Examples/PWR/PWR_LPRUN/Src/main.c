@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_LPRUN/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example shows how to use STM32L0xx PWR HAL API to enter the
   *          system to Low Power Run mode and exit from this mode using Wkup/Tamper push-button.
   ******************************************************************************

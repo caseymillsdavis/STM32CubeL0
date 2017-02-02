@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/RTC/RTC_Calendar/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC example.
   ******************************************************************************
   *
@@ -37,9 +37,9 @@
 
 @par Example Description
 
-This example guides you through the different configuration steps by mean of LL API 
-to ensure Calendar configuration using the RTC peripheral. Peripheral initialization 
-done using LL unitary services functions for optimization purpose (performance and size).
+This example guides you through the different configuration steps by mean of HAL API
+to configure the RTC calendar. Peripheral initialization done using LL unitary services
+functions for optimization purpose (performance and size).
 
 In this example, after start-up, SYSCLK is configured to the max frequency using the PLL with
 MSI as clock source.
@@ -73,7 +73,7 @@ The program behaves as follows:
       and date are displayed on Debugger.
       
 2. When a reset (except power on reset) occurs the BKP domain is not reset and the RTC 
-   configuration is not lost (if LSE oscillator is selected).
+   configuration is not lost.
    
 3. When power on reset occurs:
     - The BKP domain is reset and the RTC configuration is lost.
@@ -100,7 +100,7 @@ and aShowDate variables (watch or live watch).
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

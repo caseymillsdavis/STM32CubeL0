@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_TwoBoards_AdvComIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C Two Boards Advanced Communication with 
   *          Interrupt example.
   ******************************************************************************
@@ -38,27 +38,27 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure I2C Data buffer transmission and reception using Interrupt. The communication
-is done with 2 Boards through I2C.
+This example describes how to perform I2C data buffer transmission/reception 
+between two boards, using an interrupt.
 
-   _________________________                        _________________________
-  |           ______________|                      |______________           |
-  |          | I2C1         |                      |          I2C1|          |
-  |          |              |                      |              |          |
-  |          |      SCL(PB6)|______________________|(PB6)SCL      |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |      SDA(PB7)|______________________|(PB7)SDA      |          |
-  |          |              |                      |              |          |
-  |          |______________|                      |______________|          |
-  |      __                 |                      |             __          |
-  |     |__|                |                      |            |__|         |
-  |     USER             GND|______________________|GND         USER         |
-  |                         |                      |                         |
-  |_TARGET_STM32L073Z_EVAL__|                      |_TARGET_STM32L073Z_EVAL__|
+Board: STM32L073Z-EVAL (embeds a STM32L073VZ device)
+SCL Pin: PB6 (CN5)
+SDA Pin: PB7 (CN5)
 
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -86,7 +86,7 @@ in the "main.c" file:
 - Comment "#define MASTER_BOARD" to select Slave board.
 
 For this example two buffers are used 
-- aTxBuffer buffer is used to save the data to be transmitted 
+- aTxBuffer buffer contains the data to be transmitted 
 - aRxBuffer buffer is used to save the received data
 Note that both buffers have same size
                        
@@ -98,7 +98,7 @@ On Master board side:
  - Request read operation by sending specific command "MASTER_REQ_READ" to Slave
  - Send the number of data to be read
  - Receive data from Slave in aRxBuffer
- - Check the correctness of data and Toggle LED_GREEN when data is received correctly (each 25 ms),
+ - Check the correctness of data and Toggle LED_GREEN when data is received correctly,
    otherwise LED_RED is turned ON and communication is stopped (using infinite loop)
 
 
@@ -108,14 +108,14 @@ On Slave board side:
    - If Master requests write operation:
       - Receive number of data to be written by Master
       - Receive data from master in aRxBuffer
-      - Check the correctness of data and Toggle LED_GREEN when data is received correctly (each 25 ms),
+      - Check the correctness of data and Toggle LED_GREEN when data is received correctly,
         otherwise LED_RED is turned ON and communication is stopped (using infinite loop)
    - If Master request read operation:
       - Receive number of data to be written to Master
       - Transmit aTxBuffer buffer to master
-
+   
 These operations are repeated periodically and the start of communication is triggered 
-by pushing the key button of the Master board.       
+by pushing the key button of the Master board.  
 
  @note In Master side, only Acknowledge failure error is handled. When this error
        occurs Master restart the current operation until Slave acknowledges it's
@@ -151,10 +151,10 @@ by pushing the key button of the Master board.
   - This example has been tested with STM32L073Z-EVAL board and can be
     easily tailored to any other supported device and development board.    
 
-  -STM32L073Z-EVAL Set-up
-    - Connect Master board PB6 to Slave Board PB6
-    - Connect Master board PB7 to Slave Board PB7
-    - Connect Master board GND to Slave Board GND
+  - STM32L073Z-EVAL Set-up
+    - Connect I2C_SCL line of Master board (PB6, CN5) to I2C_SCL line of Slave Board (PB6, CN5).
+    - Connect I2C_SDA line of Master board (PB7, CN5) to I2C_SDA line of Slave Board (PB7, CN5).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    ADC/ADC_OverSampler/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to configure and use ADC combined with
   *          oversampling feature, through the STM32L0xx HAL API.
   ******************************************************************************

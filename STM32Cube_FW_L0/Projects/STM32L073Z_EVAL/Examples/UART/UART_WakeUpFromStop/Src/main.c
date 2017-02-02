@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    UART/UART_WakeUpFromStop/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use UART HAL API to wake up
   *          the MCU from STOP mode  
   *          Two boards are used, one which enters STOP mode and the second
@@ -477,8 +477,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLSource   = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLState    = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLL_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
   {
     /* Initialization Error */

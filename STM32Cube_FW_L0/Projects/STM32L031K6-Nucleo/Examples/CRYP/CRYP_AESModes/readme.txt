@@ -6,8 +6,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CRYP/CRYP_AESModes/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the CRYP AES Algorithm in all modes and all key sizes
              Example
   ******************************************************************************
@@ -42,7 +42,7 @@
 =================================================================================
 WARNING :
 To run this example, you must use an STM32L041xx device.
-By default, the STM32L031-Nucleo boards (Nucleo32) are equiped with an STM32L031xx 
+By default, the STM32L031K6-Nucleo boards (Nucleo32) are equiped with an STM32L031xx 
 device which doesn't support the AES feature.
 =================================================================================
 
@@ -91,7 +91,7 @@ by uncomment following line in main file:
 
   - This example runs on STM32L041xx devices.
 
-  - This example has been tested with STM32L031-Nucleo board with socket using STM32L041xx plugged-in  
+  - This example has been tested with STM32L031K6-Nucleo board with socket using STM32L041xx plugged-in  
     and can be easily tailored to any other supported device and development board.
   
   - Hyperterminal configuration:

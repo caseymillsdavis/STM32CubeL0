@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32l0538_discovery_epd.c
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    27-July-2015
+  * @version V1.2.2
+  * @date    25-November-2016
   * @brief   This file includes the EPD driver for Display Module of 
   *          STM32L0538-DISCO kit (MB1143).
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:

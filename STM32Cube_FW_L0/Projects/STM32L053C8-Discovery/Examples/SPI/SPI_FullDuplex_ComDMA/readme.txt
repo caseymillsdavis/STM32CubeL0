@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SPI/SPI_FullDuplex_ComDMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI Full Duplex DMA example.
   ******************************************************************************
   *
@@ -35,8 +35,11 @@
   ******************************************************************************
   @endverbatim
 
-@par Example Description 
-The communication is done with 2 boards through SPI.
+@par Example Description
+
+This example shows how to perform SPI data buffer transmission/reception between 
+two boards via DMA.
+
    _________________________                        _________________________
   |           ______________|                      |______________           |
   |          |SPI2          |                      |          SPI2|          |
@@ -127,8 +130,7 @@ LED3 can be used to monitor the transfer status:
 
 @par Hardware and Software environment 
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
     
   - This example has been tested with STM32L0538-DISCO RevB and can be
     easily tailored to any other supported device and development board.

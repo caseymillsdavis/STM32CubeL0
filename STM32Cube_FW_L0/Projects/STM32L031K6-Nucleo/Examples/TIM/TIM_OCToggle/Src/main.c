@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    TIM/TIM_OCToggle/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example shows how to configure the Timer to generate four different 
   *          signals with four different frequencies.
   ******************************************************************************
