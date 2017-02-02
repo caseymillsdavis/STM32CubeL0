@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_MIX/I2C/I2C_OneBoard_ComSlave7_10bits_IT/Src/stm32l0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
@@ -109,8 +109,10 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
   }
   else /* I2Cx_SLAVE */
   {
-    /*##-1- The I2C clock source is derived from the PCLK #*/
-    /* The independent clock switching is not supported by this instance */
+    /*##-1- Configure the I2C clock source. The clock is derived from the SYSCLK #*/
+    RCC_PeriphCLKInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2Cx_SLAVE;
+    RCC_PeriphCLKInitStruct.I2c1ClockSelection = RCC_I2Cx_SLAVECLKSOURCE_SYSCLK;
+    HAL_RCCEx_PeriphCLKConfig(&RCC_PeriphCLKInitStruct);
 
     /*##-2- Enable peripherals and GPIO Clocks #################################*/
     /* Enable GPIO TX/RX clock */

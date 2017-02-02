@@ -6,8 +6,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    AES/AES_DMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the AES Algorithm in ECB mode with DMA Example
   ******************************************************************************
   *

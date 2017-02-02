@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/USART/USART_HardwareFlowControl/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -169,12 +169,12 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void EXTI4_15_IRQHandler(void)
+void USER_BUTTON_IRQHANDLER(void)
 {
   /* Manage Flags */
-  if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_13) != RESET)
+  if(LL_EXTI_IsActiveFlag_0_31(USER_BUTTON_EXTI_LINE) != RESET)
   {
-    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_13);
+    LL_EXTI_ClearFlag_0_31(USER_BUTTON_EXTI_LINE);
 
     /* Handle user button press in dedicated function */
     UserButton_Callback(); 
@@ -200,7 +200,7 @@ void USART1_IRQHandler(void)
   {
     /* TXE flag will be automatically cleared when writing new data in TDR register */
 
-    /* Call function in charge of handling empty DR => will lead to transmission of next character */
+    /* Call function in charge of handling empty TDR => will lead to transmission of next character */
     USART_TXEmpty_Callback();
   }
 

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    COMP/COMP_AnalogWatchdog/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the COMP 
   *          peripheral in window mode to make an analog watchdog.
   ******************************************************************************
@@ -108,14 +108,14 @@ int main(void)
   
   /*## Enable peripherals ####################################################*/
   /* Start COMP1 */
-  if(HAL_COMP_Start_IT(&Comp1Handle) != HAL_OK)
+  if(HAL_COMP_Start(&Comp1Handle) != HAL_OK)
   {
     /* Initialization Error */
     Error_Handler(); 
   }
   
   /* Start COMP2 */
-  if(HAL_COMP_Start_IT(&Comp2Handle) != HAL_OK)
+  if(HAL_COMP_Start(&Comp2Handle) != HAL_OK)
   {
     /* Initialization Error */
     Error_Handler(); 

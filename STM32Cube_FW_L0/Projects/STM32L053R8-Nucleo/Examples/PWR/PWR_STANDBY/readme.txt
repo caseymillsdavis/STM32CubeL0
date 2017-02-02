@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_Standby/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR STANDBY example.
   ******************************************************************************
   *
@@ -83,7 +83,7 @@ The above scenario is repeated in an infinite loop.
   - PWR/PWR_STANDBY/Inc/stm32l0xx_conf.h     Library Configuration file
   - PWR/PWR_STANDBY/Inc/stm32l0xx_it.h       Header for stm32l0xx_it.c
   - PWR/PWR_STANDBY/Inc/main.h               header file for main.c
-  - PWR/PWR_STANDBY/Src/system_stm32fl0xx.c   STM32L0xx system clock configuration file
+  - PWR/PWR_STANDBY/Src/system_stm32l0xx.c   STM32L0xx system clock configuration file
   - PWR/PWR_STANDBY/Src/stm32l0xx_it.c       Interrupt handlers
   - PWR/PWR_STANDBY/Src/main.c               Main program
   - PWR/PWR_STANDBY/Src/stm32l0xx_hal_msp.c  HAL MSP module

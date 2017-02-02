@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    COMP/COMP_AnalogWatchdog/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the COMP Analog Watchdog Example.
   ******************************************************************************
   *
@@ -37,16 +37,16 @@
 
 @par Example Description 
 
-This example shows how to make an analog watchdog using the STM32L0xx COMPs 
-peripherals in window mode:
+This example shows how to make an analog watchdog using the COMP peripherals in window mode.
+
   - The upper threshold is set to VREFINT = 1.22V
   - The lower threshold is set to VREFINT / 4 = 1.22V / 4 = 0.305V
   - The input voltage is configured to be connected to pin PB.04 (connected to pin 27 in CN10 connector)
   
-LEDs on STM32L073-Nucleo Rev C can be used to monitor the voltage level compared to comparators thresholds:
+LEDs on STM32L073RZ-Nucleo Rev C can be used to monitor the voltage level compared to comparators thresholds:
 
 - LED2 blinks quickly when input voltage is above the higher threshold.
-- LED2 blinks slowly (once every 2 s) if the input voltage is under the lower threshold.
+- LED2 blinks slowly (once every 1 s) if the input voltage is under the lower threshold.
 - If the input voltage is within the thresholds, the MCU is set in STOP mode. LED2 does not blink.
 
 
@@ -76,10 +76,10 @@ LEDs on STM32L073-Nucleo Rev C can be used to monitor the voltage level compared
   - This example runs on STM32L073xx devices.
   - In this example, the clock is set to 2 MHz.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     Use an external power supply and adjust supply voltage (above, within and below thresholds),
     and connect it on PB.04 (connected to pin 27 in CN10 connector)
     

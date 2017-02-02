@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/ADC/ADC_AnalogWatchdog/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the ADC_AnalogWatchdog example.
   ******************************************************************************
   *
@@ -59,6 +59,9 @@ and a LED is turned-on.
 At each press on push button, the ADC analog watchdog is rearmed to be ready
 for another trig.
 
+Note: In case of noise on voltage applied on ADC channel input, ADC analog watchdog
+      may trig at a voltage level with an uncertainty of tens of mV.
+
 For debug: variables to monitor with debugger watch window:
  - "ubAnalogWatchdog1Status": analog watchdog state
 
@@ -90,7 +93,7 @@ Other peripherals used:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

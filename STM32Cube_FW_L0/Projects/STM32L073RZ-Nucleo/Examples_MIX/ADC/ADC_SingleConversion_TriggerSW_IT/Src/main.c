@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_MIX/ADC/ADC_SingleConversion_TriggerSW_IT/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to use a ADC peripheral to perform
   *          a single  ADC conversion of a channel, at each software start.
   *          Example using programming model: interrupt 
@@ -61,7 +61,7 @@
   #define VDDA_APPLI                       ((uint32_t)3300)
 
 /* Definitions of data related to this example */
-  /* Init variable out of ADC expected conversion data range */
+  /* Init variable out of expected ADC conversion data range */
   #define VAR_CONVERTED_DATA_INIT_VALUE    (__LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B) + 1)
 
   /* Full-scale digital value with a resolution of 12 bits (voltage range     */
@@ -81,29 +81,29 @@ DAC_HandleTypeDef    DacHandle;  /* DAC used for waveform voltage generation for
 #endif /* WAVEFORM_GENERATION */
 
 /* Variables for ADC conversion data */
-__IO   uint16_t   uhADCxConvertedData = VAR_CONVERTED_DATA_INIT_VALUE; /* ADC group regular conversion data */
+__IO uint16_t uhADCxConvertedData = VAR_CONVERTED_DATA_INIT_VALUE; /* ADC group regular conversion data */
 
 /* Variables for ADC conversion data computation to physical values */
-uint16_t   uhADCxConvertedData_Voltage_mVolt = 0;  /* Value of voltage calculated from ADC conversion data (unit: mV) */
+__IO uint16_t uhADCxConvertedData_Voltage_mVolt = 0;  /* Value of voltage calculated from ADC conversion data (unit: mV) */
 
 /* Variable to report status of ADC group regular unitary conversion          */
 /*  0: ADC group regular unitary conversion is not completed                  */
 /*  1: ADC group regular unitary conversion is completed                      */
 /*  2: ADC group regular unitary conversion has not been started yet          */
 /*     (initial state)                                                        */
-__IO   uint8_t ubAdcGrpRegularUnitaryConvStatus = 2; /* Variable set into ADC interruption callback */
+__IO uint8_t ubAdcGrpRegularUnitaryConvStatus = 2; /* Variable set into ADC interruption callback */
 
 /* Variable to manage push button on board: interface between ExtLine interruption and main program */
 __IO   uint8_t ubUserButtonClickEvent = RESET;  /* Event detection: Set after User Button interrupt */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void Error_Handler(void);
-static void Configure_ADC(void);
+static     void Error_Handler(void);
+static     void Configure_ADC(void);
 
 #if defined(WAVEFORM_GENERATION)
-static void Generate_waveform_SW_update_Config(void);
-static void Generate_waveform_SW_update(void);
+static     void Generate_waveform_SW_update_Config(void);
+static     void Generate_waveform_SW_update(void);
 #endif /* WAVEFORM_GENERATION */
 
 /* Private functions ---------------------------------------------------------*/
@@ -140,15 +140,16 @@ int main(void)
   
   /* Configure ADC */
   /* Note: This function configures the ADC but does not enable it.           */
-  /*       To activate it (ADC enable and conversion start), use              */
+  /*       To enable it (ADC activation and conversion start), use            */
   /*       function "HAL_ADC_Start_xxx()".                                    */
   /*       This is intended to optimize power consumption:                    */
   /*       1. ADC configuration can be done once at the beginning             */
   /*          (ADC disabled, minimal power consumption)                       */
   /*       2. ADC enable (higher power consumption) can be done just before   */
   /*          ADC conversions needed.                                         */
-  /*          Then, possible to perform successive ADC activation and         */
-  /*          deactivation without having to set again ADC configuration.     */
+  /*          Then, possible to perform successive "Activate_ADC()",          */
+  /*          "Deactivate_ADC()", ..., without having to set again            */
+  /*          ADC configuration.                                              */
   Configure_ADC();
   
   /* Run the ADC calibration in single-ended mode */
@@ -222,7 +223,7 @@ int main(void)
       /* Start ADC group regular conversion */
       /* Note: Hardware constraint (refer to description of the function          */
       /*       below):                                                            */
-      /*       On this STM32 family, setting of this feature is conditioned to    */
+      /*       On this STM32 serie, setting of this feature is conditioned to     */
       /*       ADC state:                                                         */
       /*       ADC must be enabled without conversion on going on group regular,  */
       /*       without conversion stop command on going on group regular.         */
@@ -255,64 +256,6 @@ int main(void)
   }
 }
 
-
-/**
-  * @brief  System Clock Configuration
-  *         The system Clock is configured as follow : 
-  *            System Clock source            = PLL (HSI)
-  *            SYSCLK(Hz)                     = 32000000
-  *            HCLK(Hz)                       = 32000000
-  *            AHB Prescaler                  = 1
-  *            APB1 Prescaler                 = 1
-  *            APB2 Prescaler                 = 1
-  *            Flash Latency(WS)              = 1
-  *            Main regulator output voltage  = Scale1 mode
-  * @retval None
-  */
-void SystemClock_Config(void)
-{
-  RCC_ClkInitTypeDef RCC_ClkInitStruct ={0};
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  
-  /* Enable Power Control clock */
-  __HAL_RCC_PWR_CLK_ENABLE();
-  
-  /* The voltage scaling allows optimizing the power consumption when the device is 
-     clocked below the maximum system frequency, to update the voltage scaling value 
-     regarding system frequency refer to product datasheet.  */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-  
-  /* Disable Power Control clock */
-  __HAL_RCC_PWR_CLK_DISABLE();
-  
-  /* Enable HSE Oscillator */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.PLL.PLLSource   = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLState    = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLLDIV_2;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
-  {
-    /* Initialization Error */
-    while(1); 
-  }
-  
-  /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
-     clocks dividers */
-  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;  
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;  
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1)!= HAL_OK)
-  {
-    /* Initialization Error */
-    while(1); 
-  }
-}
-
-
 /**
   * @brief  Configure ADC (ADC instance: ADCx) and GPIO used by ADC channels.
   * @note   Using HAL driver, configuration of GPIO used by ADC channels,
@@ -322,7 +265,7 @@ void SystemClock_Config(void)
   * @param  None
   * @retval None
   */
-__STATIC_INLINE void Configure_ADC(void)
+void Configure_ADC(void)
 {
   ADC_ChannelConfTypeDef   sConfig;
   
@@ -342,6 +285,7 @@ __STATIC_INLINE void Configure_ADC(void)
   AdcHandle.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV2;
   AdcHandle.Init.Resolution            = ADC_RESOLUTION_12B;
   AdcHandle.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
+  AdcHandle.Init.ScanConvMode          = ADC_SCAN_DIRECTION_FORWARD;    /* Sequencer will convert the number of channels configured below, successively from the lowest to the highest channel number */
   AdcHandle.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;
   AdcHandle.Init.ContinuousConvMode    = DISABLE;                       /* Continuous mode disabled to have only 1 conversion at each conversion trig */
   AdcHandle.Init.DiscontinuousConvMode = DISABLE;                       /* Parameter discarded because sequencer is disabled */
@@ -349,7 +293,7 @@ __STATIC_INLINE void Configure_ADC(void)
   AdcHandle.Init.DMAContinuousRequests = DISABLE;                       /* ADC with DMA transfer: continuous requests to DMA disabled (default state) since DMA is not used in this example. */
   AdcHandle.Init.Overrun               = ADC_OVR_DATA_OVERWRITTEN;
   /* Set ADC channels sampling time */
-  /* Note: On this STM32 family, sampling time is common to                 */
+  /* Note: On this STM32 family, sampling time is common to all channels of */
   /*       the entire ADC instance.                                         */
   /*       Therefore, sampling time is configured here under ADC instance   */
   /*       scope (not under channel scope as on some other STM32 devices    */
@@ -358,7 +302,7 @@ __STATIC_INLINE void Configure_ADC(void)
   /*       (IT by ADC group regular end of unitary conversion),             */
   /*       select sampling time and ADC clock with sufficient               */
   /*       duration to not create an overhead situation in IRQHandler.      */
-  AdcHandle.Init.SamplingTime          = ADC_SAMPLETIME_41CYCLES_5;
+  AdcHandle.Init.SamplingTime          = ADC_SAMPLETIME_39CYCLES_5;
   
   if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
   {
@@ -520,6 +464,62 @@ static void Generate_waveform_SW_update(void)
 }
 #endif /* WAVEFORM_GENERATION */
 
+/**
+  * @brief  System Clock Configuration
+  *         The system Clock is configured as follow : 
+  *            System Clock source            = PLL (HSI)
+  *            SYSCLK(Hz)                     = 32000000
+  *            HCLK(Hz)                       = 32000000
+  *            AHB Prescaler                  = 1
+  *            APB1 Prescaler                 = 1
+  *            APB2 Prescaler                 = 1
+  *            Flash Latency(WS)              = 1
+  *            Main regulator output voltage  = Scale1 mode
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
+  RCC_ClkInitTypeDef RCC_ClkInitStruct ={0};
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  
+  /* Enable Power Control clock */
+  __HAL_RCC_PWR_CLK_ENABLE();
+  
+  /* The voltage scaling allows optimizing the power consumption when the device is 
+     clocked below the maximum system frequency, to update the voltage scaling value 
+     regarding system frequency refer to product datasheet.  */
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+  
+  /* Disable Power Control clock */
+  __HAL_RCC_PWR_CLK_DISABLE();
+  
+  /* Enable HSE Oscillator */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.PLL.PLLSource   = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLState    = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLL_DIV2;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
+  {
+    /* Initialization Error */
+    while(1); 
+  }
+  
+  /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
+     clocks dividers */
+  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;  
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;  
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1)!= HAL_OK)
+  {
+    /* Initialization Error */
+    while(1); 
+  }
+}
+
 /******************************************************************************/
 /*   USER IRQ HANDLER TREATMENT                                               */
 /******************************************************************************/
@@ -608,6 +608,7 @@ void AdcGrpRegularUnitaryConvComplete_Callback()
   /* - Turn-on if ADC group regular unitary conversion is completed */
   /* - Turn-off if ADC group regular unitary conversion is not completed */
   BSP_LED_On(LED2);
+  
 }
 
 /**
@@ -624,8 +625,8 @@ void AdcGrpRegularOverrunError_Callback(void)
   /* Disable ADC group regular overrun interruption */
   LL_ADC_DisableIT_OVR(ADCx);
   
-   /* In case of ADC error, call main error handler */
-   Error_Handler();
+  /* In case of ADC error, call main error handler */
+  Error_Handler();
 }
 
 #if defined(WAVEFORM_GENERATION)
@@ -671,16 +672,14 @@ static void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+     ex: printf("Wrong parameters value: file %s on line %d", file, line) */
 
   /* Infinite loop */
   while (1)
   {
   }
 }
-
 #endif
-
 
 /**
   * @}

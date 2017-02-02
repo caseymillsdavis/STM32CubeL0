@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/I2C/I2C_TwoBoards_MasterTx_SlaveRx/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to send/receive bytes over I2C IP using
   *          the STM32L0xx I2C LL API.
   *          Peripheral initialization done using LL unitary services functions.
@@ -61,6 +61,8 @@
 #else /* MASTER_BOARD */
 
 #define I2C_SEND_TIMEOUT_TXIS_MS 5
+#define I2C_SEND_TIMEOUT_SB_MS        5
+#define I2C_SEND_TIMEOUT_ADDR_MS      5
 #endif /* SLAVE_BOARD */
 #endif /* USE_TIMEOUT */
 
@@ -68,7 +70,7 @@
   * @brief I2C devices settings
   */
 /* Timing register value is computed with the STM32CubeMX Tool,
-  * Fast Mode @400kHz with I2CCLK = 32 MHz,
+  * Standard Mode @100kHz with I2CCLK = 32 MHz,
   * rise time = 100ns, fall time = 10ns
   * Timing Value = (uint32_t)0x00601B28
   */
@@ -186,14 +188,14 @@ void Configure_I2C_Slave(void)
   /* Configure SCL Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_0, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_0_7(GPIOC, LL_GPIO_PIN_0, LL_GPIO_AF_7);
-  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_0, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_0, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOC, LL_GPIO_PIN_0, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_0, LL_GPIO_PULL_UP);
 
   /* Configure SDA Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_1, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_0_7(GPIOC, LL_GPIO_PIN_1, LL_GPIO_AF_7);
-  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_1, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_1, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOC, LL_GPIO_PIN_1, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_1, LL_GPIO_PULL_UP);
 
@@ -205,7 +207,7 @@ void Configure_I2C_Slave(void)
   /* Set I2C3 clock source as SYSCLK */
   LL_RCC_SetI2CClockSource(LL_RCC_I2C3_CLKSOURCE_SYSCLK);
 
-  /* (3) Configure I2C3 functional parameters ********************************/
+  /* (3) Configure I2C3 functional parameters *********************************/
 
   /* Disable I2C3 prior modifying configuration registers */
   LL_I2C_Disable(I2C3);
@@ -277,7 +279,6 @@ void Configure_I2C_Slave(void)
   */
 void Configure_I2C_Master(void)
 {
-
   /* (1) Enables GPIO clock and configures the I2C3 pins **********************/
   /*    (SCL on PC.0, SDA on PC.1)                     **********************/
 
@@ -287,14 +288,14 @@ void Configure_I2C_Master(void)
   /* Configure SCL Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_0, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_0_7(GPIOC, LL_GPIO_PIN_0, LL_GPIO_AF_7);
-  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_0, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_0, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOC, LL_GPIO_PIN_0, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_0, LL_GPIO_PULL_UP);
 
   /* Configure SDA Pin as : Alternate function, High Speed, Open drain, Pull up */
   LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_1, LL_GPIO_MODE_ALTERNATE);
   LL_GPIO_SetAFPin_0_7(GPIOC, LL_GPIO_PIN_1, LL_GPIO_AF_7);
-  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_1, LL_GPIO_SPEED_FREQ_VERY_HIGH);
+  LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_1, LL_GPIO_SPEED_FREQ_HIGH);
   LL_GPIO_SetPinOutputType(GPIOC, LL_GPIO_PIN_1, LL_GPIO_OUTPUT_OPENDRAIN);
   LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_1, LL_GPIO_PULL_UP);
 
@@ -376,8 +377,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }
@@ -432,7 +433,8 @@ void LED_Blinking(uint32_t Period)
   * @note  This function is composed in different steps :
   *        -1- Wait ADDR flag and check address match code and direction
   *        -2- Loop until end of transfer received (STOP flag raised)
-  *             -2.1- TReceive data (RXNE flag raised)
+  *             -2.1- Receive data (RXNE flag raised)
+  *             -2.2- Receive data (BTF flag raised)
   *        -3- Clear pending flags, Check Data consistency
   * @param  None
   * @retval None
@@ -593,11 +595,13 @@ void WaitForUserButtonPress(void)
     LL_GPIO_TogglePin(LED2_GPIO_PORT, LED2_PIN);
     LL_mDelay(LED_BLINK_FAST);
   }
+  /* Turn LED2 off */
+  LL_GPIO_ResetOutputPin(LED2_GPIO_PORT, LED2_PIN);
 }
 
 /**
   * @brief  This Function handle Master events to perform a transmission process
-  * @note  This function is composed in different step :
+  * @note  This function is composed in different steps :
   *        -1- Initiate a Start condition to the Slave device
   *        -2- Loop until end of transfer received (STOP flag raised)
   *             -2.1- Transmit data (TXIS flag raised)

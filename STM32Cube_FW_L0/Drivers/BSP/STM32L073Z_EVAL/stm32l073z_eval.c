@@ -1,14 +1,14 @@
   /******************************************************************************
   * @file    stm32l073z_eval.c
   * @author  MCD Application Team
-  * @version V1.0.4
-  * @date    14-September-2015
+  * @version V2.0.1
+  * @date    25-November-2016
   * @brief   This file provides: a set of firmware functions to manage Leds,
   *          push-button and COM ports
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -77,11 +77,11 @@
 #define SD_NO_RESPONSE_EXPECTED  0x80
 
 /**
-  * @brief STM32L073Z EVAL BSP Driver version number V2.0.0
+  * @brief STM32L073Z EVAL BSP Driver version number V2.0.1
   */
 #define __STM32L073Z_EVAL_BSP_VERSION_MAIN   (0x02) /*!< [31:24] main version */
 #define __STM32L073Z_EVAL_BSP_VERSION_SUB1   (0x00) /*!< [23:16] sub1 version */
-#define __STM32L073Z_EVAL_BSP_VERSION_SUB2   (0x00) /*!< [15:8]  sub2 version */
+#define __STM32L073Z_EVAL_BSP_VERSION_SUB2   (0x01) /*!< [15:8]  sub2 version */
 #define __STM32L073Z_EVAL_BSP_VERSION_RC     (0x00) /*!< [7:0]  release candidate */ 
 #define __STM32L073Z_EVAL_BSP_VERSION         ((__STM32L073Z_EVAL_BSP_VERSION_MAIN << 24)\
                                              |(__STM32L073Z_EVAL_BSP_VERSION_SUB1 << 16)\

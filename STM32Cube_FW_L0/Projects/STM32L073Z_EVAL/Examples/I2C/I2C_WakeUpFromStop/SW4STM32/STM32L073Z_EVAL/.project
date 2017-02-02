@@ -25,17 +25,13 @@
 		<nature>fr.ac6.mcu.ide.core.MCUProjectNature</nature>
 	</natures>
 	<linkedResources><link>
-			<name>Example/User/stm32l0xx_it.c</name>
-			<type>1</type>
-			<location>PARENT-2-PROJECT_LOC/Src/stm32l0xx_it.c</location>
-		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart_ex.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.c</location>
 		</link><link>
-			<name>Example/User/main.c</name>
+			<name>Example/User/stm32l0xx_it.c</name>
 			<type>1</type>
-			<location>PARENT-2-PROJECT_LOC/Src/main.c</location>
+			<location>PARENT-2-PROJECT_LOC/Src/stm32l0xx_it.c</location>
 		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart.c</name>
 			<type>1</type>
@@ -44,6 +40,10 @@
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_i2c.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c.c</location>
+		</link><link>
+			<name>Example/User/main.c</name>
+			<type>1</type>
+			<location>PARENT-2-PROJECT_LOC/Src/main.c</location>
 		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_rcc_ex.c</name>
 			<type>1</type>
@@ -77,10 +77,6 @@
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c</location>
 		</link><link>
-			<name>Drivers/BSP/Component/mfxstm32l152.c</name>
-			<type>1</type>
-			<location>PARENT-7-PROJECT_LOC/Drivers/BSP/Components/mfxstm32l152/mfxstm32l152.c</location>
-		</link><link>
 			<name>Drivers/BSP/STM32L073Z_EVAL/stm32l073z_eval.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/BSP/STM32L073Z_EVAL/stm32l073z_eval.c</location>
@@ -101,10 +97,14 @@
 			<type>1</type>
 			<location>PARENT-1-PROJECT_LOC/startup_stm32l073xx.s</location>
 		</link><link>
-			<name>Drivers/BSP/STM32L073Z_EVAL/stm32l073z_eval_io.c</name>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_pwr_ex.c</name>
 			<type>1</type>
-			<location>PARENT-7-PROJECT_LOC/Drivers/BSP/STM32L073Z_EVAL/stm32l073z_eval_io.c</location>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c</location>
 		</link>
-		
+		<link>
+			<name />
+			<type />
+			<location />
+		</link>
 	</linkedResources>
 </projectDescription>

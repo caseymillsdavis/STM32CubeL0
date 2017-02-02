@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    COMP/COMP_Interrupt/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the COMP 
   *          peripheral Interrupt.
   ******************************************************************************
@@ -168,7 +168,7 @@ static void COMP_Config(void)
   HAL_COMPEx_EnableVREFINT();
 
   /*##-3- Start teh COMP1 and enable the interrupt ###########################*/  
-  if(HAL_COMP_Start_IT(&hcomp1) != HAL_OK)
+  if(HAL_COMP_Start(&hcomp1) != HAL_OK)
   {
     /* Initiliazation Error */
     Error_Handler();

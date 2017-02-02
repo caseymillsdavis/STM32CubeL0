@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/RCC/RCC_OutputSystemClockOnMCO/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RCC example.
   ******************************************************************************
   *
@@ -65,10 +65,10 @@ When user press User push-button, a LED toggle is done to indicate a change in M
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect the MCO pin to an oscilloscope to monitor the different waveforms:
       - PA.08: connected to pin 23 of CN10 connector  
 

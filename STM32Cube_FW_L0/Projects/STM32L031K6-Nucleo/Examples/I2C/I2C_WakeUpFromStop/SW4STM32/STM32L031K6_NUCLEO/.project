@@ -65,17 +65,21 @@
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c</location>
 		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_pwr_ex.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c</location>
+		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.c</location>
 		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_i2c.c</name>
-			<type>1</type>
-			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c.c</location>
-		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_pwr.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_i2c.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c.c</location>
 		</link><link>
 			<name>Example/User/stm32l0xx_hal_msp.c</name>
 			<type>1</type>
@@ -97,6 +101,10 @@
 			<type>1</type>
 			<location>PARENT-2-PROJECT_LOC/Src/main.c</location>
 		</link>
-		
+		<link>
+			<name />
+			<type />
+			<location />
+		</link>
 	</linkedResources>
 </projectDescription>

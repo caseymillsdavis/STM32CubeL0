@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_MIX/PWR/PWR_STOP/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR_STOP example.
   ******************************************************************************
   *
@@ -92,11 +92,11 @@ These steps are repeated in an infinite loop.
   - This example runs on STM32L0xx devices
     
 
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L073-Nucleo Rev C set-up:
+  - STM32L073RZ-Nucleo Rev C set-up:
     - LED2 connected to PA.05 pin
     - Put a wire between PA.00 (connected to pin 28 on CN7 connector) and 
     3.3V pin (pin 5 on CN7) to generate a rising edge on PA.00.

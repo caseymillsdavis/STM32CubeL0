@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_TwoBoards_ComDMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART Two Boards Communication DMA example.
   ******************************************************************************
   *
@@ -40,7 +40,7 @@
 This example describes an UART transmission (transmit/receive) in DMA mode
 between two boards.
 
-Board: STM32L011-Nucleo (embeds a STM32L011K4 device)
+Board: STM32L011K4-Nucleo (embeds a STM32L011K4 device)
 Tx Pin: PA.02 (Arduino A7)
 Rx Pin: PA.03 (Arduino A2)
    _________________________                       _________________________ 
@@ -78,7 +78,7 @@ then receives.
 The receiving then transmitting board needs to be loaded with an executable
 software obtained with TRANSMITTER_BOARD disabled. 
 
-STM32L011-Nucleo board LED is used to monitor the transfer status:
+STM32L011K4-Nucleo board LED is used to monitor the transfer status:
 - While board 1 is waiting for the user to put a jumper between PA.12 (Arduino D2) and GND,
   its LED3 is blinking rapidly (100 ms period).
 - While board 2 is waiting for the message from board 1, its LED3 is emitting
@@ -129,11 +129,11 @@ position of the transmitted data.
 @par Hardware and Software environment 
 
   - This example runs on STM32L011xx devices.    
-  - This example has been tested with two STM32L011-Nucleo boards embedding
+  - This example has been tested with two STM32L011K4-Nucleo boards embedding
     a STM32L011K4 device and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L011-Nucleo set-up
+  - STM32L011K4-Nucleo set-up
     - Connect a wire between 1st board PA.02 (Arduino A7) pin (Uart Tx) and 2nd board PA.03 (Arduino A2) pin (Uart Rx)
     - Connect a wire between 1st board PA.03 (Arduino A2) pin (Uart Rx) and 2nd board PA.02 (Arduino A7) pin (Uart Tx)
     - Connect 1st board GND to 2nd Board GND    

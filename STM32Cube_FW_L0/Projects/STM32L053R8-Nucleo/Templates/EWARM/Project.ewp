@@ -1052,6 +1052,9 @@
         <name>$PROJ_DIR$\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_pcd.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_pcd_ex.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_pwr.c</name>
       </file>
       <file>

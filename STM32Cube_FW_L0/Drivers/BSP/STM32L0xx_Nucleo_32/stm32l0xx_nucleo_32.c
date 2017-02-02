@@ -2,15 +2,15 @@
   ******************************************************************************
   * @file    stm32l0xx_nucleo_32.c
   * @author  MCD Application Team
-  * @version V1.0.1
-  * @date    16-October-2015
+  * @version V1.0.2
+  * @date    25-November-2016
   * @brief   This file provides set of firmware functions to manage:
   *          - LEDs and push-button available on STM32L0XX-Nucleo Kit 
   *            from STMicroelectronics
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -44,34 +44,22 @@
   * @{
   */ 
 
-/** @addtogroup STM32L0XX_NUCLEO_32
-  * @{
-  */   
-    
-/** @addtogroup STM32L0XX_NUCLEO_32_LOW_LEVEL 
+/** @addtogroup STM32L0XX_NUCLEO_32 NUCLEO 32
   * @brief This file provides set of firmware functions to manage Leds and push-button
   *        available on STM32L0XX-Nucleo Kit from STMicroelectronics.
   * @{
   */ 
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Private_TypesDefinitions 
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Private_Defines 
+/** @defgroup STM32L0XX_NUCLEO_32_Private_Defines Private Defines
   * @{
   */ 
 
 /**
-  * @brief STM32L0XX NUCLEO BSP Driver version number V1.0.1
+  * @brief STM32L0XX NUCLEO BSP Driver version number V1.0.2
   */
 #define __STM32L0XX_NUCLEO_32_BSP_VERSION_MAIN   (0x01) /*!< [31:24] main version */
 #define __STM32L0XX_NUCLEO_32_BSP_VERSION_SUB1   (0x00) /*!< [23:16] sub1 version */
-#define __STM32L0XX_NUCLEO_32_BSP_VERSION_SUB2   (0x01) /*!< [15:8]  sub2 version */
+#define __STM32L0XX_NUCLEO_32_BSP_VERSION_SUB2   (0x02) /*!< [15:8]  sub2 version */
 #define __STM32L0XX_NUCLEO_32_BSP_VERSION_RC     (0x00) /*!< [7:0]  release candidate */
 #define __STM32L0XX_NUCLEO_32_BSP_VERSION         ((__STM32L0XX_NUCLEO_32_BSP_VERSION_MAIN << 24)\
                                              |(__STM32L0XX_NUCLEO_32_BSP_VERSION_SUB1 << 16)\
@@ -88,19 +76,11 @@
   * @}
   */ 
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Private_Macros
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Private_Variables
+/** @defgroup STM32L0XX_NUCLEO_32_Private_Variables Private Variables
   * @{
   */ 
 GPIO_TypeDef* LED_PORT[LEDn] = {LED3_GPIO_PORT};
 const uint16_t LED_PIN[LEDn] = {LED3_PIN};
-                                
 
 /**
  * @brief BUS variables
@@ -124,7 +104,7 @@ static ADC_ChannelConfTypeDef sConfig;
   * @}
   */ 
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Private_FunctionPrototypes
+/** @defgroup STM32L0XX_NUCLEO_32_Private_Function_Prototypes Private Function Prototypes
   * @{
   */ 
 
@@ -159,13 +139,12 @@ static void               ADCx_MspInit(ADC_HandleTypeDef *hadc);
   * @}
   */ 
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Private_Functions
+/** @defgroup STM32L0XX_NUCLEO_32_Private_Functions Private Functions
   * @{
   */ 
 
 /**
   * @brief  This method returns the STM32L0XX NUCLEO BSP Driver revision
-  * @param  None
   * @retval version : 0xXYZR (8bits for each decimal, R for RC)
   */
 uint32_t BSP_GetVersion(void)
@@ -241,7 +220,6 @@ void BSP_LED_Toggle(Led_TypeDef Led)
 
 /**
   * @brief I2C Bus initialization
-  * @param None
   * @retval None
   */
 void I2C1_Init(void)
@@ -371,7 +349,6 @@ HAL_StatusTypeDef I2C1_WriteBuffer(uint16_t Addr, uint8_t Reg, uint16_t RegSize,
 
 /**
   * @brief  Manages error callback by re-initializing I2C.
-  * @param  None
   * @retval None
   */
 void I2C1_Error(void)
@@ -427,7 +404,7 @@ void I2C1_MspInit(I2C_HandleTypeDef *hi2c)
 #ifdef HAL_SPI_MODULE_ENABLED
 /**
   * @brief  Initializes SPI MSP.
-  * @param  None
+  * @param  hspi: SPI handle
   * @retval None
   */
 static void SPIx_MspInit(SPI_HandleTypeDef *hspi)
@@ -463,7 +440,6 @@ static void SPIx_MspInit(SPI_HandleTypeDef *hspi)
 
 /**
   * @brief  Initializes SPI HAL.
-  * @param  None
   * @retval None
   */
 static void SPIx_Init(void)
@@ -499,7 +475,6 @@ static void SPIx_Init(void)
 
 /**
   * @brief  SPI Read 4 bytes from device
-  * @param  None
   * @retval Read data
 */
 static uint32_t SPIx_Read(void)
@@ -541,7 +516,6 @@ static void SPIx_Write(uint8_t Value)
 
 /**
   * @brief  SPI error treatment function
-  * @param  None
   * @retval None
   */
 static void SPIx_Error (void)
@@ -561,7 +535,6 @@ static void SPIx_Error (void)
 /**
   * @brief  Initializes the SD Card and put it into StandBy State (Ready for 
   *         data transfer).
-  * @param  None
   * @retval None
   */
 void SD_IO_Init(void)
@@ -608,7 +581,6 @@ void SD_IO_WriteByte(uint8_t Data)
 
 /**
   * @brief  Reads a byte from the SD.
-  * @param  None
   * @retval The received byte.
   */
 uint8_t SD_IO_ReadByte(void)
@@ -689,7 +661,6 @@ HAL_StatusTypeDef SD_IO_WaitResponse(uint8_t Response)
 
 /**
   * @brief  Sends dummy byte with CS High
-  * @param  None
   * @retval None
   */
 void SD_IO_WriteDummy(void)
@@ -704,7 +675,6 @@ void SD_IO_WriteDummy(void)
 /********************************* LINK LCD ***********************************/
 /**
   * @brief  Initializes the LCD
-  * @param  None
   * @retval None
   */
 void LCD_IO_Init(void)
@@ -840,7 +810,7 @@ void LCD_Delay(uint32_t Delay)
 #ifdef HAL_ADC_MODULE_ENABLED
 /**
   * @brief  Initializes ADC MSP.
-  * @param  None
+  * @param  hadc: ADC peripheral
   * @retval None
   */
 static void ADCx_MspInit(ADC_HandleTypeDef *hadc)
@@ -863,7 +833,6 @@ static void ADCx_MspInit(ADC_HandleTypeDef *hadc)
 
 /**
   * @brief  Initializes ADC HAL.
-  * @param  None
   * @retval None
   */
 static void ADCx_Init(void)
@@ -895,7 +864,6 @@ static void ADCx_Init(void)
 /**
   * @brief  Configures joystick available on adafruit 1.8" TFT shield 
   *         managed through ADC to detect motion.
-  * @param  None
   * @retval Joystickstatus (0=> success, 1=> fail) 
   */
 uint8_t BSP_JOY_Init(void)
@@ -989,8 +957,4 @@ JOYState_TypeDef BSP_JOY_GetState(void)
   * @}
   */    
 
-/**
-  * @}
-  */ 
-    
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

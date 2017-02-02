@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/TIM/TIM_PWMOutput/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM_PWMOutput example.
   ******************************************************************************
   *
@@ -67,13 +67,16 @@ Generally speaking this duty cycle is calculated as follows:
 Duty cycle = (CCR1 / ARR) * 100
 
 The timer output channel is mapped on the pin PA.05 (connected to LED2 on board
-STM32L073-Nucleo Rev C). Thus LED2 status (on/off) mirrors the timer output
+STM32L073RZ-Nucleo Rev C). Thus LED2 status (on/off) mirrors the timer output
 level (active v.s. inactive).
 
 User push-button can be used to change the duty cycle from 0% up to 100% by
 steps of 10%. Duty cycle is periodically measured. It can be observed through
 the debugger by watching the variable uwMeasuredDutyCycle.
 
+@note The LED2 is not toggling. In fact, if the dutycycle is 0% so the LED2 is OFF. When pushing 
+successively the user button, the LED2 is ON and its luminosity rises as the dutycycle value keep 
+increasing.
 
 @par Directory contents 
 
@@ -89,7 +92,7 @@ the debugger by watching the variable uwMeasuredDutyCycle.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

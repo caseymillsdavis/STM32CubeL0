@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    GPIO/GPIO_IOToggle_MaxFrequency/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the GPIO IO Toggle example.
   ******************************************************************************
   *
@@ -69,7 +69,7 @@ In this example, HCLK is configured at 32 MHz.
 
   - This example runs on STM32L031xx devices.
     
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.
 
 

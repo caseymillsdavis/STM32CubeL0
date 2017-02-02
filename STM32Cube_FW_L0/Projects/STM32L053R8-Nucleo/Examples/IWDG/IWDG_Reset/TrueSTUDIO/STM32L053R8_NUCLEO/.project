@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?><projectDescription>
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
 	<name>STM32L053R8_NUCLEO</name>
-	<comment/>
+	<comment />
 	<projects>
 	</projects>
 	<buildSpec>
@@ -14,7 +15,7 @@
 				</dictionary>
 				<dictionary>
 					<key>?name?</key>
-					<value/>
+					<value />
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.append_environment</key>
@@ -22,7 +23,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value/>
+					<value />
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>
@@ -71,16 +72,16 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name/>
-			<type/>
-			<locationURI/>
+			<name />
+			<type />
+			<location />
 		</link>
 	<link>
 			<name>Doc</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
-			<name>Drivers/BSP/STM32L053R8_NUCLEO</name>
+			<name>Drivers/STM32L0xx_HAL_Driver</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
@@ -92,7 +93,7 @@
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver</name>
+			<name>Example/User</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
@@ -100,108 +101,84 @@
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
-			<name>Example/TrueSTUDIO</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link><link>
-			<name>Example/User</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link><link>
 			<name>Example</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
-			<name>Doc/readme.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/readme.txt</locationURI>
+			<name>Example/TrueSTUDIO</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
-			<name>Drivers/BSP/STM32L053R8_NUCLEO/stm32l0xx_nucleo.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/BSP/STM32L0xx_Nucleo/stm32l0xx_nucleo.c</locationURI>
-		</link><link>
-			<name>Drivers/CMSIS/system_stm32l0xx.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Src/system_stm32l0xx.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_adc.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_adc.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_adc_ex.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_adc_ex.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_cortex.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_dma.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_dma.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_flash.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_flash_ex.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ex.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_gpio.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_gpio.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_iwdg.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_iwdg.c</locationURI>
+			<name>Drivers/BSP/STM32L0xx_Nucleo</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_pwr.c</name>
 			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr.c</locationURI>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr.c</location>
 		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_pwr_ex.c</name>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_iwdg.c</name>
 			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c</locationURI>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_iwdg.c</location>
 		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_rcc.c</name>
+			<name>Doc/readme.txt</name>
 			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_rcc_ex.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_spi.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_spi.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim.c</locationURI>
-		</link><link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim_ex.c</name>
-			<type>1</type>
-			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c</locationURI>
-		</link><link>
-			<name>Example/TrueSTUDIO/startup_stm32l053xx.s</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/startup_stm32l053xx.s</locationURI>
-		</link><link>
-			<name>Example/User/main.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Src/main.c</locationURI>
-		</link><link>
-			<name>Example/User/stm32l0xx_hal_msp.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Src/stm32l0xx_hal_msp.c</locationURI>
+			<location>PARENT-2-PROJECT_LOC/readme.txt</location>
 		</link><link>
 			<name>Example/User/stm32l0xx_it.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Src/stm32l0xx_it.c</locationURI>
+			<location>PARENT-2-PROJECT_LOC/Src/stm32l0xx_it.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_cortex.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c</location>
+		</link><link>
+			<name>Example/User/stm32l0xx_hal_msp.c</name>
+			<type>1</type>
+			<location>PARENT-2-PROJECT_LOC/Src/stm32l0xx_hal_msp.c</location>
+		</link><link>
+			<name>Example/User/main.c</name>
+			<type>1</type>
+			<location>PARENT-2-PROJECT_LOC/Src/main.c</location>
+		</link><link>
+			<name>Example/TrueSTUDIO/startup_stm32l053xx.s</name>
+			<type>1</type>
+			<location>PARENT-1-PROJECT_LOC/startup_stm32l053xx.s</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim_ex.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_gpio.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_gpio.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_rcc_ex.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_dma.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_dma.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c</location>
+		</link><link>
+			<name>Drivers/CMSIS/system_stm32l0xx.c</name>
+			<type>1</type>
+			<location>PARENT-2-PROJECT_LOC/Src/system_stm32l0xx.c</location>
+		</link><link>
+			<name>Drivers/BSP/STM32L0xx_Nucleo/stm32l0xx_nucleo.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/BSP/STM32L0xx_Nucleo/stm32l0xx_nucleo.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_rcc.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c</location>
+		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim.c</location>
 		</link></linkedResources>
 </projectDescription>

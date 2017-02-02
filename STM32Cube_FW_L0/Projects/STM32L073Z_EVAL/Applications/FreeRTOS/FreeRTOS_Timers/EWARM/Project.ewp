@@ -970,6 +970,12 @@
         <name>$PROJ_DIR$\..\Src\stm32l0xx_it.c</name>
       </file>
     </group>
+    <group>
+      <name>EWARM</name>
+      <file>
+        <name>$PROJ_DIR$\startup_stm32l073xx.s</name>
+      </file>
+    </group>
   </group>
   <group>
     <name>Drivers</name>
@@ -1040,15 +1046,6 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\Third_Party\FreeRTOS\Source\timers.c</name>
-      </file>
-    </group>
-  </group>
-  <group>
-    <name>Example</name>
-    <group>
-      <name>EWARM</name>
-      <file>
-        <name>$PROJ_DIR$\startup_stm32l073xx.s</name>
       </file>
     </group>
   </group>

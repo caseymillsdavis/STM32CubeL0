@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_HyperTerminal_DMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART Hyperterminal example.
   ******************************************************************************
   *
@@ -40,7 +40,7 @@
 This example describes an UART transmission (transmit/receive) in DMA mode
 between a board and an Hyperterminal PC application.
 
-Board: STM32L011-Nucleo
+Board: STM32L011K4-Nucleo
 Tx Pin: PA.2 (Arduino A7)
 Rx Pin: PA.3 (Arduino A2)
    _________________________ 
@@ -124,10 +124,10 @@ position of the transmitted data.
 
   - This example runs on STM32L011xx devices.
     
-  - This example has been tested with STM32L011-Nucleo board and can be
+  - This example has been tested with STM32L011K4-Nucleo board and can be
     easily tailored to any other supported device and development board.    
 
-  - STM32L011-Nucleo Set-up
+  - STM32L011K4-Nucleo Set-up
      - Connect USART2 TX (PA.2 (Arduino A7)) to RX pin of PC serial port (or USB to UART adapter)
        and USART2 RX (PA.3 (Arduino A2)) to TX pin of PC serial port (or USB to UART adapter).
 

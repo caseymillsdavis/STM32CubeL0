@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RTC/RTC_LSI/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC prescaler adjustment with LSI Measurements example.
   ******************************************************************************
   *
@@ -97,10 +97,10 @@ Procedure:
 
   - This example runs on STM32L011xx devices.
     
-  - This example has been tested with STM32L011-Nucleo  board and can be
+  - This example has been tested with STM32L011K4-Nucleo  board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L011-Nucleo Set-up
+  - STM32L011K4-Nucleo Set-up
     - Use LED3 connected to PB.03 pin (pin30 in CN10 connector).
     - Use the PA.12 (Arduino D2) connected to 3.3V or GND.
 

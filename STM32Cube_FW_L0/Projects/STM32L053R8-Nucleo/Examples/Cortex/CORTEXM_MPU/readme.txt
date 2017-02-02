@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CORTEXM/CORTEXM_MPU/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the CortexM MPU example.
   ******************************************************************************
   *
@@ -72,7 +72,7 @@ the following line "PrivilegedReadOnlyArray[0] = 'e';" in the "stm32_mpu.c" file
 
   - This example runs on STM32L053xx devices.
     
-  - This example has been tested with STM32L053-Nucleo Rev C board and can be
+  - This example has been tested with STM32L053R8-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.      
 
 @par How to use it ? 

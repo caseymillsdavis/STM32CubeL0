@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    WWDG/WWDG_Example/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Window Watchdog example.
   ******************************************************************************
   *
@@ -35,11 +35,11 @@
   ******************************************************************************
   @endverbatim
 
-@par Example Description 
+@par Example Description
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure WWDG counter update at regular period and simulate a software fault 
-generating an MCU WWDG reset on expiry of a programmed time period.
+This example guides you through the different configuration steps by means of the 
+HAL API to perform periodic WWDG counter update and simulate a software fault that 
+generates an MCU WWDG reset when a predefined time period has elapsed.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -47,28 +47,28 @@ Then the SystemClock_Config() function is used to configure the system
 clock (SYSCLK) to run at 2 MHz.
 
 The WWDG peripheral configuration is ensured by the HAL_WWDG_Init() function.
-This later is calling the HAL_WWDG_MspInit()function which core is implementing
+This later is calling the HAL_WWDG_MspInit() function which core is implementing
 the configuration of the needed WWDG resources according to the used hardware (CLOCK, 
 GPIO, DMA and NVIC). You may update this function to change WWDG configuration.
 
-The WWDG timeout is set to 998.4 ms and the refresh window is set to 80. 
-The WWDG counter is refreshed each 867ms in the main program infinite loop to 
-prevent a WWDG reset.
-LED2 is also toggled each 867ms indicating that the program is running.
+The WWDG timeout is set, through counter value, to 998.4 ms. 
+The refresh window is set in order to make user wait 733.2 ms after a wadchdog refresh, 
+before writing again counter. Hence the WWDG counter is refreshed each (733.2 + 1) ms in the 
+main program infinite loop to prevent a WWDG reset. 
+LED2 is toggling at same frequency, indicating that the program is running.
 
 An EXTI Line is connected to a GPIO pin, and configured to generate an interrupt
 on the rising edge of the signal.
 
 The EXTI Line is used to simulate a software failure: once the EXTI Line event 
 occurs by pressing the Wkup/Tamper push-button (PC.13), the corresponding interrupt is served.
-  
+
 In the ISR, a write to invalid address generates a Hardfault exception containing
 an infinite loop and preventing to return to main program (the WWDG counter is 
 not refreshed).
+As a result, when the WWDG counter falls to 0x3F, WWDG reset occurs.
 
-As a result, when the WWDG counter falls to 63, the WWDG reset occurs.
-
-If the WWDG reset is generated, after the system resumes from reset, LED1 is turned ON.
+If the WWDG reset is generated, after the system resumes from reset, LED1 is turned ON for 4 seconds.
 
 If the EXTI Line event does not occur, the WWDG counter is indefinitely refreshed
 in the main program infinite loop, and there is no WWDG reset.

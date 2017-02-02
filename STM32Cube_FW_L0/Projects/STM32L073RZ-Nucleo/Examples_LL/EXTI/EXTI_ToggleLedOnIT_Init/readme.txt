@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/EXTI/EXTI_ToggleLedOnIT_Init/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the EXTI example.
   ******************************************************************************
   *
@@ -39,7 +39,7 @@
 
 This example describes how to configure the EXTI and use 
 GPIOs using the STM32L0xx LL API to toggles the available 
-users Leds on the board when User button is pressed. Peripheral initialization 
+users LEDs on the board when User button is pressed. Peripheral initialization 
 done using LL initialization function to demonstrate LL init usage.
 
 In this example, one EXTI line (External lines 4 to 15) is configured to generate
@@ -51,7 +51,7 @@ In this example:
     - External lines 4 to 15 is connected to PC.13 pin
       - when falling edge is detected on External lines 4 to 15 by pressing User push-button, LED2 toggles
 
-On STM32L073-Nucleo Rev C:
+On STM32L073RZ-Nucleo Rev C:
     - External lines 4 to 15 is connected to User push-button
 
 @par Directory contents 
@@ -68,7 +68,7 @@ On STM32L073-Nucleo Rev C:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

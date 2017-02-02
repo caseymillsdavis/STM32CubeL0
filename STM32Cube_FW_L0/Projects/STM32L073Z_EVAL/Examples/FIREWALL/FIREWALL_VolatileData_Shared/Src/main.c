@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    FIREWALL/FIREWALL_VolatileData_Shared/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx FIREWALL HAL API 
   *          to  protect a code segment, a non-volatile segment and a volatile 
   *          data segment. 

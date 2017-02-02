@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_LPSLEEP/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Low Power Sleep Mode example.
   ******************************************************************************
   *
@@ -111,11 +111,11 @@ This behaviour is repeated in an infinite loop.
   - This example runs on STM32L07xx and STM32L08xx devices
     
       
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C
     evaluation board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Use the User push-button connected to pin PC.13 (External lines 4 to 15)
     - Connect an amperemeter to JP6 to measure the IDD current
 

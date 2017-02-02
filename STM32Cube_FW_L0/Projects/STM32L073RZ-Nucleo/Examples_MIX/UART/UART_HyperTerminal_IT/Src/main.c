@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    UART/UART_HyperTerminal_IT/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use UART HAL and LL APIs to transmit
   *          and receive a data buffer with a communication process based on IT;
   *          The communication is done with the Hyperterminal PC application;

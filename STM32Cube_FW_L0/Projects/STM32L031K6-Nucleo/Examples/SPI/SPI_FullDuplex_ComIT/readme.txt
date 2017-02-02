@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SPI/SPI_FullDuplex_ComIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI Full Duplex IT example.
   ******************************************************************************
   *
@@ -126,10 +126,10 @@ STM32 board's LEDs can be used to monitor the transfer status:
 
   - This example runs on STM32l031xx devices.
 
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
     - Connect Master board PA5 to Slave Board PA5 (Arduino A4)
     - Connect Master board PA6 to Slave Board PA6 (Arduino A5)
     - Connect Master board PA7 to Slave Board PA7 (Arduino A6)

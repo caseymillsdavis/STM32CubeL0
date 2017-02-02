@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    COMP/COMP_PWMSignalControl/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the COMP PWM Signal Control example.
   ******************************************************************************
   *
@@ -58,14 +58,14 @@ at high level.
 
 
 Board settings:
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
       @note This example run in stand alone mode.
     - Set voltage level on pin PB.05 (comparator input): above or below Vrefint (1.22V).
       Note: to avoid the need of a power supply, possibility to connect a wire between this pin to a pin of the board: Vdda pin (3.3V) or ground pin (0V).
     - Watch waveform on pin PB.14 (timer PWM output) with an oscilloscope, or watch average value mith a multimeter (Vdda=3.3v and duty cycle 25% should give a=n average voltage of 0.825V)
 
     
-STM32L073-Nucleo Rev C board's LED is be used to monitor the program execution status:
+STM32L073RZ-Nucleo Rev C board's LED is be used to monitor the program execution status:
  - Error: In case of error, LED2 is toggling at a frequency of 1Hz.
  
 
@@ -99,7 +99,7 @@ calibrated or use an external clock.
   - This example runs on STM32L073xx devices.
   - In this example, the clock is set to 2 MHz.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
     
   

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    COMP/COMP_AnalogWatchdog/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the COMP 
   *          peripheral in window mode to make an analog watchdog.
   ******************************************************************************
@@ -95,7 +95,7 @@ int main(void)
   *                          Common Configuration Routines                       *
   *******************************************************************************/  
  
-  /******* Initialize LEDs available on STM32L073-Nucleo Rev A board ******************/
+  /******* Initialize LEDs available on STM32L073-Nucleo Rev C board ******************/
   
   BSP_LED_Init(LED2);
   
@@ -105,14 +105,14 @@ int main(void)
   
   /*## Enable peripherals ####################################################*/
   /* Start COMP1 */
-  if(HAL_COMP_Start_IT(&Comp1Handle) != HAL_OK)
+  if(HAL_COMP_Start(&Comp1Handle) != HAL_OK)
   {
     /* Initialization Error */
     Error_Handler(); 
   }
   
   /* Start COMP2 */
-  if(HAL_COMP_Start_IT(&Comp2Handle) != HAL_OK)
+  if(HAL_COMP_Start(&Comp2Handle) != HAL_OK)
   {
     /* Initialization Error */
     Error_Handler(); 
@@ -229,7 +229,7 @@ static void COMP_Config(void)
   Comp2Handle.Init.NonInvertingInput     = COMP_INPUT_PLUS_IO2;
   Comp2Handle.Init.LPTIMConnection       = COMP_LPTIMCONNECTION_DISABLED;
   Comp2Handle.Init.OutputPol             = COMP_OUTPUTPOL_NONINVERTED;
-  Comp2Handle.Init.Mode                  = COMP_MODE_LOWSPEED;
+  Comp2Handle.Init.Mode                  = COMP_POWERMODE_ULTRALOWPOWER;
   Comp2Handle.Init.WindowMode            = COMP_WINDOWMODE_COMP1_INPUT_PLUS_COMMON;
   Comp2Handle.Init.TriggerMode           = COMP_TRIGGERMODE_IT_RISING_FALLING;
 

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l152c_discovery.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This file contains definitions for STM32L152C_DISCOVERY's LEDs and 
   *          push-buttons hardware resources.
   ******************************************************************************

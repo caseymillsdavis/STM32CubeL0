@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_MIX/ADC/ADC_SingleConversion_TriggerSW_IT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the ADC_SingleConversion_TriggerSW_IT example.
   ******************************************************************************
   *
@@ -42,7 +42,7 @@ Example using programming model: interrupt
 (for programming models polling or DMA transfer, refer to
 other examples); 
 This example is based on the STM32L0xx ADC HAL & LL API
-(LL API usage for performance improvement).
+(LL API used for performance improvement).
 
 Example configuration:
 ADC is configured to convert a single channel, in single conversion mode,
@@ -79,7 +79,8 @@ for test (located in main.h):
    so user has just to connect a wire between DAC channel output and ADC input to run this example.
    If ADC channel and DAC channel are selected on the same GPIO, then no external wire is required.
    Waveform generation: waveform circular, shape of ramp: Voltage is increasing at each press on push button, 
-                        from 0 to maximum range (Vdda) in 4 steps, then starting back from 0V.
+                        from 0V to maximum range (Vdda) in 5 steps (with vdda=3.3V: 0V, 0.8V, 1.65V, 2.5V, 3.3V),
+                        then starting back from 0V.
    and follows circular cycles: At clicks counter maximum value reached, counter is set back to 0.
  - If literal "WAVEFORM_GENERATION" is not defined: no voltage is generated, user has
    to connect a voltage source to the selected ADC channel input to run this example.
@@ -98,7 +99,7 @@ for test (located in main.h):
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

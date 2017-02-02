@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_STOP_RTC/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Power Stop Mode using RTC example.
   ******************************************************************************
   *
@@ -101,11 +101,11 @@ The above scenario is repeated in an infinite loop.
 
   - This example runs on STM32L031xx and STM32L041xx devices
       
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo
     evaluation board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L031-Nucleo Set-up :
+  - STM32L031K6-Nucleo Set-up :
     - Connect an ampere-meter to JP1 instead of the jumper to measure the IDD current.
 
 @par How to use it ? 

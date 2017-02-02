@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    WWDG/WWDG_Example/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
@@ -175,9 +175,8 @@ void EXTI4_15_IRQHandler(void)
   /* As the following address is invalid (not mapped), a Hardfault exception
   will be generated with an infinite loop and when the WWDG counter falls to 63
   the WWDG reset occurs */
-  *(__IO uint32_t *) 0xA0001000 = 0xFF;
+  *(__IO uint32_t *) 0xA0003000 = 0xFF;
 }
-
 /**
   * @}
   */

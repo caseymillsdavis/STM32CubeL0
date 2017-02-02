@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    LPTIM/LPTIM_Timeout/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to implement a low power timeout to
   *          wake-up the system using the LPTIMER, through the STM32L0xx HAL API.
   ******************************************************************************

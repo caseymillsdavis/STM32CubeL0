@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l073z_eval_eeprom.c
   * @author  MCD Application Team
-  * @version V2.0.0
-  * @date    16-November-2015
+  * @version V2.0.1
+  * @date    25-November-2016
   * @brief   This file provides a set of functions needed to manage a M24LR64
   *          I2C EEPROM memory.
   *          
@@ -45,7 +45,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:

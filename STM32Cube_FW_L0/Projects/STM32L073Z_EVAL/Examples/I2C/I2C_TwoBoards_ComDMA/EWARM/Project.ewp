@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-
 <project>
   <fileVersion>2</fileVersion>
   <configuration>
@@ -29,7 +28,7 @@
         </option>
         <option>
           <name>Variant</name>
-          <version>21</version>
+          <version>20</version>
           <state>35</state>
         </option>
         <option>
@@ -87,7 +86,7 @@
         </option>
         <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>7.30.1.7765</state>
+          <state>7.10.3.6927</state>
         </option>
         <option>
           <name>GeneralEnableMisra</name>
@@ -137,12 +136,12 @@
         </option>
         <option>
           <name>GFPUCoreSlave</name>
-          <version>21</version>
+          <version>20</version>
           <state>35</state>
         </option>
         <option>
           <name>GBECoreSlave</name>
-          <version>21</version>
+          <version>20</version>
           <state>35</state>
         </option>
         <option>
@@ -957,17 +956,35 @@
     </file>
   </group>
   <group>
+    <name>Example</name>
+    <group>
+      <name>User</name>
+      <file>
+        <name>$PROJ_DIR$\..\Src\main.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Src\stm32l0xx_hal_msp.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Src\stm32l0xx_it.c</name>
+      </file>
+    </group>
+    <group>
+      <name>EWARM</name>
+      <file>
+        <name>$PROJ_DIR$\startup_stm32l073xx.s</name>
+      </file>
+    </group>
+  </group>
+  <group>
     <name>Drivers</name>
     <group>
       <name>BSP</name>
       <group>
         <name>Components</name>
-        <group>
-          <name>mfxstm32l152</name>
-          <file>
-            <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\Components\mfxstm32l152\mfxstm32l152.c</name>
-          </file>
-        </group>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\Components\mfxstm32l152\mfxstm32l152.c</name>
+        </file>
       </group>
       <group>
         <name>STM32L073Z_EVAL</name>
@@ -978,12 +995,6 @@
           <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\STM32L073Z_EVAL\stm32l073z_eval_io.c</name>
         </file>
       </group>
-    </group>
-    <group>
-      <name>CMSIS</name>
-      <file>
-        <name>$PROJ_DIR$\..\Src\system_stm32l0xx.c</name>
-      </file>
     </group>
     <group>
       <name>STM32L0xx_HAL_Driver</name>
@@ -1003,9 +1014,6 @@
         <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_i2c.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_i2c_ex.c</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_rcc.c</name>
       </file>
       <file>
@@ -1015,31 +1023,20 @@
         <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_uart.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_rcc_ex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_i2c_ex.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_uart_ex.c</name>
       </file>
     </group>
-  </group>
-  <group>
-    <name>Example</name>
     <group>
-      <name>EWARM</name>
+      <name>CMSIS</name>
       <file>
-        <name>$PROJ_DIR$\startup_stm32l073xx.s</name>
-      </file>
-    </group>
-    <group>
-      <name>User</name>
-      <file>
-        <name>$PROJ_DIR$\..\Src\main.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\Src\stm32l0xx_hal_msp.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\Src\stm32l0xx_it.c</name>
+        <name>$PROJ_DIR$\..\Src\system_stm32l0xx.c</name>
       </file>
     </group>
   </group>
 </project>
-
-

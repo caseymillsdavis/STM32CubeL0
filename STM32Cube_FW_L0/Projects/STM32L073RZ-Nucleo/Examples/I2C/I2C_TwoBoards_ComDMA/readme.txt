@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_TwoBoards_ComDMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C Two Boards Communication DMA example.
   ******************************************************************************
   *
@@ -37,30 +37,28 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure I2C Data buffer transmission and reception with DMA.
-The communication is done with 2 Boards through I2C.
+This example describes how to perform I2C data buffer transmission/reception 
+between two boards, via DMA.
 
-   _________________________                        _________________________
-  |           ______________|                      |______________           |
-  |          | I2C1         |                      |          I2C1|          |
-  |          |              |                      |              |          |
-  |          |      SCL(PB8)|______________________|(PB8)SCL      |          |
-  |          |              |                      | Right Arduino connector |
-  |          |              |                      | D15          |          |
-  |          |              |                      |              |          |
-  |          |      SDA(PB9)|______________________|(PB9)SDA      |          |
-  |          |              |                      | Right Arduino connector |
-  |          |______________|                      | D14          |          |
-  |      __                 |                      |_______________          |
-  |     |__|                |                      |            |__|         |
-  |     USER             GND|______________________|GND         USER         |
-  |                         |                      |                         |
-  |_TARGET_STM32L073Z_NUCLEO|                      |_TARGET_STM32L073Z_NUCLEO|
+Board: STM32L073RZ-Nucleo Rev C (embeds a STM32L073RZ device)
+SCL Pin: PB8 (CN10, pin 3 (Arduino D15))
+SDA Pin: PB9 (CN10, pin 5 (Arduino D14))
 
-PB8 is connected to pin 3 in CN10 
-PB9 is connected to pin 5 in CN10 
-  
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
+
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
 Then the SystemClock_Config() function is used to configure the system
@@ -88,9 +86,9 @@ If the Slave board is used the "#define MASTER_BOARD" must be commented.
 
 For this example the aTxBuffer is predefined and the aRxBuffer size is same as aTxBuffer.
 
-In a first step after the user press the User push-button on the Master Board, I2C Master
-starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_DMA() to 
-I2C Slave which receives aRxBuffer through HAL_I2C_Slave_Receive_DMA(). 
+In a first step after the user press the User push-button on the Master Board,
+I2C Master starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_DMA()
+to I2C Slave which receives aRxBuffer through HAL_I2C_Slave_Receive_DMA(). 
 The second step starts when the user press the User push-button on the Master Board,
 the I2C Slave sends aTxBuffer through HAL_I2C_Slave_Transmit_DMA()
 to the I2C Master which receives aRxBuffer through HAL_I2C_Master_Receive_DMA().
@@ -99,7 +97,7 @@ result.
 Finally, aTxBuffer and aRxBuffer are compared through Buffercmp() in order to 
 check buffers correctness.  
 
-STM32L073-Nucleo Rev C's LED can be used to monitor the transfer status:
+STM32L073RZ-Nucleo Rev C's LED can be used to monitor the transfer status:
  - LED2 is ON when the transmission process is complete.
  - LED2 is OFF when the reception process is complete.
  - LED2 is slowly blinking (1 sec. period) in case of error in initialization or 
@@ -107,10 +105,6 @@ transmission/reception process
 
 @note I2Cx instance used and associated resources can be updated in "main.h"
 file depending hardware configuration used.
-
- @note Timeout is set to 10 Seconds which means that if no communication occurs 
-       during 10 Seconds, a Timeout Error will be generated.
-
 
 @note Care must be taken when using HAL_Delay(), this function provides accurate delay (in milliseconds)
       based on variable incremented in SysTick ISR. This implies that if HAL_Delay() is called from
@@ -124,9 +118,9 @@ file depending hardware configuration used.
 @par Directory contents 
 
   - I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_hal_conf.h    HAL configuration file
-  - I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_it.h          DMA interrupt handlers header file
+  - I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_it.h          DMA and I2C interrupt handlers header file
   - I2C/I2C_TwoBoards_ComDMA/Inc/main.h                  Header for main.c module  
-  - I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_it.c          DMA interrupt handlers
+  - I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_it.c          DMA and I2C interrupt handlers
   - I2C/I2C_TwoBoards_ComDMA/Src/main.c                  Main program
   - I2C/I2C_TwoBoards_ComDMA/Src/system_stm32l0xx.c      STM32L0xx system source file
   - I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_hal_msp.c     HAL MSP file    
@@ -136,13 +130,13 @@ file depending hardware configuration used.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.    
 
-  -STM32L073-Nucleo Rev C Set-up
-    - Connect Master board PB8 (Arduino SCL/D15) to Slave Board PB8 (Arduino SCL/D15)
-    - Connect Master board PB9 (Arduino SDA) to Slave Board PB9 (Arduino SDA)
-    - Connect Master board GND to Slave Board GND
+  - STM32L073RZ-Nucleo Rev C Set-up
+    - Connect I2C_SCL line of Master board (PB8, CN10, pin 3 (Arduino D15)) to I2C_SCL line of Slave Board (PB8, CN10, pin 3 (Arduino D15)).
+    - Connect I2C_SDA line of Master board (PB9, CN10, pin 5 (Arduino D14)) to I2C_SDA line of Slave Board (PB9, CN10, pin 5 (Arduino D14)).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

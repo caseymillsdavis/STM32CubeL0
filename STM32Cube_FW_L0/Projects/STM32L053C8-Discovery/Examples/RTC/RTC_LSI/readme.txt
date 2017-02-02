@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RTC/RTC_LSI/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC prescaler adjustment with LSI Measurements example.
   ******************************************************************************
   *
@@ -81,18 +81,17 @@ procedure:
 
 @par Directory contents  
 
-  - RTC/RTC_LSI/Inc/stm32f0xx_conf.h         Library Configuration file
+  - RTC/RTC_LSI/Inc/stm32l0xx_conf.h         Library Configuration file
   - RTC/RTC_LSI/Inc/main.h                   header file for main.c
-  - RTC/RTC_LSI/Inc/stm32f0xx_it.h           Header for stm32l0xx_it.c
-  - RTC/RTC_LSI/Src/system_stm32f0xx.c       STM32L0xx system clock configuration file
-  - RTC/RTC_LSI/Src/stm32f0xx_it.c           Interrupt handlers
+  - RTC/RTC_LSI/Inc/stm32l0xx_it.h           Header for stm32l0xx_it.c
+  - RTC/RTC_LSI/Src/system_stm32l0xx.c       STM32L0xx system clock configuration file
+  - RTC/RTC_LSI/Src/stm32l0xx_it.c           Interrupt handlers
   - RTC/RTC_LSI/Src/main.c                   Main program
   - RTC/RTC_LSI/Src/stm32l0xx_hal_msp.c      HAL MSP module
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
     
   - This example has been tested with STM32L0538-DISCO RevB  board and can be
     easily tailored to any other supported device and development board.

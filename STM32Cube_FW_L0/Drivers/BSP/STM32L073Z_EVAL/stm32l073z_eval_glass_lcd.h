@@ -2,13 +2,13 @@
   ******************************************************************************
   * @file    STM32L073Z_eval_glass_lcd.h
   * @author  MCD Application Team
-  * @version V2.0.0
-  * @date    16-November-2015
+  * @version V2.0.1
+  * @date    25-November-2016
   * @brief   Header file for STM32L073Z_eval_glass_lcd.c module.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:

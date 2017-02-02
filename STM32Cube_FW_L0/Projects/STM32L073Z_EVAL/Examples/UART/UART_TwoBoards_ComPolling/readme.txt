@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_TwoBoards_ComPolling/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART Two Boards Communication Polling example.
   ******************************************************************************
   *
@@ -37,7 +37,7 @@
 
 @par Example Description 
 
-This example describes a UART transmission (transmit/receive) in polling mode
+This example describes an UART transmission (transmit/receive) in polling mode
 between two STM32L073Z-EVAL boards.
 
 Board: STM32L073Z-EVAL (embeds a STM32L073VZ device)

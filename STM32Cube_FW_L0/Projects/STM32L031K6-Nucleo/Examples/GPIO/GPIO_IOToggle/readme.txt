@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    GPIO/GPIO_IOToggle/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the GPIO IO Toggle example.
   ******************************************************************************
   *
@@ -40,7 +40,7 @@
 This example describes how to configure and use GPIOs through the STM32L0xx HAL API. 
 
 PB.03 IO (configured in output pushpull mode) toggles in a forever loop.
-On STM32L031-Nucleo board this IO is connected to LED3.
+On STM32L031K6-Nucleo board this IO is connected to LED3.
 
 In this example, HCLK is configured at 2 MHz.
 
@@ -67,7 +67,7 @@ In this example, HCLK is configured at 2 MHz.
 
   - This example runs on STM32L031xx devices.
     
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.
 
 

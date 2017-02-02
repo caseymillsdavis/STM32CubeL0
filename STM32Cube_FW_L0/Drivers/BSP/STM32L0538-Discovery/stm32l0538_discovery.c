@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32l0538_discovery.c
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    27-July-2015
+  * @version V1.2.2
+  * @date    25-November-2016
   * @brief   This file provides set of firmware functions to manage Leds and
   *          push-button available on STM32L0538-DISCO Kit from STMicroelectronics.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -65,11 +65,11 @@
   */
 
   /**
-  * @brief STM32L0538 DISCOVERY BSP Driver version number V1.2.1
+  * @brief STM32L0538 DISCOVERY BSP Driver version number V1.2.2
   */
 #define __STM32L0538_DISCO_BSP_VERSION_MAIN   (0x01) /*!< [31:24] main version */
 #define __STM32L0538_DISCO_BSP_VERSION_SUB1   (0x02) /*!< [23:16] sub1 version */
-#define __STM32L0538_DISCO_BSP_VERSION_SUB2   (0x01) /*!< [15:8]  sub2 version */
+#define __STM32L0538_DISCO_BSP_VERSION_SUB2   (0x02) /*!< [15:8]  sub2 version */
 #define __STM32L0538_DISCO_BSP_VERSION_RC     (0x00) /*!< [7:0]  release candidate */
 #define __STM32L0538_DISCO_BSP_VERSION        ((__STM32L0538_DISCO_BSP_VERSION_MAIN << 24)\
                                              |(__STM32L0538_DISCO_BSP_VERSION_SUB1 << 16)\

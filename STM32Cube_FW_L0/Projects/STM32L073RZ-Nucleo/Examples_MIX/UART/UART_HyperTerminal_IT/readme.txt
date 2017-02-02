@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_Hyperterminal_IT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART HAL/LL mixed Hyperterminal example.
   ******************************************************************************
   *
@@ -40,9 +40,9 @@
 This example describes how to use an UART to transmit data (transmit/receive)
 between a board and an HyperTerminal PC application in Interrupt mode;
 This example provides a description of how to use USART peripheral through 
-the STM32L0xx UART HAL & LL API (LL API usage for performance improvement).
+the STM32L0xx UART HAL & LL API (LL API used for performance improvement).
 
-Board: STM32L073-Nucleo Rev C
+Board: STM32L073RZ-Nucleo Rev C
 Tx Pin: PA.02
 Rx Pin: PA.03
    _________________________ 
@@ -88,7 +88,7 @@ TxBuffer buffer content will be displayed in the Hyperterminal interface.
 In a second step the received data in the RxBuffer buffer will be sent back to 
 Hyperterminal and displayed.
 
-STM32 Eval board's LEDs can be used to monitor the transfer status:
+STM32 Nucleo board's LEDs can be used to monitor the transfer status:
  - LED toggles when the transmission process is complete.
  - LED stays ON when the reception process is complete.
  - LED is OFF when there is an error in transmission/reception process.  
@@ -135,11 +135,11 @@ The UART is configured as follows:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.    
       
-  - STM32L073-Nucleo Rev C Set-up
-    Example is delivered for using Virtual Com port feature of STLINK for connection between STM32L073-Nucleo Rev C and PC,
+  - STM32L073RZ-Nucleo Rev C Set-up
+    Example is delivered for using Virtual Com port feature of STLINK for connection between STM32L073RZ-Nucleo Rev C and PC,
     Please ensure that USART communication between the target MCU and ST-LINK MCU is properly enabled 
     on HW board in order to support Virtual Com Port (Default HW SB configuration allows use of VCP)
     GPIOs connected to USART2 TX/RX (PA.02 and PA.03) are automatically mapped

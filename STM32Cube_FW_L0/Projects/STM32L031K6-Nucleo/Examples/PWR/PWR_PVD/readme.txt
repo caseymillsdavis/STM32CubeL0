@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_PVD/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR Programmable Voltage Detector (PVD) example
   ******************************************************************************
   *
@@ -69,11 +69,11 @@ If LED3 is slowly blinking (1 second-period), it means that the system has gener
 
   - This example runs on STM32L031xx and STM32L041xx devices
     
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo
     board and can be easily tailored to any other supported device
     and development board.
 
-  - STM32L031-Nucleo Set-up :
+  - STM32L031K6-Nucleo Set-up :
     - After that the software is flashed :
        1°) Disconnect the usb cable.
        2°) Apply an adjustable power supply between Arduino VIN and GND.

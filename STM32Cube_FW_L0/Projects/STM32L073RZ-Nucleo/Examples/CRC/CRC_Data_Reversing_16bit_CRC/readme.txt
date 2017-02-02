@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CRC/CRC_Data_Reversing_16bit_CRC/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   16-bit long CRC computation with data reversal options enabled.
   ******************************************************************************
   *
@@ -106,7 +106,7 @@ STM32 board LED is used to monitor the example status:
 @par Hardware and Software environment
 
   - This example runs on STM32L073xx devices.
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 @par How to use it ? 

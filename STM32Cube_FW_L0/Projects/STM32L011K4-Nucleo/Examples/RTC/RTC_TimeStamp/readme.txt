@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RTC/RTC_TimeStamp/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC time stamp example.
   ******************************************************************************
   *
@@ -100,7 +100,7 @@ The associated firmware performs the following:
 @par Hardware and Software environment
 
   - This example runs on STM32l011xx devices.
-  - This example has been tested with STMicroelectronics STM32L011-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L011K4-Nucleo 
     board and can be easily tailored to any other supported device 
     and development board.
 

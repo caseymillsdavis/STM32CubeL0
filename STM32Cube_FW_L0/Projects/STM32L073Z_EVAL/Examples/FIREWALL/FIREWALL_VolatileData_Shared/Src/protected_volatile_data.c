@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    FIREWALL/FIREWALL_VolatileData_Shared/Src/protected_volatile_data.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Definition of array to be located in Firewall protected volatile data segment (in SRAM)
   *******************************************************************************    
   * @attention

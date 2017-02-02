@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_PVD/Inc/main.h 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention

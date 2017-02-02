@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    FLASH/FLASH_WriteProtection/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the FLASH write protection example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example describes how to configure and use the FLASH HAL API to enable and 
-disable the write protection of the internal FLASH memory.
+disable the write protection of the internal Flash memory.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -63,9 +63,9 @@ to run at 2 MHz.
     be returned to user (through variable 'PageError').
 
     Once this operation is finished, word programming operation will be performed 
-    in the FLASH memory. The written data is then read back and checked.
+    in the Flash memory. The written data is then read back and checked.
 
-STM32L031-Nucleo board's LED can be used to monitor the transfer status:
+STM32L031K6-Nucleo board's LED can be used to monitor the transfer status:
  - LED3 is ON when there are no errors detected after programming
     => should be the case when WRITE_PROTECTION_DISABLE flag is enabled
        (or when both switches are disabled)
@@ -94,9 +94,9 @@ STM32L031-Nucleo board's LED can be used to monitor the transfer status:
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L073xx devices.
+  - This example runs on STM32L31xx and STM32L41xx devices.
     
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.
 
 @par How to use it ? 

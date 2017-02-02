@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    DMA/DMA_FLASHToRAM/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the DMA FLASH to RAM example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description 
 
 This example provides a description of how to use a DMA to transfer 
-a word data buffer from FLASH memory to embedded SRAM memory through 
+a word data buffer from Flash memory to embedded SRAM through 
 the HAL API.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
@@ -88,7 +88,7 @@ example by modifying defines values in the file main.h.
 
   - This example runs on STM32L031xx Devices.
 
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo 
     evaluation boards and can be easily tailored to any other supported device 
     and development board.    
 

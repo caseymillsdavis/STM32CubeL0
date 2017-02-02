@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    CRC/CRC_bytes_stream_7bit_CRC/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use the STM32L0xx CRC HAL API
   *          to compute 7-bit CRC codes from buffers of data bytes (8-bit data),
   *          based on a user-defined generating polynomial.

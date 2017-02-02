@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/CORTEX/CORTEX_MPU/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example presents the MPU features through
   *          the STM32L0xx CORTEX LL API.
   ******************************************************************************
@@ -150,7 +150,7 @@ void Configure_MPU(void)
          LL_MPU_INSTRUCTION_ACCESS_DISABLE);
 
   /* Enable MPU (any access not covered by any enabled region will cause a fault) */
-  LL_MPU_Enable(LL_MPU_CTRL_HFNMI_PRIVDEF_NONE);
+  LL_MPU_Enable(LL_MPU_CTRL_PRIVILEGED_DEFAULT);
 }
 
 /**
@@ -171,7 +171,7 @@ void MPU_AccessPermConfig(void)
          LL_MPU_INSTRUCTION_ACCESS_ENABLE);
   
   /* Enable MPU (any access not covered by any enabled region will cause a fault) */
-  LL_MPU_Enable(LL_MPU_CTRL_HFNMI_PRIVDEF_NONE);
+  LL_MPU_Enable(LL_MPU_CTRL_PRIVILEGED_DEFAULT);
 
   /* Read from PrivilegedReadOnlyArray. This will not generate error */
   (void)PrivilegedReadOnlyArray[0];
@@ -194,8 +194,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l0xx_ll_i2c.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header file of I2C LL module.
   ******************************************************************************
   * @attention
@@ -380,12 +380,12 @@ typedef struct
   */
 /**
   * @brief  Configure the SDA setup, hold time and the SCL high, low period.
-  * @param  __PRESCALER__ This parameter must be a value between  0 and 0xF.
-  * @param  __DATA_SETUP_TIME__ This parameter must be a value between 0 and 0xF. (tscldel = (SCLDEL+1)xtpresc)
-  * @param  __DATA_HOLD_TIME__ This parameter must be a value between 0 and 0xF. (tsdadel = SDADELxtpresc)
-  * @param  __CLOCK_HIGH_PERIOD__ This parameter must be a value between 0 and 0xFF. (tsclh = (SCLH+1)xtpresc)
-  * @param  __CLOCK_LOW_PERIOD__ This parameter must be a value between  0 and 0xFF. (tscll = (SCLL+1)xtpresc)
-  * @retval Value between 0 and 0xFFFFFFFF
+  * @param  __PRESCALER__ This parameter must be a value between  Min_Data=0 and Max_Data=0xF.
+  * @param  __DATA_SETUP_TIME__ This parameter must be a value between Min_Data=0 and Max_Data=0xF. (tscldel = (SCLDEL+1)xtpresc)
+  * @param  __DATA_HOLD_TIME__ This parameter must be a value between Min_Data=0 and Max_Data=0xF. (tsdadel = SDADELxtpresc)
+  * @param  __CLOCK_HIGH_PERIOD__ This parameter must be a value between Min_Data=0 and Max_Data=0xFF. (tsclh = (SCLH+1)xtpresc)
+  * @param  __CLOCK_LOW_PERIOD__ This parameter must be a value between  Min_Data=0 and Max_Data=0xFF. (tscll = (SCLL+1)xtpresc)
+  * @retval Value between Min_Data=0 and Max_Data=0xFFFFFFFF
   */
 #define __LL_I2C_CONVERT_TIMINGS(__PRESCALER__, __DATA_SETUP_TIME__, __DATA_HOLD_TIME__, __CLOCK_HIGH_PERIOD__, __CLOCK_LOW_PERIOD__)   \
         ((((uint32_t)(__PRESCALER__)         << I2C_POSITION_TIMINGR_PRESC)  & I2C_TIMINGR_PRESC)   | \
@@ -456,7 +456,7 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabled(I2C_TypeDef *I2Cx)
   * @param  AnalogFilter This parameter can be one of the following values:
   *         @arg @ref LL_I2C_ANALOGFILTER_ENABLE
   *         @arg @ref LL_I2C_ANALOGFILTER_DISABLE
-  * @param  DigitalFilter This parameter must be a value between 0x00 (Digital filter disabled) and 0x0F (Digital filter enabled and filtering capability up to 15*ti2cclk).
+  * @param  DigitalFilter This parameter must be a value between Min_Data=0x00 (Digital filter disabled) and Max_Data=0x0F (Digital filter enabled and filtering capability up to 15*ti2cclk).
   *         This parameter is used to configure the digital noise filter on SDA and SCL input.
   *         The digital filter will filter spikes with a length of up to DNF[3:0]*ti2cclk.
   * @retval None
@@ -472,7 +472,7 @@ __STATIC_INLINE void LL_I2C_ConfigFilters(I2C_TypeDef *I2Cx, uint32_t AnalogFilt
   *         This filter can only be programmed when the I2C is disabled (PE = 0).
   * @rmtoll CR1          DNF           LL_I2C_SetDigitalFilter
   * @param  I2Cx I2C Instance.
-  * @param  DigitalFilter This parameter must be a value between 0x00 (Digital filter disabled) and 0x0F (Digital filter enabled and filtering capability up to 15*ti2cclk).
+  * @param  DigitalFilter This parameter must be a value between Min_Data=0x00 (Digital filter disabled) and Max_Data=0x0F (Digital filter enabled and filtering capability up to 15*ti2cclk).
   *         This parameter is used to configure the digital noise filter on SDA and SCL input.
   *         The digital filter will filter spikes with a length of up to DNF[3:0]*ti2cclk.
   * @retval None
@@ -798,7 +798,7 @@ __STATIC_INLINE uint32_t LL_I2C_GetMasterAddressingMode(I2C_TypeDef *I2Cx)
   * @rmtoll OAR1         OA1           LL_I2C_SetOwnAddress1\n
   *         OAR1         OA1MODE       LL_I2C_SetOwnAddress1
   * @param  I2Cx I2C Instance.
-  * @param  OwnAddress1 This parameter must be a value between 0 and 0x3FF.
+  * @param  OwnAddress1 This parameter must be a value between Min_Data=0 and Max_Data=0x3FF.
   * @param  OwnAddrSize This parameter can be one of the following values:
   *         @arg @ref LL_I2C_OWNADDRESS1_7BIT
   *         @arg @ref LL_I2C_OWNADDRESS1_10BIT
@@ -848,7 +848,7 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabledOwnAddress1(I2C_TypeDef *I2Cx)
   * @rmtoll OAR2         OA2           LL_I2C_SetOwnAddress2\n
   *         OAR2         OA2MSK        LL_I2C_SetOwnAddress2
   * @param  I2Cx I2C Instance.
-  * @param  OwnAddress2 Value between 0 and 0x7F.
+  * @param  OwnAddress2 Value between Min_Data=0 and Max_Data=0x7F.
   * @param  OwnAddrMask This parameter can be one of the following values:
   *         @arg @ref LL_I2C_OWNADDRESS2_NOMASK
   *         @arg @ref LL_I2C_OWNADDRESS2_MASK01
@@ -903,7 +903,7 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabledOwnAddress2(I2C_TypeDef *I2Cx)
   * @note   This bit can only be programmed when the I2C is disabled (PE = 0).
   * @rmtoll TIMINGR      TIMINGR       LL_I2C_SetTiming
   * @param  I2Cx I2C Instance.
-  * @param  Timing This parameter must be a value between  0 and 0xFFFFFFFF.
+  * @param  Timing This parameter must be a value between Min_Data=0 and Max_Data=0xFFFFFFFF.
   * @note   This parameter is computed with the STM32CubeMX Tool.
   * @retval None
   */
@@ -1106,7 +1106,6 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabledSMBusPEC(I2C_TypeDef *I2Cx)
   *         @arg @ref LL_I2C_SMBUS_TIMEOUTA_MODE_SCL_LOW
   *         @arg @ref LL_I2C_SMBUS_TIMEOUTA_MODE_SDA_SCL_HIGH
   * @param  TimeoutB
-  *               @note   This configuration can only be programmed when associated Timeout is disabled (TimeoutA and/orTimeoutB).
   * @retval None
   */
 __STATIC_INLINE void LL_I2C_ConfigSMBusTimeout(I2C_TypeDef *I2Cx, uint32_t TimeoutA, uint32_t TimeoutAMode,
@@ -1472,6 +1471,8 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabledIT_TC(I2C_TypeDef *I2Cx)
 
 /**
   * @brief  Enable Error interrupts.
+  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
+  *         SMBus feature is supported by the I2Cx Instance.
   * @note   Any of these errors will generate interrupt :
   *         Arbitration Loss (ARLO)
   *         Bus Error detection (BERR)
@@ -1479,8 +1480,6 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabledIT_TC(I2C_TypeDef *I2Cx)
   *         SMBus Timeout detection (TIMEOUT)
   *         SMBus PEC error detection (PECERR)
   *         SMBus Alert pin event detection (ALERT)
-  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
-  *         SMBus feature is supported by the I2Cx Instance.
   * @rmtoll CR1          ERRIE         LL_I2C_EnableIT_ERR
   * @param  I2Cx I2C Instance.
   * @retval None
@@ -1492,6 +1491,8 @@ __STATIC_INLINE void LL_I2C_EnableIT_ERR(I2C_TypeDef *I2Cx)
 
 /**
   * @brief  Disable Error interrupts.
+  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
+  *         SMBus feature is supported by the I2Cx Instance.
   * @note   Any of these errors will generate interrupt :
   *         Arbitration Loss (ARLO)
   *         Bus Error detection (BERR)
@@ -1499,8 +1500,6 @@ __STATIC_INLINE void LL_I2C_EnableIT_ERR(I2C_TypeDef *I2Cx)
   *         SMBus Timeout detection (TIMEOUT)
   *         SMBus PEC error detection (PECERR)
   *         SMBus Alert pin event detection (ALERT)
-  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
-  *         SMBus feature is supported by the I2Cx Instance.
   * @rmtoll CR1          ERRIE         LL_I2C_DisableIT_ERR
   * @param  I2Cx I2C Instance.
   * @retval None
@@ -1511,7 +1510,7 @@ __STATIC_INLINE void LL_I2C_DisableIT_ERR(I2C_TypeDef *I2Cx)
 }
 
 /**
-  * @brief  Check if Error interrupts is enabled of disabled.
+  * @brief  Check if Error interrupts are enabled or disabled.
   * @rmtoll CR1          ERRIE         LL_I2C_IsEnabledIT_ERR
   * @param  I2Cx I2C Instance.
   * @retval State of bit (1 or 0).
@@ -1673,6 +1672,52 @@ __STATIC_INLINE uint32_t LL_I2C_IsActiveFlag_OVR(I2C_TypeDef *I2Cx)
 }
 
 /**
+  * @brief  Indicate the status of SMBus PEC error flag in reception.
+  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
+  *         SMBus feature is supported by the I2Cx Instance.
+  * @note   RESET: Clear default value.
+  *         SET: When the received PEC does not match with the PEC register content.
+  * @rmtoll ISR          PECERR        LL_I2C_IsActiveSMBusFlag_PECERR
+  * @param  I2Cx I2C Instance.
+  * @retval State of bit (1 or 0).
+  */
+__STATIC_INLINE uint32_t LL_I2C_IsActiveSMBusFlag_PECERR(I2C_TypeDef *I2Cx)
+{
+  return (READ_BIT(I2Cx->ISR, I2C_ISR_PECERR) == (I2C_ISR_PECERR));
+}
+
+/**
+  * @brief  Indicate the status of SMBus Timeout detection flag.
+  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
+  *         SMBus feature is supported by the I2Cx Instance.
+  * @note   RESET: Clear default value.
+  *         SET: When a timeout or extended clock timeout occurs.
+  * @rmtoll ISR          TIMEOUT       LL_I2C_IsActiveSMBusFlag_TIMEOUT
+  * @param  I2Cx I2C Instance.
+  * @retval State of bit (1 or 0).
+  */
+__STATIC_INLINE uint32_t LL_I2C_IsActiveSMBusFlag_TIMEOUT(I2C_TypeDef *I2Cx)
+{
+  return (READ_BIT(I2Cx->ISR, I2C_ISR_TIMEOUT) == (I2C_ISR_TIMEOUT));
+}
+
+/**
+  * @brief  Indicate the status of SMBus alert flag.
+  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
+  *         SMBus feature is supported by the I2Cx Instance.
+  * @note   RESET: Clear default value.
+  *         SET: When SMBus host configuration, SMBus alert enabled and
+  *              a falling edge event occurs on SMBA pin.
+  * @rmtoll ISR          ALERT         LL_I2C_IsActiveSMBusFlag_ALERT
+  * @param  I2Cx I2C Instance.
+  * @retval State of bit (1 or 0).
+  */
+__STATIC_INLINE uint32_t LL_I2C_IsActiveSMBusFlag_ALERT(I2C_TypeDef *I2Cx)
+{
+  return (READ_BIT(I2Cx->ISR, I2C_ISR_ALERT) == (I2C_ISR_ALERT));
+}
+
+/**
   * @brief  Indicate the status of Bus Busy flag.
   * @note   RESET: Clear default value.
   *         SET: When a Start condition is detected.
@@ -1761,52 +1806,6 @@ __STATIC_INLINE void LL_I2C_ClearFlag_ARLO(I2C_TypeDef *I2Cx)
 __STATIC_INLINE void LL_I2C_ClearFlag_OVR(I2C_TypeDef *I2Cx)
 {
   SET_BIT(I2Cx->ICR, I2C_ICR_OVRCF);
-}
-
-/**
-  * @brief  Indicate the status of SMBus PEC error flag in reception.
-  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
-  *         SMBus feature is supported by the I2Cx Instance.
-  * @note   RESET: Clear default value.
-  *         SET: When the received PEC does not match with the PEC register content.
-  * @rmtoll ISR          PECERR        LL_I2C_IsActiveSMBusFlag_PECERR
-  * @param  I2Cx I2C Instance.
-  * @retval State of bit (1 or 0).
-  */
-__STATIC_INLINE uint32_t LL_I2C_IsActiveSMBusFlag_PECERR(I2C_TypeDef *I2Cx)
-{
-  return (READ_BIT(I2Cx->ISR, I2C_ISR_PECERR) == (I2C_ISR_PECERR));
-}
-
-/**
-  * @brief  Indicate the status of SMBus Timeout detection flag.
-  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
-  *         SMBus feature is supported by the I2Cx Instance.
-  * @note   RESET: Clear default value.
-  *         SET: When a timeout or extended clock timeout occurs.
-  * @rmtoll ISR          TIMEOUT       LL_I2C_IsActiveSMBusFlag_TIMEOUT
-  * @param  I2Cx I2C Instance.
-  * @retval State of bit (1 or 0).
-  */
-__STATIC_INLINE uint32_t LL_I2C_IsActiveSMBusFlag_TIMEOUT(I2C_TypeDef *I2Cx)
-{
-  return (READ_BIT(I2Cx->ISR, I2C_ISR_TIMEOUT) == (I2C_ISR_TIMEOUT));
-}
-
-/**
-  * @brief  Indicate the status of SMBus alert flag.
-  * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
-  *         SMBus feature is supported by the I2Cx Instance.
-  * @note   RESET: Clear default value.
-  *         SET: When SMBus host configuration, SMBus alert enabled and
-  *              a falling edge event occurs on SMBA pin.
-  * @rmtoll ISR          ALERT         LL_I2C_IsActiveSMBusFlag_ALERT
-  * @param  I2Cx I2C Instance.
-  * @retval State of bit (1 or 0).
-  */
-__STATIC_INLINE uint32_t LL_I2C_IsActiveSMBusFlag_ALERT(I2C_TypeDef *I2Cx)
-{
-  return (READ_BIT(I2Cx->ISR, I2C_ISR_ALERT) == (I2C_ISR_ALERT));
 }
 
 /**
@@ -1967,17 +1966,6 @@ __STATIC_INLINE void LL_I2C_AcknowledgeNextData(I2C_TypeDef *I2Cx, uint32_t Type
 }
 
 /**
-  * @brief  Generate a STOP condition after the current byte transfer (master mode).
-  * @rmtoll CR2          STOP          LL_I2C_GenerateStopCondition
-  * @param  I2Cx I2C Instance.
-  * @retval None
-  */
-__STATIC_INLINE void LL_I2C_GenerateStopCondition(I2C_TypeDef *I2Cx)
-{
-  SET_BIT(I2Cx->CR2, I2C_CR2_STOP);
-}
-
-/**
   * @brief  Generate a START or RESTART condition
   * @note   The START bit can be set even if bus is BUSY or I2C is in slave mode.
   *         This action has no effect when RELOAD is set.
@@ -1988,6 +1976,17 @@ __STATIC_INLINE void LL_I2C_GenerateStopCondition(I2C_TypeDef *I2Cx)
 __STATIC_INLINE void LL_I2C_GenerateStartCondition(I2C_TypeDef *I2Cx)
 {
   SET_BIT(I2Cx->CR2, I2C_CR2_START);
+}
+
+/**
+  * @brief  Generate a STOP condition after the current byte transfer (master mode).
+  * @rmtoll CR2          STOP          LL_I2C_GenerateStopCondition
+  * @param  I2Cx I2C Instance.
+  * @retval None
+  */
+__STATIC_INLINE void LL_I2C_GenerateStopCondition(I2C_TypeDef *I2Cx)
+{
+  SET_BIT(I2Cx->CR2, I2C_CR2_STOP);
 }
 
 /**
@@ -2095,7 +2094,7 @@ __STATIC_INLINE uint32_t LL_I2C_GetSlaveAddr(I2C_TypeDef *I2Cx)
   *         @arg @ref LL_I2C_ADDRSLAVE_7BIT
   *         @arg @ref LL_I2C_ADDRSLAVE_10BIT
   * @param  TransferSize Specifies the number of bytes to be programmed.
-  *         This parameter must be a value between 0 and 255.
+  *                       This parameter must be a value between Min_Data=0 and Max_Data=255.
   * @param  EndMode This parameter can be one of the following values:
   *         @arg @ref LL_I2C_MODE_RELOAD
   *         @arg @ref LL_I2C_MODE_AUTOEND
@@ -2151,7 +2150,7 @@ __STATIC_INLINE uint32_t LL_I2C_GetAddressMatchCode(I2C_TypeDef *I2Cx)
 }
 
 /**
-  * @brief  Enable internal comparison of Packet Error byte (transmission or reception mode).
+  * @brief  Enable internal comparison of the SMBus Packet Error byte (transmission or reception mode).
   * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
   *         SMBus feature is supported by the I2Cx Instance.
   * @note   This feature is cleared by hardware when the PEC byte is transferred, or when a STOP condition or an Address Matched is received.
@@ -2167,7 +2166,7 @@ __STATIC_INLINE void LL_I2C_EnableSMBusPECCompare(I2C_TypeDef *I2Cx)
 }
 
 /**
-  * @brief  Check if Packet Error byte internal comparison is requested or not.
+  * @brief  Check if the SMBus Packet Error byte internal comparison is requested or not.
   * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
   *         SMBus feature is supported by the I2Cx Instance.
   * @rmtoll CR2          PECBYTE       LL_I2C_IsEnabledSMBusPECCompare
@@ -2180,7 +2179,7 @@ __STATIC_INLINE uint32_t LL_I2C_IsEnabledSMBusPECCompare(I2C_TypeDef *I2Cx)
 }
 
 /**
-  * @brief  Get the Packet Error byte calculated.
+  * @brief  Get the SMBus Packet Error byte calculated.
   * @note   Macro @ref IS_SMBUS_INSTANCE(I2Cx) can be used to check whether or not
   *         SMBus feature is supported by the I2Cx Instance.
   * @rmtoll PECR         PEC           LL_I2C_GetSMBusPEC

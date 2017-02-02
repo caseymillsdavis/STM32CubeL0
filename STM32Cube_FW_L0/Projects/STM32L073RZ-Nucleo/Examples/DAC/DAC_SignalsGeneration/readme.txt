@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    DAC/DAC_SignalsGeneration/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the DAC Signals generation example.
   ******************************************************************************
   *
@@ -44,7 +44,7 @@ the DAC channel one:
     - Triangle waveform (Channel 1).
     - Escalator waveform (Channel 1) using DMA transfer.
 
-STM32L073-Nucleo Rev C board's LED can be used to monitor the process status:
+STM32L073RZ-Nucleo Rev C board's LED can be used to monitor the process status:
   - LED2 is slowly blinking (1 sec. period) and example is stopped (using infinite loop)
   when there is an error during process.
 
@@ -70,10 +70,10 @@ STM32L073-Nucleo Rev C board's LED can be used to monitor the process status:
 @par Hardware and Software environment  
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up :
+  - STM32L073RZ-Nucleo Rev C Set-up :
       - Connect PA4 (pin 32 in CN7 connector)(DAC Channel1) pin to an oscilloscope.
       - Use User push-button connected to PC.13.
   

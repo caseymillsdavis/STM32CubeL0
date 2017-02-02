@@ -6,8 +6,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_MIX/I2C/I2C_OneBoard_ComSlave7_10bits_IT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C One Board Master Communication with 
   *          a Slave 10-Bit address then a Slave 7-Bit address example.
   ******************************************************************************
@@ -41,9 +41,9 @@
 
 This example describes how to perform I2C data buffer transmission/reception 
 between master and 2 slaves with different Address size (7-bit or 10-bit) through
-the STM32L0xx HAL & LL API (LL API usage for performance improvement), using an interrupt.
+the STM32L0xx HAL & LL API (LL API used for performance improvement), using an interrupt.
 
-Board: STM32L073-Nucleo Rev C (embeds a STM32L073RZ device)
+Board: STM32L073RZ-Nucleo Rev C (embeds a STM32L073RZ device)
 SCL MASTER Pin: PC.0 (CN7, pin 38)
 SDA MASTER Pin: PC.1 (CN7, pin 36)
 
@@ -133,10 +133,10 @@ and communication is stopped (using infinite loop)
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.    
 
-  -STM32L073-Nucleo Rev C Set-up
+  -STM32L073RZ-Nucleo Rev C Set-up
     - Connect GPIOs connected to I2C1 SCL/SDA (PB.8 and PB.9)
     to respectively SCL and SDA pins of I2C3 (PC.0 and PC.1).
       - I2C1_SCL  PB.8 (CN10, pin 3) : connected to I2C3_SCL PC.0 (CN7, pin 38)

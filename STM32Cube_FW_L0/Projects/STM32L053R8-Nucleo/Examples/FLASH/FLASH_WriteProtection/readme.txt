@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    FLASH/FLASH_WriteProtection/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief  Description of the FLASH Write protection example.
   ******************************************************************************
   *
@@ -39,7 +39,7 @@
 @par Example Description 
 
 This example guides you through the different configuration steps by mean of HAL API
-how to enable and disable the write protection for internal FLASH memory integrated 
+how to enable and disable the write protection for internal Flash memory integrated 
 within STM32L0xx device, mounted on STM32L053R8-Nucleo board from STMicroelectronics. 
 
 At the beginning of the main program the HAL_Init() function is called to reset 
@@ -63,7 +63,7 @@ write protection status of FLASH_WRP_SECTORS (defined in main.c)
     be returned to user (through variable 'PageError').
 
     Once this operation is finished, word programming operation will be performed 
-    in the FLASH memory. The written data is then read back and checked.
+    in the Flash memory. The written data is then read back and checked.
 
 STM32L053R8-Nucleo board's LED can be used to monitor the transfer status:
  - LED2 is OFF when there are no errors detected after data programing

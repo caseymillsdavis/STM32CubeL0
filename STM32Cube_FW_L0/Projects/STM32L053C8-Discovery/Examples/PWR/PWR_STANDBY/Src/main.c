@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_Standby/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example shows how to use STM32L0xx PWR HAL API to enter
   *          and exit the standby mode.
   ******************************************************************************

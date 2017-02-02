@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_OCToggle/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example shows how to configure the Timer to generate four different 
   *          signals with four different frequencies.
   ******************************************************************************
@@ -91,11 +91,11 @@
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C 
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C 
     board and can be easily tailored to any other supported device 
     and development board.      
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
    Connect the following pins to an oscilloscope to monitor the different waveforms:
       - PA.15: (TIM2_CH1) (connected to PA.15 (pin 17 on CN7))
       - PA.01: (TIM2_CH2) (connected to PA.01 (pin 30 on CN7))

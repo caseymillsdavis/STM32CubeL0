@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SPI/SPI_FullDuplex_ComPolling/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI Full Duplex Polling example.
   ******************************************************************************
   *
@@ -36,7 +36,10 @@
   @endverbatim
 
 @par Example Description 
-The communication is done with 2 boards through SPI.
+
+This example shows how to ensure SPI data buffer transmission/reception in Polling 
+mode between two boards.
+
    _________________________                        _________________________
   |           ______________|                      |______________           |
   |          |SPI2          |                      |          SPI2|          |

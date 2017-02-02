@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/RTC/RTC_ExitStandbyWithWakeUpTimer/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example shows how to configure the RTC in order to wakeup system from standby
-mode in using RTC Wakeup Timer. Peripheral initialization is done using LL unitary services 
+mode using RTC Wakeup Timer. Peripheral initialization is done using LL unitary services 
 functions for optimization purpose (performance and size).
   
 In this example, after start-up, SYSCLK is configured to the max frequency using 
@@ -77,7 +77,7 @@ Example execution:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

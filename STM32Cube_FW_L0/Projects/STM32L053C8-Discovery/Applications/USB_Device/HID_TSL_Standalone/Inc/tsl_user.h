@@ -1,9 +1,9 @@
 /**
   ******************************************************************************
-  * @file    TouchSensing/TouchSensing_Linear/Inc/tsl_user.h
+  * @file    USB_Device/HID_TSL_Standalone/Inc/tsl_user.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for tsl_user.c module
   ******************************************************************************
   * @attention

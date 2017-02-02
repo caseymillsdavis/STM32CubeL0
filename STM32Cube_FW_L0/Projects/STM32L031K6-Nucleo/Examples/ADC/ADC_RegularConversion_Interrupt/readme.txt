@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    ADC/ADC_RegularConversion_Interrupt/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the ADC RegularConversion interrupt example.
   ******************************************************************************
   *
@@ -75,7 +75,7 @@ when previous conversion is completed).
 
   - This example runs on STM32L031xx devices.
   
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.
 
   - Connect an external signal to PA.0 (A0 Arduino connector).

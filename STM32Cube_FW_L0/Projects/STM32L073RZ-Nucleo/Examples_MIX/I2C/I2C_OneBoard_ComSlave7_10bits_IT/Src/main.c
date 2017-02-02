@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_MIX/I2C/I2C_OneBoard_ComSlave7_10bits_IT/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use STM32L0xx I2C HAL and LL API
   *          to transmit and receive a data buffer with a communication process
   *          based on IT transfer.
@@ -107,14 +107,15 @@ int main(void)
   
   /*##-1- Configure the I2C MASTER peripheral to discuss with Slave1 #########*/
   /* Addressing Mode : 10-Bit */
-  I2cMasterHandle.Instance             = I2Cx_MASTER;
-  I2cMasterHandle.Init.Timing          = I2C_TIMING;
-  I2cMasterHandle.Init.OwnAddress1     = 0x00;
-  I2cMasterHandle.Init.AddressingMode  = I2C_ADDRESSINGMODE_10BIT;
-  I2cMasterHandle.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  I2cMasterHandle.Init.OwnAddress2     = 0x00;
-  I2cMasterHandle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  I2cMasterHandle.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;  
+  I2cMasterHandle.Instance              = I2Cx_MASTER;
+  I2cMasterHandle.Init.Timing           = I2C_TIMING;
+  I2cMasterHandle.Init.OwnAddress1      = 0x00;
+  I2cMasterHandle.Init.AddressingMode   = I2C_ADDRESSINGMODE_10BIT;
+  I2cMasterHandle.Init.DualAddressMode  = I2C_DUALADDRESS_DISABLE;
+  I2cMasterHandle.Init.OwnAddress2      = 0x00;
+  I2cMasterHandle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  I2cMasterHandle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLE;
+  I2cMasterHandle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLE;  
   
   if(HAL_I2C_Init(&I2cMasterHandle) != HAL_OK)
   {
@@ -129,14 +130,15 @@ int main(void)
   /* Own Address 1 : 10-Bit(custom) (Slave1) */
   /* Own Address 2 : 7-Bit(default) (Slave2) */
   /* Dual Mode enabled                */
-  I2cSlaveHandle.Instance             = I2Cx_SLAVE;
-  I2cSlaveHandle.Init.Timing          = I2C_TIMING;
-  I2cSlaveHandle.Init.OwnAddress1     = I2C_SLAVE_ADDRESS1;
-  I2cSlaveHandle.Init.AddressingMode  = I2C_ADDRESSINGMODE_10BIT;
-  I2cSlaveHandle.Init.DualAddressMode = I2C_DUALADDRESS_ENABLE;
-  I2cSlaveHandle.Init.OwnAddress2     = I2C_SLAVE_ADDRESS2;
-  I2cSlaveHandle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  I2cSlaveHandle.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;  
+  I2cSlaveHandle.Instance              = I2Cx_SLAVE;
+  I2cSlaveHandle.Init.Timing           = I2C_TIMING;
+  I2cSlaveHandle.Init.OwnAddress1      = I2C_SLAVE_ADDRESS1;
+  I2cSlaveHandle.Init.AddressingMode   = I2C_ADDRESSINGMODE_10BIT;
+  I2cSlaveHandle.Init.DualAddressMode  = I2C_DUALADDRESS_ENABLE;
+  I2cSlaveHandle.Init.OwnAddress2      = I2C_SLAVE_ADDRESS2;
+  I2cSlaveHandle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  I2cSlaveHandle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLE;
+  I2cSlaveHandle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLE;  
   
   if(HAL_I2C_Init(&I2cSlaveHandle) != HAL_OK)
   {
@@ -311,8 +313,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLSource   = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLState    = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL      = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV      = RCC_PLL_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
   {
     /* Initialization Error */

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    WWDG/WWDG_Example/Src/stm32l0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
@@ -32,8 +32,8 @@
   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
-  ******************************************************************************  
-  */ 
+  ******************************************************************************
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -58,10 +58,11 @@
   * @{
   */
 
+
 /**
-  * @brief WWDG MSP Initialization 
-  *        This function configures the hardware resources used in this example: 
-  *           - Peripheral's clock enable 
+  * @brief WWDG MSP Initialization
+  *        This function configures the hardware resources used in this example:
+  *           - Peripheral's clock enable
   * @param hwwdg: WWDG handle pointer
   * @retval None
   */
@@ -71,21 +72,6 @@ void HAL_WWDG_MspInit(WWDG_HandleTypeDef *hwwdg)
   __HAL_RCC_WWDG_CLK_ENABLE();
 }
 
-/**
-  * @brief WWDG MSP De-Initialization 
-  *        This function freeze the hardware resources used in this example:
-  *          - Disable the Peripheral's clock
-  * @param hwwdg: WWDG handle pointer
-  * @retval None
-  */
-void HAL_WWDG_MspDeInit(WWDG_HandleTypeDef *hwwdg)
-{
-  /* Enable WWDG reset state */
-  __HAL_RCC_WWDG_FORCE_RESET();
-  
-  /* Release WWDG from reset state */
-  __HAL_RCC_WWDG_RELEASE_RESET();
-}
 
 /**
   * @}

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    TouchSensing\TouchSensing_Linear\inc\tsl_conf.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   TSC configuration file.
   * @note    This file must be copied in the application folder with the 'tsl_conf.h' name.
   ******************************************************************************

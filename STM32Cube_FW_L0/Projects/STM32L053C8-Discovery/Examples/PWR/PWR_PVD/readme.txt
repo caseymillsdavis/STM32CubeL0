@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_PVD/readme.txt 
   * @author  MCD Application Team
-  * @version V0.5.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR Programmable Voltage Detector (PVD) example
   ******************************************************************************
   *
@@ -74,8 +74,7 @@ To use this test, program must be flashed and executed using an external power s
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ
+  - This example runs on STM32L053xx devices.
 
   - This example has been tested with STMicroelectronics STM32L0538-DISCO REVB board
     and can be easily tailored to any other supported device and development board.

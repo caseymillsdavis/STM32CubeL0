@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RTC/RTC_Tamper/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC Tamper example.
   ******************************************************************************
   *
@@ -99,10 +99,10 @@ The associated firmware performs the following:
 @par Hardware and Software environment
 
   - This example runs on STM32l031xx devices.
-  - This example has been tested with STMicroelectronics STM32L031-Nucleo 
+  - This example has been tested with STMicroelectronics STM32L031K6-Nucleo 
     evaluation board and can be easily tailored to any other supported device 
     and development board.
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
     - Make sure that PA.02 (Arduino A7) is connected to GND
     with a wire.
 

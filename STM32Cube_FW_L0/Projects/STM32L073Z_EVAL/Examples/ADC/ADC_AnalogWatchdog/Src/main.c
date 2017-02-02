@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    ADC/ADC_AnalogWatchdog/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the ADC
   *          peripheral to perform conversions with analog watchdog and 
   *          interruptions. Other peripherals used: DMA, TIM (ADC group regular
@@ -310,7 +310,7 @@ static void ADC_Config(void)
   AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_RISING;
   AdcHandle.Init.DMAContinuousRequests = ENABLE;
   AdcHandle.Init.Overrun               = ADC_OVR_DATA_OVERWRITTEN;
-  AdcHandle.Init.SamplingTime = ADC_SAMPLETIME_41CYCLES_5;
+  AdcHandle.Init.SamplingTime = ADC_SAMPLETIME_39CYCLES_5;
   if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
   {
     /* ADC initialization error */

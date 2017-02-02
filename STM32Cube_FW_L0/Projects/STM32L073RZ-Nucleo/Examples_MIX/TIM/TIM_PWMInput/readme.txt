@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    TIM/TIM_PWMInput/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the TIM PWM_Input example.
   ******************************************************************************
   *
@@ -90,13 +90,13 @@ Six combinatins are available (see thables aFrequency[] and aDutyCycle[]).
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STMicroelectronics STM32L073-Nucleo Rev C 
+  - This example has been tested with STMicroelectronics STM32L073RZ-Nucleo Rev C 
     board and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
-    - Connect the external signal to measure to the TIM3 CH2 pin (PA.07) (pin 15 in CN10 connector).
-    - PA.15 (pin 17 in CN7 connector) can be used  instead of an external signal.
+  - STM32L073RZ-Nucleo Rev C Set-up
+    - You can either Connect the external signal to measure to the TIM3 CH2 pin (PA.07) (pin 15 in CN10 connector).
+    - Or connect TIM3 CH1 pin PA.15 (pin 17 in CN7 connector) to the TIM3 CH2 pin (PA.07) instead of an external signal.
 
 	
 @par How to use it ? 

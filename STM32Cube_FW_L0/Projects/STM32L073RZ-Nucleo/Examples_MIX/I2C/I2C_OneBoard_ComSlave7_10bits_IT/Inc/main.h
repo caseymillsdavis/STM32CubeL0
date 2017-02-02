@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_MIX/I2C/I2C_OneBoard_ComSlave7_10bits_IT/Inc/main.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -72,6 +72,8 @@
 
 /* Definition for I2Cx_SLAVE clock resources */
 #define I2Cx_SLAVE                              I2C1
+#define RCC_PERIPHCLK_I2Cx_SLAVE                RCC_PERIPHCLK_I2C1
+#define RCC_I2Cx_SLAVECLKSOURCE_SYSCLK          RCC_I2C1CLKSOURCE_SYSCLK
 #define I2Cx_SLAVE_CLK_ENABLE()                 __HAL_RCC_I2C1_CLK_ENABLE()
 #define I2Cx_SLAVE_SDA_GPIO_CLK_ENABLE()        __HAL_RCC_GPIOB_CLK_ENABLE()
 #define I2Cx_SLAVE_SCL_GPIO_CLK_ENABLE()        __HAL_RCC_GPIOB_CLK_ENABLE() 

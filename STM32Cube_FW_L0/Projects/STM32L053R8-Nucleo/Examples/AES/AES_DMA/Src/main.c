@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    AES/AES_DMA/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the AES
   *          peripheral to encrypt and decrypt data using AES Algorithm with ECB
   *          chaining mode, through the STM32L0xx HAL API.

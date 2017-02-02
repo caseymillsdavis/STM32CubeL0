@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Examples_LL/EXTI/EXTI_ToggleLedOnIT_Init/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example describes how to configure the EXTI and use 
   *          GPIOs using the STM32L0xx LL API to toggles the available 
   *          users Leds on the board when User button is pressed.
@@ -93,28 +93,27 @@ void Configure_EXTI()
 
   /* -1- GPIO Config */
   /* Enable GPIO Clock (to be able to program the configuration registers) */
-  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC);
+  USER_BUTTON_GPIO_CLK_ENABLE();
   /* Configure IO */
-  LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_13, LL_GPIO_MODE_INPUT);
-  LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_13, LL_GPIO_PULL_NO); 
+  LL_GPIO_SetPinMode(USER_BUTTON_GPIO_PORT, USER_BUTTON_PIN, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinPull(USER_BUTTON_GPIO_PORT, USER_BUTTON_PIN, LL_GPIO_PULL_NO); 
 
-  /*-2- Configure NVIC for EXTI4_15_IRQn */
-  NVIC_EnableIRQ(EXTI4_15_IRQn);
-  NVIC_SetPriority(EXTI4_15_IRQn,0);
+  /* -2- Connect External Line to the GPIO*/
+  USER_BUTTON_SYSCFG_SET_EXTI();
 
-  /* -3- Connect External Line to the GPIO*/
-  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SYSCFG);
-  LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTC, LL_SYSCFG_EXTI_LINE13);
-
-  /*-4- Enable a falling trigger EXTI line 13 Interrupt */
+  /*-3- Enable a falling trigger EXTI line 13 Interrupt */
   /* Set fields of initialization structure */
-  exti_initstruct.Line_0_31   = LL_EXTI_LINE_13;
+  exti_initstruct.Line_0_31   = USER_BUTTON_EXTI_LINE;
   exti_initstruct.LineCommand = ENABLE;
   exti_initstruct.Mode        = LL_EXTI_MODE_IT;
   exti_initstruct.Trigger     = LL_EXTI_TRIGGER_FALLING;
 
-  /* Initialize DAC instance according to parameters defined in initialization structure. */
+  /* Initialize EXTI according to parameters defined in initialization structure. */
   LL_EXTI_Init(&exti_initstruct);
+  
+  /*-4- Configure NVIC for EXTI4_15_IRQn */
+  NVIC_EnableIRQ(USER_BUTTON_EXTI_IRQn); 
+  NVIC_SetPriority(USER_BUTTON_EXTI_IRQn,0);
 }
 
 /**
@@ -131,8 +130,8 @@ void LED_Init(void)
   LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
   /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
   //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_LOW);
+  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
   /* Reset value is LL_GPIO_PULL_NO */
   //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
 }

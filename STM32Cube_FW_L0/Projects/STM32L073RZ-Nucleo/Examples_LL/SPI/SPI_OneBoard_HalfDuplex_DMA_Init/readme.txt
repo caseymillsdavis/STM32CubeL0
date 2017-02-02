@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/SPI/SPI_OneBoard_HalfDuplex_DMA_Init/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI_OneBoard_HalfDuplex_DMA_Init example.
   ******************************************************************************
   *
@@ -39,10 +39,10 @@
 
 This example shows how to configure GPIO and SPI peripherals for transmitting 
 bytes from an SPI Master device to an SPI Slave device by using DMA mode through 
-the STM32L0xx SPI LL API. Peripherals initialization done using 
+the STM32L0xx SPI LL API. Peripheral initialization done using 
 LL initialization function to demonstrate LL init usage.
 
-This example works with only one STM32L073-Nucleo Rev C.
+This example works with only one STM32L073RZ-Nucleo Rev C.
 
 SPI1 Peripheral is configured in Master mode Half-Duplex Tx.
 SPI2 Peripheral is configured in Slave mode Half-Duplex Rx.
@@ -72,10 +72,10 @@ In case of errors, LED2 is blinking Slowly (1s).
 
   - This example runs on STM32L073xx devices.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect Master SCK  PB3 to Slave SCK  PB13
     - Connect Master MOSI PB5 to Slave MISO PB14
 

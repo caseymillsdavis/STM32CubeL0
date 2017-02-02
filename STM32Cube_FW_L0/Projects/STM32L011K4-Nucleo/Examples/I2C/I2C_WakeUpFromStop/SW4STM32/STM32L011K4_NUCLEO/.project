@@ -49,6 +49,10 @@
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c</location>
 		</link><link>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_pwr_ex.c</name>
+			<type>1</type>
+			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c</location>
+		</link><link>
 			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_rcc.c</name>
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c</location>
@@ -97,6 +101,10 @@
 			<type>1</type>
 			<location>PARENT-7-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c</location>
 		</link>
-		
+		<link>
+			<name />
+			<type />
+			<location />
+		</link>
 	</linkedResources>
 </projectDescription>

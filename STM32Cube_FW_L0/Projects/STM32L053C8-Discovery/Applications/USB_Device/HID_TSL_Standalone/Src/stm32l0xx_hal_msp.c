@@ -1,9 +1,9 @@
 /**
   ******************************************************************************
-  * @file    TouchSensing/TouchSensing_Linear/Src/stm32l0xx_hal_msp.c
+  * @file    USB_Device/HID_TSL_Standalone/Src/stm32l0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL MSP module.
   *         
   @verbatim

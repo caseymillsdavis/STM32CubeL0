@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CRC/CRC_Example/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of Cyclic Redundancy Check Example.
   ******************************************************************************
   *
@@ -83,7 +83,7 @@ STM32 board LED is used to monitor the example status:
 
   - This example runs on STM32L073xx devices.
   
-  - This example has been tested with an STMicroelectronics STM32L073-Nucleo Rev C
+  - This example has been tested with an STMicroelectronics STM32L073RZ-Nucleo Rev C
     board and can be easily tailored to any other supported device 
     and development board.
 

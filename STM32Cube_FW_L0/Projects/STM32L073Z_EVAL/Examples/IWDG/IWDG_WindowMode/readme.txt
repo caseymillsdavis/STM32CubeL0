@@ -2,11 +2,11 @@
   @page IWDG_WindowMode IWDG Reset with window mode
   
   @verbatim
-  ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
+  ********************* COPYRIGHT(c) 2016 STMicroelectronics *******************
   * @file    IWDG/IWDG_WindowMode/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the IWDG Reset with window mode.
   ******************************************************************************
   *
@@ -37,9 +37,8 @@
 
 @par Example Description 
 
-This example shows how to update at regular period the IWDG reload counter and 
-how to simulate a software fault generating an MCU IWDG reset on expiry of a 
-programmed time period, using  HAL IWDG API.
+This example shows how to periodically update the IWDG reload counter and
+simulate a reload outside the window that generates an MCU IWDG reset.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -51,22 +50,21 @@ dispersion).
 
 The Window option is enabled with a window register value set to 400 ms.
 To prevent a reset, the down-counter must be reloaded when its value is:
-	-lower than the window register value (400ms)
-	-greater than 0x0
+ -lower than the window register value (400ms)
+ -greater than 0x0
 The IWDG counter is therefore refreshed each 450 ms in the main program infinite loop to 
-prevent a IWDG reset (762 - 450 = 312 withinn the interval).
+prevent a IWDG reset (762 - 450 = 312 within the interval).
 LED1 is also toggled each 450 ms indicating that the program is running. 
+LED3 will turn on if any error occurs.
 
-An EXTI Line is connected to a GPIO pin, and configured to generate an interrupt
-on the rising edge of the signal.
+An EXTI Line is connected to a GPIO pin, configured to generate an interrupt
+when the Wkup/Tamper push-button (PC.13) is pressed.
 
-The EXTI Line is used to simulate a software failure: once the EXTI Line event 
-occurs, by pressing the Wkup/Tamper push-button, the corresponding interrupt is served.
+Once the EXTI Line event occurs by pressing the Wkup/Tamper push-button (PC.13), 
+the refresh period is set to 200 ms.
+That will make refresh being outside window value. As a result, when the IWDG counter is reloaded, 
+the IWDG reset occurs.
 
-In the ISR, a write to invalid address generates a Hard fault exception containing
-an infinite loop and preventing to return to main program (the IWDG counter is 
-not refreshed).
-As a result, when the IWDG counter falls to 0, the IWDG reset occurs.
 If the IWDG reset is generated, after the system resumes from reset, LED1 turns on for 4 seconds.
 
 If the EXTI Line event does not occur, the IWDG counter is indefinitely refreshed
@@ -89,7 +87,6 @@ in the main program infinite loop, and there is no IWDG reset.
   - IWDG/IWDG_WindowMode/Inc/main.h                  Header for main.c module  
   - IWDG/IWDG_WindowMode/Src/stm32l0xx_it.c          Interrupt handlers
   - IWDG/IWDG_WindowMode/Src/main.c                  Main program
-  - IWDG/IWDG_WindowMode/Src/stm32l0xx_hal_msp.c     HAL MSP file
   - IWDG/IWDG_WindowMode/Src/system_stm32l0xx.c      STM32L0xx system source file
 
 
@@ -104,10 +101,9 @@ in the main program infinite loop, and there is no IWDG reset.
 @par How to use it ? 
 
 In order to make the program work, you must do the following :
- - Open your preferred toolchain
- - Rebuild all files: Project->Rebuild all
- - Load project image: Project->Download and Debug
- - Run program: Debug->Go(F5) 
+ - Open your preferred toolchain 
+ - Rebuild all files and load your image into target memory
+ - Run the example 
 
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>
  */

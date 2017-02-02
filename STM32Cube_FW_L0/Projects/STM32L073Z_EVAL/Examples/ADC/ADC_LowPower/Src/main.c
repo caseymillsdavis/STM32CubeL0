@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    ADC/ADC_LowPower/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the ADC
   *          peripheral to perform conversions with ADC low power modes:
   *          auto-wait and auto-power off.
@@ -288,7 +288,7 @@ static void ADC_Config(void)
   AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_RISING;
   AdcHandle.Init.DMAContinuousRequests = ENABLE;
   AdcHandle.Init.Overrun               = ADC_OVR_DATA_PRESERVED;            /* Overrun set to data preserved to trig overrun event as an error in this exemple */
-  AdcHandle.Init.SamplingTime          = ADC_SAMPLETIME_41CYCLES_5;
+  AdcHandle.Init.SamplingTime          = ADC_SAMPLETIME_39CYCLES_5;
 
   if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
   {

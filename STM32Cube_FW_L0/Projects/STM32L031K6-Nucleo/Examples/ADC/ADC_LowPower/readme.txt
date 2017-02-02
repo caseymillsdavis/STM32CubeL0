@@ -6,8 +6,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    ADC/ADC_LowPower/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   brief   Description of the ADC Low Power modes example.
   ******************************************************************************
   *
@@ -111,7 +111,7 @@ ADC overrun feature is used to watch the ADC low power modes effectiveness:
 
   - This example runs on STM32L031xx devices.
 
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board. 
 
 @par How to use it ? 

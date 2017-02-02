@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Templates/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Templates example.
   ******************************************************************************
   *
@@ -38,13 +38,10 @@
 
 @par Example Description
 
-This directory provides a reference template project that can be used to build 
-any firmware application for STM32L0xx devices using STM32CubeL0 HAL and running
-on STM32L073Z_EVAL board from STMicroelectronics. 
+This projects provides a reference template that can be used to build any firmware application.
 
-One workspace is provided for STM32L073Z_EVAL board.
-This workspace includes the right set of peripherals, linker and startup files.
-
+This projects is configured for STM32L07xxx and STM32L08xxx devices using STM32CubeL0 HAL and running on 
+STM32L073Z_EVAL board from STMicroelectronics.
 
 @note Care must be taken when using HAL_Delay(), this function provides accurate
       delay (in milliseconds) based on variable incremented in SysTick ISR. This

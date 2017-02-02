@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xxhal_msp.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
@@ -85,10 +85,10 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
   I2Cx_SCL_GPIO_CLK_ENABLE();
   I2Cx_SDA_GPIO_CLK_ENABLE();
   /* Enable I2Cx clock */
-  I2Cx_CLK_ENABLE(); 
+  I2Cx_CLK_ENABLE();
 
   /* Enable DMAx clock */
-  I2Cx_DMA_CLK_ENABLE();   
+  I2Cx_DMA_CLK_ENABLE();
   
   /*##-3- Configure peripheral GPIO ##########################################*/  
   /* I2C TX GPIO pin configuration  */
@@ -138,13 +138,14 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
   __HAL_LINKDMA(hi2c, hdmarx, hdma_rx);
     
   /*##-5- Configure the NVIC for DMA #########################################*/
-  /* NVIC configuration for DMA transfer complete interrupt (I2Cx_TX) */
-  HAL_NVIC_SetPriority(I2Cx_DMA_TX_IRQn, 0, 1);
-  HAL_NVIC_EnableIRQ(I2Cx_DMA_TX_IRQn);
-    
-  /* NVIC configuration for DMA transfer complete interrupt (I2Cx_RX) */
-  HAL_NVIC_SetPriority(I2Cx_DMA_RX_IRQn, 0, 0);   
-  HAL_NVIC_EnableIRQ(I2Cx_DMA_RX_IRQn);
+  /* NVIC configuration for DMA transfer complete interrupt (I2Cx_TX and I2Cx_RX) */
+  HAL_NVIC_SetPriority(I2Cx_DMA_IRQn, 0, 1);
+  HAL_NVIC_EnableIRQ(I2Cx_DMA_IRQn);
+
+  /*##-6- Configure the NVIC for I2C ########################################*/   
+  /* NVIC for I2Cx */
+  HAL_NVIC_SetPriority(I2Cx_IRQn, 0, 1);
+  HAL_NVIC_EnableIRQ(I2Cx_IRQn);
 }
 
 /**
@@ -178,8 +179,10 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
   HAL_DMA_DeInit(&hdma_rx);
   
   /*##-4- Disable the NVIC for DMA ###########################################*/
-  HAL_NVIC_DisableIRQ(I2Cx_DMA_TX_IRQn);
-  HAL_NVIC_DisableIRQ(I2Cx_DMA_RX_IRQn);
+  HAL_NVIC_DisableIRQ(I2Cx_DMA_IRQn);
+
+  /*##-5- Disable the NVIC for I2C ##########################################*/
+  HAL_NVIC_DisableIRQ(I2Cx_IRQn);
 }
 
 /**

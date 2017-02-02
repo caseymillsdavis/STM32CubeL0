@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_TwoBoards_ComDMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART Two Boards Communication DMA example.
   ******************************************************************************
   *
@@ -37,7 +37,7 @@
 
 @par Example Description 
 
-This Example shows a UART transmission (transmit/receive) between 2 
+This Example shows an UART transmission (transmit/receive) between 2 
 STM32L053R8-Nucleo boards in DMA mode.
 
 Tx Pin: PA.09 (PA09 is connected to pin 21 in CN10)

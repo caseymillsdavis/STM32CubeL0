@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/USART/USART_SyncCommunication_FullDuplex_IT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the USART_SyncCommunication_FullDuplex_IT example.
   ******************************************************************************
   *
@@ -43,7 +43,7 @@ through the STM32L0xx USART LL API (SPI is using DMA for
 receving/transmitting characters sent from/received by USART). Peripheral initialization
 done using LL unitary services functions for optimization purpose (performance and size).
 
-This example works with only one STM32L073-Nucleo Rev C.
+This example works with only one STM32L073RZ-Nucleo Rev C.
 
 USART1 Peripheral is acts as Master using IT.
 SPI1 Peripheral is configured in Slave mode using DMA.
@@ -73,13 +73,13 @@ In case of errors, LED2 is blinking Slowly (1s).
 
   - This example runs on STM32L073xx devices.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect USART1 SCK PA.08 to Slave SPI1 SCK PB.03
-    - Connect USART1 MOSI PA.09 to Slave SPI1 MOSI PB.05
-    - Connect USART1 MISO PA.10 to Slave SPI1 MISO PB.04
+    - Connect USART1 TX PA.09 to Slave SPI1 MOSI PB.05
+    - Connect USART1 RX PA.10 to Slave SPI1 MISO PB.04
 
 Board connector:
   PA.08 :   connected to pin 23 of CN10 connector

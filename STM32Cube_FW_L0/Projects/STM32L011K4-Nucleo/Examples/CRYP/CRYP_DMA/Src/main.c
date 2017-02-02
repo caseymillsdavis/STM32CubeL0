@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    CRYP/CRYP_DMA/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the CRYPTO
   *          peripheral to encrypt and decrypt data using CRYP Algorithm with
   *          AES ECB chaining mode.
@@ -124,7 +124,7 @@ const uint16_t COM_RX_AF[COMn]  = {BSP_COM1_RX_AF};
 
 /* Private function prototypes -----------------------------------------------*/
 #ifdef __GNUC__
-/* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+/* With GCC, small printf (option LD Linker->Libraries->Small printf
    set to 'Yes') calls __io_putchar() */
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else

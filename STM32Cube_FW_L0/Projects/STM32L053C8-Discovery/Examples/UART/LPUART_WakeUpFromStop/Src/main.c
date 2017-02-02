@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    UART/LPUART_WakeUpFromStop/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use UART HAL API (LPUART Instance)
   *          to wake up the MCU from STOP mode  
   *          Two boards are used, one which enters STOP mode and the second
@@ -41,7 +41,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-/** @addtogroup STM32F0xx_HAL_Examples
+/** @addtogroup STM32L0xx_HAL_Examples
   * @{
   */
 
@@ -97,7 +97,7 @@ static uint16_t Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferL
 int main(void)
 {
 
-  /* STM32F0xx HAL library initialization:
+  /* STM32L0xx HAL library initialization:
        - Configure the Flash prefetch
        - Configure the Systick to generate an interrupt each 1 msec
        - Low Level Initialization
@@ -479,8 +479,8 @@ static void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2;
   RCC_OscInitStruct.HSICalibrationValue = 0x10;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);  
   

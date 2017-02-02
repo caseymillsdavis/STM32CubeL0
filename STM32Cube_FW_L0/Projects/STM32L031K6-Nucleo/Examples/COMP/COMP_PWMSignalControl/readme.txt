@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    COMP/COMP_PWMSignalControl/readme.txt
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the COMP PWM Signal Control example.
   ******************************************************************************
   *
@@ -55,7 +55,7 @@ at high level.
 
 
 Board settings:
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
       @note This example runs in stand alone mode.
     - Set voltage level on pin PB.05 (Arduino D11) (comparator input): above or below Vrefint (1.22V).
       Note: to avoid the need of a power supply, possibility to connect a wire between this pin to a pin of the board: 
@@ -64,7 +64,7 @@ Board settings:
 	  or watch average value with a multimeter (Vdda=3.3v and duty cycle 25% should give an average voltage of 0.825V)
 
     
-STM32L031-Nucleo board's LED is used to monitor the program execution status:
+STM32L031K6-Nucleo board's LED is used to monitor the program execution status:
  - Error: In case of error, LED3 is toggling at a frequency of 2Hz.
  
 
@@ -98,7 +98,7 @@ calibrated or use an external clock.
   - This example runs on STM32L031xx devices.
   - In this example, the clock is set to 2 MHz.
 
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.
     
   

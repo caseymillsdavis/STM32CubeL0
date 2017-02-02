@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/LPTIM/LPTIM_PulseCounter_Init/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the LPTIM_PulseCounter_Init example.
   ******************************************************************************
   *
@@ -72,7 +72,7 @@ present example).
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
     
   - Connect a square waveform generator to PB.05 (pin 29 in CN10 connector).

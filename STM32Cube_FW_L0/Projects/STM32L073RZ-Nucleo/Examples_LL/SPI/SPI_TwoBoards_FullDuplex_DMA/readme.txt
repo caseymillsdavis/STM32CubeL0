@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/SPI/SPI_TwoBoards_FullDuplex_DMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the SPI_TwoBoards_FullDuplex_DMA example.
   ******************************************************************************
   *
@@ -106,10 +106,10 @@ In case of errors, LED2 is blinking Slowly (1s).
 
   - This example runs on STM32L073xx devices.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect Master board PB3 to Slave Board PB3 (connected to pin 31 of CN10 connector)
     - Connect Master board PB4 to Slave Board PB4 (connected to pin 27 of CN10 connector)
     - Connect Master board PB5 to Slave Board PB5 (connected to pin 29 of CN10 connector)

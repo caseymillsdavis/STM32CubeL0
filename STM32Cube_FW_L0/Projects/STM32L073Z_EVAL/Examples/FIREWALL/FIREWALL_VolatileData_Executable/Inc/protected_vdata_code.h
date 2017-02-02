@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    FIREWALL/FIREWALL_VolatileData_Executable/Inc/protected_vdata_code.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for protected_vdata_code.c module
   ******************************************************************************
   * @attention

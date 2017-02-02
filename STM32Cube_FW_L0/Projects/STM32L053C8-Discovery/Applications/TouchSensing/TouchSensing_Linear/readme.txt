@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    readme.txt 
   * @author  MCD Application Team
-  * @version V0.4.0
-  * @date    24-March-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the Touch Sensing Linear example.
   ******************************************************************************
   *
@@ -59,7 +59,7 @@ Observed behaviour:
 
     - TouchSensing_Linear\Inc\main.h                Header for main.c file
     - TouchSensing_Linear\Inc\stm32l0xx_hal_conf.h  HAL Library configuration file
-    - TouchSensing_Linear\Inc\stm32l0xx_it.h        Header for stm32f3xx_it.c file
+    - TouchSensing_Linear\Inc\stm32l0xx_it.h        Header for stm32l0xx_it.c file
     - TouchSensing_Linear\Src\stmCriticalSection.h  Header for stmCriticalSection.c file
     - TouchSensing_Linear\Inc\tsl_conf.h            STMTouch driver configuration file
     - TouchSensing_Linear\Inc\tsl_user.h            Header for tsl_user.c file
@@ -68,14 +68,13 @@ Observed behaviour:
     - TouchSensing_Linear\Src\stm32l0xx_hal_msp.c   HAL MSP module file
     - TouchSensing_Linear\Src\stm32l0xx_it.c        Interrupt handlers file
     - TouchSensing_Linear\Src\stmCriticalSection.c  STMStudio lock/unlock mechanism file
-    - TouchSensing_Linear\Src\system_stm32f3xx.c    System initialization file
+    - TouchSensing_Linear\Src\system_stm32l0xx.c    System initialization file
     - TouchSensing_Linear\Src\tsl_user.c            Touchsensing channels/banks description file
 
 
 @par Hardware and Software environment
 
-  - This example runs on  STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ.
+  - This example runs on STM32L053xx devices.
     
   - This example has been tested with STM32L0538-DISCO board. It can be
     easily tailored to any other devices that embed the TSC peripheral and to

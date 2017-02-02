@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_WakeUpFromStop/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART-triggered MCU wake-up from STOP mode.
   ******************************************************************************
   *
@@ -37,7 +37,7 @@
 
 @par Example Description 
 
-This example shows how to configure a UART to wake up the MCU from STOP mode
+This example shows how to configure an UART to wake up the MCU from STOP mode
 when the proper stimulus is received.
 
 Board: STM32L073Z-EVAL (embeds a STM32L073VZ device)

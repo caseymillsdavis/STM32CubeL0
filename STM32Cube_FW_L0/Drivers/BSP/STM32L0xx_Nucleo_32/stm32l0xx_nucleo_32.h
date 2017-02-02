@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32l0xx_nucleo_32.h
   * @author  MCD Application Team
-  * @version V1.0.1
-  * @date    16-October-2015
+  * @version V1.0.2
+  * @date    25-November-2016
   * @brief   This file contains definitions for:
   *          - LEDs and push-button available on STM32L0XX-Nucleo Kit 
   *            from STMicroelectronics
@@ -12,7 +12,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -55,15 +55,11 @@
   * @{
   */
 
-/** @addtogroup STM32L0XX_NUCLEO_32
+/** @addtogroup STM32L0XX_NUCLEO_32 NUCLEO 32
   * @{
   */
 
-/** @addtogroup STM32L0XX_NUCLEO_32_LOW_LEVEL
-  * @{
-  */
-      
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Exported_Types 
+/** @defgroup STM32L0XX_NUCLEO_32_Exported_Types Exported Types
   * @{
   */ 
 typedef enum 
@@ -86,7 +82,7 @@ typedef enum
   * @}
   */ 
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Exported_Constants 
+/** @defgroup STM32L0XX_NUCLEO_32_Exported_Constants Exported Constants
   * @{
   */ 
 
@@ -97,7 +93,7 @@ typedef enum
  #define USE_STM32L0XX_NUCLEO_32
 #endif
 
-/** @addtogroup STM32L0XX_NUCLEO_32_LOW_LEVEL_LED
+/** @addtogroup STM32L0XX_NUCLEO_32_LED
   * @{
   */
 #define LEDn                               1
@@ -115,7 +111,7 @@ typedef enum
   
 
 
-/** @addtogroup STM32L0XX_NUCLEO_32_LOW_LEVEL_BUS
+/** @addtogroup STM32L0XX_NUCLEO_32_BUS
   * @{
   */ 
 #if defined(HAL_I2C_MODULE_ENABLED)
@@ -177,7 +173,7 @@ typedef enum
   * @}
   */
 
-/** @addtogroup STM32L0XX_NUCLEO_32_LOW_LEVEL_COMPONENT
+/** @addtogroup STM32L0XX_NUCLEO_32_COMPONENT
   * @{
   */
 
@@ -238,14 +234,14 @@ typedef enum
   * @}
   */
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Exported_Macros 
+/** @defgroup STM32L0XX_NUCLEO_32_Exported_Macros Exported Macros
   * @{
   */  
 /**
   * @}
   */ 
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Internal_Functions 
+/** @defgroup STM32L0XX_NUCLEO_32_Internal_Functions Internal Functions
   * @{
   */
 #if defined(HAL_I2C_MODULE_ENABLED)
@@ -264,7 +260,7 @@ HAL_StatusTypeDef  I2C1_IsDeviceReady(uint16_t DevAddress, uint32_t Trials);
   * @}
   */
 
-/** @defgroup STM32L0XX_NUCLEO_32_LOW_LEVEL_Exported_Functions 
+/** @defgroup STM32L0XX_NUCLEO_32_Exported_Functions Exported Functions
   * @{
   */
 uint32_t         BSP_GetVersion(void);  
@@ -292,10 +288,6 @@ JOYState_TypeDef BSP_JOY_GetState(void);
   * @}
   */
 
-/**
-  * @}
-  */ 
-    
 #ifdef __cplusplus
 }
 #endif

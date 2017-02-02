@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    PWR/PWR_Standby_RTC/readme.txt
   * @author  MCD Application Team
-  * @version V0.5.0
-  * @date    15-April-2014
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the PWR STANDBY example.
   ******************************************************************************
   *
@@ -94,15 +94,14 @@ The above scenario is repeated in an infinite loop.
   - PWR/PWR_STANDBY_RTC/Inc/stm32l0xx_conf.h     Library Configuration file
   - PWR/PWR_STANDBY_RTC/Inc/stm32l0xx_it.h       Header for stm32l0xx_it.c
   - PWR/PWR_STANDBY_RTC/Inc/main.h               header file for main.c
-  - PWR/PWR_STANDBY_RTC/Src/system_stm32fl0xx.c   STM32L0xx system clock configuration file
+  - PWR/PWR_STANDBY_RTC/Src/system_stm32l0xx.c   STM32L0xx system clock configuration file
   - PWR/PWR_STANDBY_RTC/Src/stm32l0xx_it.c       Interrupt handlers
   - PWR/PWR_STANDBY_RTC/Src/main.c               Main program
   - PWR/PWR_STANDBY_RTC/Src/stm32l0xx_hal_msp.c  HAL MSP module
 
 @par Hardware and Software environment
 
-  - This example runs on STM32L051xx, STM32L052xx, STM32L053xx STM32L062xx and 
-    STM32L063xx device lines RevZ Rev A.
+  - This example runs on STM32L053xx devices. Rev A.
     
   - This example has been tested with STMicroelectronics STM32L0538-DISCO RevB board  
     and can be easily tailored to any other supported device and development board.

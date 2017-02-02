@@ -1,13 +1,13 @@
 /**
-  @page SPI_HalfDuplex_ComPollingIT SPI Full Duplex IT example
+  @page SPI_HalfDuplex_ComPollingIT SPI Half Duplex IT example
   
   @verbatim
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    SPI/SPI_HalfDuplex_ComPollingIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
-  * @brief   Description of the SPI Full Duplex IT example.
+  * @version V1.8.0
+  * @date    25-November-2016
+  * @brief   Description of the SPI Half Duplex IT example.
   ******************************************************************************
   *
   * Redistribution and use in source and binary forms, with or without modification,
@@ -70,7 +70,7 @@ the configuration of the needed SPI resources according to the used hardware (CL
 GPIO). You may update this function to change SPI configuration.
 The Half-Duplex SPI transmission (8bit) is done using LL Driver on Master board (Tx) by using function 
 LL_SPI_TransmitData8.
-The The Half-Duplex SPI reception (8bit) is done using HAL Driver on Slave board (Tx) by using function 
+The The Half-Duplex SPI reception (8bit) is done using HAL Driver on Slave board (Rx) by using function 
 HAL_SPI_Receive_IT.
 
 Example execution:
@@ -86,7 +86,7 @@ If the Slave board is used the "#define MASTER_BOARD" must be commented.
 
 STM32 board's LEDs can be used to monitor the transfer status:
  - LED2 toggles quickly on master board waiting User push-button to be pressed.
- - LED2 turns ON on slave board if transmission/reception is complete and OK.
+ - LED2 turns ON on slave board if reception is complete and OK.
  - LED2 toggles slowly when there is a timeout or an error in transmission/reception process.   
 
 @note SPIx instance used and associated resources can be updated in "main.h"
@@ -122,10 +122,10 @@ STM32 board's LEDs can be used to monitor the transfer status:
   - Take care to cable connection between Master and Slave Board:
     Cable shall be smaller than 5 cm and rigid if possible.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect Master board PB3 to Slave Board PB3 (Arduino D3)
     - Connect Master board PB5 (Arduino D4) to Slave Board PB4 (Arduino D5)
     - Connect Master board GND to Slave Board GND

@@ -6,8 +6,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    CRYP/CRYP_AESModes/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the CRYP AES Algorithm in all modes and all key sizes
              Example
   ******************************************************************************
@@ -85,7 +85,7 @@ by uncomment following line in main file:
 
   - This example runs on STM32L083xx devices.
 
-  - This example has been tested with STM32L073-Nucleo Rev C board with socket using STM32L083xx plugged-in  
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board with socket using STM32L083xx plugged-in  
     and can be easily tailored to any other supported device and development board.
   
   - Hyperterminal configuration:

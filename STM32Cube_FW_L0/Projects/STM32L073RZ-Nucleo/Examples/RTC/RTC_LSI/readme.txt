@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    RTC/RTC_LSI/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the RTC prescaler adjustment with LSI Measurements example.
   ******************************************************************************
   *
@@ -97,10 +97,10 @@ procedure:
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C  board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C  board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Use LED2 connected to PA.05 pin (pin30 in CN10 connector).
     - Use the User push-button connected to pin PC.13 (External lines 4 to 15)
 @par How to use it ? 

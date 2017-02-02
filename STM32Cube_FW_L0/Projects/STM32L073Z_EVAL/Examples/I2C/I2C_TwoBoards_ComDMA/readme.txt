@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_TwoBoards_ComDMA/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C Two Boards Communication DMA example.
   ******************************************************************************
   *
@@ -37,27 +37,27 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure I2C Data buffer transmission and reception with DMA.
-The communication is done with 2 Boards through I2C.
+This example describes how to perform I2C data buffer transmission/reception 
+between two boards, via DMA.
 
-   _________________________                        _________________________
-  |           ______________|                      |______________           |
-  |          | I2C1         |                      |          I2C1|          |
-  |          |              |                      |              |          |
-  |          |      SCL(PB6)|______________________|(PB6)SCL      |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |              |                      |              |          |
-  |          |      SDA(PB7)|______________________|(PB7)SDA      |          |
-  |          |              |                      |              |          |
-  |          |______________|                      |______________|          |
-  |      __                 |                      |             __          |
-  |     |__|                |                      |            |__|         |
-  |     USER             GND|______________________|GND         USER         |
-  |                         |                      |                         |
-  |_TARGET_STM32L073Z_EVAL__|                      |_TARGET_STM32L073Z_EVAL__|
+Board: STM32L073Z-EVAL (embeds a STM32L073VZ device)
+SCL Pin: PB6 (CN5)
+SDA Pin: PB7 (CN5)
 
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -86,9 +86,9 @@ If the Slave board is used the "#define MASTER_BOARD" must be commented.
 
 For this example the aTxBuffer is predefined and the aRxBuffer size is same as aTxBuffer.
 
-In a first step after the user press the Wkup/Tamper push-button on the Master Board, I2C Master
-starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_DMA() to 
-I2C Slave which receives aRxBuffer through HAL_I2C_Slave_Receive_DMA(). 
+In a first step after the user press the Wkup/Tamper push-button on the Master Board,
+I2C Master starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_DMA()
+to I2C Slave which receives aRxBuffer through HAL_I2C_Slave_Receive_DMA(). 
 The second step starts when the user press the Wkup/Tamper push-button on the Master Board,
 the I2C Slave sends aTxBuffer through HAL_I2C_Slave_Transmit_DMA()
 to the I2C Master which receives aRxBuffer through HAL_I2C_Master_Receive_DMA().
@@ -105,10 +105,6 @@ STM32L073Z-EVAL's LEDs can be used to monitor the transfer status:
 @note I2Cx instance used and associated resources can be updated in "main.h"
 file depending hardware configuration used.
 
- @note Timeout is set to 10 Seconds which means that if no communication occurs 
-       during 10 Seconds, a Timeout Error will be generated.
-
-
 @note Care must be taken when using HAL_Delay(), this function provides accurate delay (in milliseconds)
       based on variable incremented in SysTick ISR. This implies that if HAL_Delay() is called from
       a peripheral ISR process, then the SysTick interrupt must have higher priority (numerically lower)
@@ -121,9 +117,9 @@ file depending hardware configuration used.
 @par Directory contents 
 
   - I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_hal_conf.h    HAL configuration file
-  - I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_it.h          DMA interrupt handlers header file
+  - I2C/I2C_TwoBoards_ComDMA/Inc/stm32l0xx_it.h          DMA and I2C interrupt handlers header file
   - I2C/I2C_TwoBoards_ComDMA/Inc/main.h                  Header for main.c module  
-  - I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_it.c          DMA interrupt handlers
+  - I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_it.c          DMA and I2C interrupt handlers
   - I2C/I2C_TwoBoards_ComDMA/Src/main.c                  Main program
   - I2C/I2C_TwoBoards_ComDMA/Src/system_stm32l0xx.c      STM32L0xx system source file
   - I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_hal_msp.c     HAL MSP file    
@@ -136,10 +132,10 @@ file depending hardware configuration used.
   - This example has been tested with STM32L073Z-EVAL board and can be
     easily tailored to any other supported device and development board.    
 
-  -STM32L073Z-EVAL Set-up
-    - Connect Master board PB6 to Slave Board PB6
-    - Connect Master board PB7 to Slave Board PB7
-    - Connect Master board GND to Slave Board GND
+  - STM32L073Z-EVAL Set-up
+    - Connect I2C_SCL line of Master board (PB6, CN5) to I2C_SCL line of Slave Board (PB6, CN5).
+    - Connect I2C_SDA line of Master board (PB7, CN5) to I2C_SDA line of Slave Board (PB7, CN5).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

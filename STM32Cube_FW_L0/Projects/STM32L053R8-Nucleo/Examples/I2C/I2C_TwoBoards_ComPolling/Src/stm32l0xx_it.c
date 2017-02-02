@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComPolling/Src/stm32l0xx_it.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and 
   *          peripherals interrupt service routine.
@@ -38,7 +38,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l0xx_it.h" 
+#include "main.h"
+#include "stm32l0xx_it.h"
 
 /** @addtogroup STM32L0xx_HAL_Examples
   * @{
@@ -82,6 +83,45 @@ void HardFault_Handler(void)
 }
 
 /**
+  * @brief  This function handles Memory Manage exception.
+  * @param  None
+  * @retval None
+  */
+void MemManage_Handler(void)
+{
+  /* Go to infinite loop when Memory Manage exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Bus Fault exception.
+  * @param  None
+  * @retval None
+  */
+void BusFault_Handler(void)
+{
+  /* Go to infinite loop when Bus Fault exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Usage Fault exception.
+  * @param  None
+  * @retval None
+  */
+void UsageFault_Handler(void)
+{
+  /* Go to infinite loop when Usage Fault exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
   * @brief  This function handles SVCall exception.
   * @param  None
   * @retval None
@@ -119,7 +159,7 @@ void SysTick_Handler(void)
 }
 
 /******************************************************************************/
-/*                 STM32L0xx Peripherals Interrupt Handlers                   */
+/*                 STM32L0xx Peripherals Interrupt Handlers                  */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32l0xx.s).                                               */
@@ -134,10 +174,9 @@ void SysTick_Handler(void)
 {
 }*/
 
-
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}

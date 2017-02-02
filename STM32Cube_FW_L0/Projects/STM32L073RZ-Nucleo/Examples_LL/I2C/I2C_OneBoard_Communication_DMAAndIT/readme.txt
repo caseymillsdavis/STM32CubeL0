@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/I2C/I2C_OneBoard_Communication_DMAAndIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C_OneBoard_Communication_DMAAndIT I2C example (Master DMA Mode).
   ******************************************************************************
   *
@@ -42,7 +42,7 @@ using DMA mode to an I2C Slave device using IT mode. Peripheral initialization d
 using LL unitary services functions for optimization purpose (performance and size).
 
 This example guides you through the different configuration steps by mean of LL API
-to configure GPIO, DMA and I2C peripherals using only one STM32L073-Nucleo Rev C.
+to configure GPIO, DMA and I2C peripherals using only one STM32L073RZ-Nucleo Rev C.
 
 I2C1 Peripheral is configured in Slave mode with EXTI (Clock 400Khz, Own address 7-bit enabled).
 I2C3 Peripheral is configured in Master mode with DMA (Clock 400Khz).
@@ -83,10 +83,10 @@ In case of errors, LED2 is blinking.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect GPIOs connected to I2C1 SCL/SDA (PB.8 and PB.9)
     to respectively SCL and SDA pins of I2C3 (PC.0 and PC.1).
       - I2C1_SCL  PB.8 (CN10, pin 3) : connected to I2C3_SCL PC.0 (CN7, pin 38) 

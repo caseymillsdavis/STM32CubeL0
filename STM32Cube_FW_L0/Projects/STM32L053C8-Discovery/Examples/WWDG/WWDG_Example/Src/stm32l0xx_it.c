@@ -1,11 +1,11 @@
 /**
   ******************************************************************************
-  * @file    WWDG/WWDG_Example/Src/stm32l0xx_it.c 
+  * @file    WWDG/WWDG_Example/Src/stm32l0xx_it.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
-  *          This file provides template for all exceptions handler and 
+  *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
   ******************************************************************************
   * @attention
@@ -38,6 +38,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
 #include "stm32l0xx_it.h"
 
 /** @addtogroup STM32L0xx_HAL_Examples
@@ -46,7 +47,7 @@
 
 /** @addtogroup WWDG_Example
   * @{
-  */  
+  */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -60,7 +61,7 @@
 /******************************************************************************/
 
 /**
-  * @brief  This function handles NMI exception.
+  * @brief   This function handles NMI exception.
   * @param  None
   * @retval None
   */
@@ -76,6 +77,45 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Memory Manage exception.
+  * @param  None
+  * @retval None
+  */
+void MemManage_Handler(void)
+{
+  /* Go to infinite loop when Memory Manage exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Bus Fault exception.
+  * @param  None
+  * @retval None
+  */
+void BusFault_Handler(void)
+{
+  /* Go to infinite loop when Bus Fault exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Usage Fault exception.
+  * @param  None
+  * @retval None
+  */
+void UsageFault_Handler(void)
+{
+  /* Go to infinite loop when Usage Fault exception occurs */
   while (1)
   {
   }
@@ -126,33 +166,23 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief  This function handles External line 0 to 1 interrupt request.
+  * @brief  This function handles External lines 1 interrupt request.
   * @param  None
   * @retval None
   */
 void EXTI0_1_IRQHandler(void)
-{ 
-  /* As the following address is invalid (not mapped), a Hardfault exception
-     will be generated with an infinite loop and when the WWDG counter falls to 
-     63 the WWDG reset occurs */
-  *(__IO uint32_t *) 0xA0001000 = 0xFF;
-}
-
-/**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
-  */
-/*void PPP_IRQHandler(void)
 {
-}*/
+  /* As the following address is invalid (not mapped), a Hardfault exception
+  will be generated with an infinite loop and when the WWDG counter falls to 63
+  the WWDG reset occurs */
+  *(__IO uint32_t *) 0xA0003000 = 0xFF;
+}
+/**
+  * @}
+  */
 
 /**
   * @}
-  */ 
-
-/**
-  * @}
-  */ 
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

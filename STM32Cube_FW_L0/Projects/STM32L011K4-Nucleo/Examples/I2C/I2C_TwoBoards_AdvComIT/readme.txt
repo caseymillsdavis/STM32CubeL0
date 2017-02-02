@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    I2C/I2C_TwoBoards_AdvComIT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C Two Boards Advanced Communication with 
   *          Interrupt example.
   ******************************************************************************
@@ -41,22 +41,24 @@
 This example describes how to perform I2C data buffer transmission/reception 
 between two boards, using an interrupt.
 
-   _________________________                        _________________________
-  |           ______________|                      |_________________        |
-  |          | I2C1         |                      |          I2C1   |       |
-  |          |              |                      |                 |       |
-  |          |      SCL(PB6)|______________________|(PB6)SCL         |       |
-  |          |              |                      |  Arduino D5     |       |
-  |          |              |                      |                 |       |
-  |          |              |                      |                 |       |
-  |          |      SDA(PB7)|______________________|(PB7)SDA         |       |
-  |          |              |                      |  Arduino D4     |       |
-  |          |______________|                      |_________________|       |
-  |      __                 |                      |             __          |
-  |     |__|                |                      |            |__|         |
-  |  Wkup/Tamper         GND|______________________|GND     Wkup/Tamper      |
-  |                         |                      |                         |
-  |TARGET_STM32L011K4_NUCLEO|                      |TARGET_STM32L011K4_NUCLEO|
+Board: STM32L011K4-Nucleo (embeds a STM32L011K4 device)
+SCL Pin: PB6 (CN3 (Arduino D5))
+SDA Pin: PB7 (CN3 (Arduino D4))
+
+   _________________________                       _________________________ 
+  |           ______________|                     |______________           |
+  |          |I2C1          |                     |          I2C1|          |
+  |          |              |                     |              |          |
+  |          |          SCL |_____________________| SCL          |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |              |                     |              |          |
+  |          |          SDA |_____________________| SDA          |          |
+  |          |              |                     |              |          |
+  |          |______________|                     |______________|          |
+  |                         |                     |                         |
+  |                      GND|_____________________|GND                      |
+  |_STM32_Board 1___________|                     |_STM32_Board 2___________|
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.
@@ -147,13 +149,13 @@ by connecting the virtual button of the Master board.
 
   - This example runs on STM32L011xx devices.
     
-  - This example has been tested with STM32L011-Nucleo board and can be
+  - This example has been tested with STM32L011K4-Nucleo board and can be
     easily tailored to any other supported device and development board.    
 
-  -STM32L011-Nucleo Set-up
-    - Connect Master board PB7 to Slave Board PB7 (Arduino D4)
-    - Connect Master board PB6 to Slave Board PB6 (Arduino D5)
-    - Connect Master board GND to Slave Board GND
+  - STM32L011K4-Nucleo Set-up
+    - Connect I2C_SCL line of Master board (PB6, CN3 (Arduino D5)) to I2C_SCL line of Slave Board (PB6, CN3 (Arduino D5)).
+    - Connect I2C_SDA line of Master board (PB7, CN3 (Arduino D4)) to I2C_SDA line of Slave Board (PB7, CN3 (Arduino D4)).
+    - Connect GND of Master board to GND of Slave Board.
 
 @par How to use it ? 
 

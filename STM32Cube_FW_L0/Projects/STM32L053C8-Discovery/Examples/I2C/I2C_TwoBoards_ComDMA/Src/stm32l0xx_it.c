@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_ComDMA/Src/stm32l0xx_it.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and 
   *          peripherals interrupt service routine.
@@ -38,7 +38,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l0xx_it.h" 
+#include "main.h"
+#include "stm32l0xx_it.h"
 
 /** @addtogroup STM32L0xx_HAL_Examples
   * @{
@@ -53,7 +54,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* I2C handler declared in "main.c" file */
-extern I2C_HandleTypeDef I2CxHandle;
+extern I2C_HandleTypeDef I2cHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -79,6 +80,45 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Memory Manage exception.
+  * @param  None
+  * @retval None
+  */
+void MemManage_Handler(void)
+{
+  /* Go to infinite loop when Memory Manage exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Bus Fault exception.
+  * @param  None
+  * @retval None
+  */
+void BusFault_Handler(void)
+{
+  /* Go to infinite loop when Bus Fault exception occurs */
+  while (1)
+  {
+  }
+}
+
+/**
+  * @brief  This function handles Usage Fault exception.
+  * @param  None
+  * @retval None
+  */
+void UsageFault_Handler(void)
+{
+  /* Go to infinite loop when Usage Fault exception occurs */
   while (1)
   {
   }
@@ -122,22 +162,34 @@ void SysTick_Handler(void)
 }
 
 /******************************************************************************/
-/*                 STM32L0xx Peripherals Interrupt Handlers                   */
+/*                 STM32L0xx Peripherals Interrupt Handlers                  */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32l0xx.s).                                               */
 /******************************************************************************/
 /**
+  * @brief  This function handles I2C event and error interrupt request.  
+  * @param  None
+  * @retval None
+  * @Note   This function is redefined in "main.h" and related to I2C data transmission     
+  */
+void I2Cx_IRQHandler(void)
+{
+  HAL_I2C_EV_IRQHandler(&I2cHandle);
+  HAL_I2C_ER_IRQHandler(&I2cHandle);  
+}
+
+/**
   * @brief  This function handles DMA interrupt request.  
   * @param  None
   * @retval None
-  * @Note   This function is redefined in "main.h" and related to DMA stream 
+  * @Note   This function is redefined in "main.h" and related to DMA Channel 
   *         used for I2C data transmission     
   */
 void I2Cx_DMA_IRQHandler(void)
 {
-  HAL_DMA_IRQHandler(I2CxHandle.hdmarx);
-  HAL_DMA_IRQHandler(I2CxHandle.hdmatx);
+  HAL_DMA_IRQHandler(I2cHandle.hdmarx);
+  HAL_DMA_IRQHandler(I2cHandle.hdmatx);
 }
 
 /**
@@ -149,10 +201,9 @@ void I2Cx_DMA_IRQHandler(void)
 {
 }*/
 
-
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}

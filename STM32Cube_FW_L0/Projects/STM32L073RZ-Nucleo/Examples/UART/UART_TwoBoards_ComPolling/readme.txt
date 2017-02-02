@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_TwoBoards_ComPolling/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART Two Boards Communication Polling example.
   ******************************************************************************
   *
@@ -37,10 +37,10 @@
 
 @par Example Description 
 
-This example describes a UART transmission (transmit/receive) in polling mode
-between two STM32L073-Nucleo Rev C boards.
+This example describes an UART transmission (transmit/receive) in polling mode
+between two STM32L073RZ-Nucleo Rev C boards.
 
-Board: STM32L073-Nucleo Rev C (embeds a STM32L073RZ device)
+Board: STM32L073RZ-Nucleo Rev C (embeds a STM32L073RZ device)
 Tx Pin: PA.09 (PA9 is connected to pin 21 in CN10)
 Rx Pin: PA.10 (PA10 is connected to pin 33 in CN10
    _________________________                       _________________________ 
@@ -77,7 +77,7 @@ then receives.
 The receiving then transmitting board needs to be loaded with an executable
 software obtained with TRANSMITTER_BOARD disabled. 
 
-STM32L073-Nucleo Rev C board LED is used to monitor the transfer status:
+STM32L073RZ-Nucleo Rev C board LED is used to monitor the transfer status:
 - While board 1 is waiting for the user to press the User push-button, its LED2 is
   blinking rapidly (100 ms period).
 - When the test passes, LED2 on both boards is turned on, otherwise the test has failed. 
@@ -126,11 +126,11 @@ position of the transmitted data.
 @par Hardware and Software environment 
 
   - This example runs on STM32L073xx devices.    
-  - This example has been tested with two STM32L073-Nucleo Rev C boards embedding
+  - This example has been tested with two STM32L073RZ-Nucleo Rev C boards embedding
     a STM32L073RZ device and can be easily tailored to any other supported device 
     and development board.
 
-  - STM32L073-Nucleo Rev C set-up
+  - STM32L073RZ-Nucleo Rev C set-up
     - Connect a wire between 1st board PA.09 pin (Uart Tx) and 2nd board PA.10 pin (Uart Rx)
     - Connect a wire between 1st board PA.10 pin (Uart Rx) and 2nd board PA.09 pin (Uart Tx)
     - Connect 1st board GND to 2nd Board GND    

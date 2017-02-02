@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/I2C/I2C_TwoBoards_MasterRx_SlaveTx_IT/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the I2C_TwoBoards_MasterRx_SlaveTx_IT I2C example (IT Mode).
   ******************************************************************************
   *
@@ -43,9 +43,9 @@ using LL unitary services functions for optimization purpose (performance and si
 
 
 This example guides you through the different configuration steps by mean of LL API
-to configure GPIO and I2C peripherals using two STM32L073-Nucleo Rev C.
+to configure GPIO and I2C peripherals using two STM32L073RZ-Nucleo Rev C.
 
-Boards: STM32L073-Nucleo Rev C (embeds a STM32L073RZ device)
+Boards: STM32L073RZ-Nucleo Rev C (embeds a STM32L073RZ device)
 SCL Pin: PC.0 (CN7, pin 38)
 SDA Pin: PC.1 (CN7, pin 36)
 
@@ -65,10 +65,10 @@ SDA Pin: PC.1 (CN7, pin 36)
 
 The project is splitted in two parts the Master Board and the Slave Board
 - Master Board
-  I2C3 Peripheral is configured in Master mode with EXTI (Clock 100Khz).
+  I2C3 Peripheral is configured in Master mode with EXTI (Standard Mode @100kHz).
 And GPIO associated to User push-button is linked with EXTI. 
 - Slave Board
-  I2C3 Peripheral is configured in Slave mode with EXTI (Clock 100Khz, Own address 7-bit enabled).
+  I2C3 Peripheral is configured in Slave mode with EXTI (Standard Mode @100kHz, Own address 7-bit enabled).
 
 The user can choose between Master and Slave through "#define SLAVE_BOARD"
 in the "main.h" file:
@@ -109,10 +109,10 @@ In case of errors, LED2 is blinking.
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
-  - STM32L073-Nucleo Rev C Set-up
+  - STM32L073RZ-Nucleo Rev C Set-up
     - Connect GPIOs connected to Board Slave I2C3 SCL/SDA (PC.0 and PC.1)
     to respectively Board Master SCL and SDA pins of I2C3 (PC.0 and PC.1).
       - I2C3_SCL  PC.0 (CN7, pin 38) : connected to I2C3_SCL PC.0 (CN7, pin 38) 

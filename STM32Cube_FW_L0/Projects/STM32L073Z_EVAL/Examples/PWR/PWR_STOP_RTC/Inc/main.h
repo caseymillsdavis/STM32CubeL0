@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    PWR/PWR_STOP_RTC/Inc/main.h
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -46,8 +46,8 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Uncomment the corresponding line to select the RTC Clock source */
-  #define RTC_ASYNCH_PREDIV    0x7F
-  #define RTC_SYNCH_PREDIV     0x0130
+#define RTC_ASYNCH_PREDIV    0x7C
+#define RTC_SYNCH_PREDIV     0x0127
 
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

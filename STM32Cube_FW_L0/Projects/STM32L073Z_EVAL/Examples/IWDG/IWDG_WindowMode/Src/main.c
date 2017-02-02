@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    IWDG/IWDG_WindowMode/Src/main.c
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This sample code shows how to use the STM32L073xx IWDG HAL API
   *          to update at regular period the IWDG counter and how to simulate a
   *          software fault generating an MCU IWDG reset on expiry of a
@@ -55,8 +55,10 @@
 /* Private variables ---------------------------------------------------------*/
 /* IWDG and TIM handlers declaration */
 IWDG_HandleTypeDef IwdgHandle;
-
 RCC_ClkInitTypeDef RCC_ClockFreq;
+
+/* In while loop, time to wait before refresh */
+__IO uint32_t WaitingDelay = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -71,6 +73,7 @@ static void Error_Handler(void);
   */
 int main(void)
 {
+
   /* STM32L0xx HAL library initialization:
        - Configure the Flash prefetch
        - Systick timer is configured by default as source of time base, but user 
@@ -94,57 +97,45 @@ int main(void)
 
   /*##-1- Check if the system has resumed from IWDG reset ####################*/
   if (__HAL_RCC_GET_FLAG(RCC_FLAG_IWDGRST) != RESET)
-  { 
-    /* IWDGRST flag set: Turn LED_OK on */
+  {
+    /* IWDGRST flag set: Turn LED1 on */
     BSP_LED_On(LED1);
-    
+
     /* Insert 4s delay */
     HAL_Delay(4000);
-    
-    /* Clear reset flags */
-    __HAL_RCC_CLEAR_RESET_FLAGS();
-  }
-  else
-  {
-    /* IWDGRST flag is not set: Turn LED1 off */
+
+    /* Prior to clear IWDGRST flag: Turn LED1 off */
     BSP_LED_Off(LED1);
   }
- 
-  /*##-2- Configure & Initialize the IWDG peripheral ######################################*/
+
+  /* Clear reset flags anyway */
+  __HAL_RCC_CLEAR_RESET_FLAGS();
+
+  /*##-2- Configure & Start the IWDG peripheral ##############################*/
   /* Set counter reload value to obtain 762ms IWDG TimeOut.
-     Counter Reload Value = LsiFreq*Timeout(s)/prescaler
-                          = 37000*762ms/(16*1000)
-                          = 1762 (approx)
+     Counter Reload Value = (LsiFreq(Hz) * Timeout(ms)) / (prescaler * 1000)                         
   */
   IwdgHandle.Instance = IWDG;
-  
   IwdgHandle.Init.Prescaler = IWDG_PRESCALER_16;
-  IwdgHandle.Init.Reload = 1762; /* 762ms */
-  IwdgHandle.Init.Window = 1000; /* 400 ms */
-  
-  /* when window option is enabled, we enable the IWDG immediately */
-  /* by writing 0xCCCC to the KEY register */
-
-  /*##-3- Start the IWDG #####################################################*/ 
-  if(HAL_IWDG_Start(&IwdgHandle) != HAL_OK)
-  {
-    Error_Handler();
-  }
+  IwdgHandle.Init.Reload = (37000 * 762) / (16 * 1000); /* 762 ms */
+  IwdgHandle.Init.Window = (37000 * 400) / (16 * 1000); /* 400 ms */
 
   if(HAL_IWDG_Init(&IwdgHandle) != HAL_OK)
   {
     /* Initialization Error */
     Error_Handler();
   }
-  
+
+  /* Initial delay will be 450 ms in order to be inside the window */
+  WaitingDelay = 450;
+
   /* Infinite loop */ 
   while (1)
   {
     /* Toggle LED1 */
     BSP_LED_Toggle(LED1);
 
-    /* Insert 450 ms delay, which should bring downcounter inside the window */
-    HAL_Delay(450);
+    HAL_Delay(WaitingDelay);
 
     /* Refresh IWDG: reload counter */
     if(HAL_IWDG_Refresh(&IwdgHandle) != HAL_OK)
@@ -152,6 +143,22 @@ int main(void)
       /* Refresh Error */
       Error_Handler();
     }
+  }
+}
+
+
+/**
+  * @brief  EXTI line detection callback to decreaase waiting delay. That will make
+            refresh being outside window value.
+  * @param  GPIO_Pin: Specifies the port pin connected to corresponding EXTI line.
+  * @retval None
+  */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if(GPIO_Pin == TAMPER_BUTTON_PIN)
+  {
+    /* waiting 200 ms to be above window value on next refresh */
+    WaitingDelay = 200;
   }
 }
 
@@ -165,7 +172,7 @@ static void Error_Handler(void)
 {
   /* Turn LED3 on */
   BSP_LED_On(LED3);
-  
+
   /* Infinite loop */
   while (1)
   {

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    COMP/COMP_PWMSignalControl/Src/main.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   This example provides a short description of how to use the COMP 
   *          to control a PWM signal.
   ******************************************************************************
@@ -131,8 +131,8 @@ static void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV2;
   RCC_OscInitStruct.HSICalibrationValue = 0x10;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);  
   
@@ -197,7 +197,7 @@ static void COMP_Config(void)
   hcomp1.Init.NonInvertingInput  = COMP_INPUT_PLUS_IO1;
   hcomp1.Init.OutputPol          = COMP_OUTPUTPOL_NONINVERTED;
   hcomp1.Init.LPTIMConnection    = COMP_LPTIMCONNECTION_IN1_ENABLED;
-  hcomp1.Init.Mode               = COMP_MODE_LOWSPEED;
+  hcomp1.Init.Mode               = COMP_POWERMODE_ULTRALOWPOWER;
   hcomp1.Init.TriggerMode        = COMP_TRIGGERMODE_IT_RISING_FALLING;
 
   if(HAL_COMP_Init(&hcomp1) != HAL_OK)

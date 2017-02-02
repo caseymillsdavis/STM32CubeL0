@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    FLASH/FLASH_EraseProgram/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief  Description of the FLASH Erase and Program example.
   ******************************************************************************
   *
@@ -39,7 +39,7 @@
 @par Example Description 
 
 This example guides you through the different configuration steps by mean of HAL API
-how to erase and program the internal FLASH memory embedded in the STM32L0xx from
+how to erase and program the internal Flash memory embedded in the STM32L0xx from
 STMicroelectronics. 
 
 At the beginning of the main program the HAL_Init() function is called to reset 
@@ -58,7 +58,7 @@ At this stage, all these pages will be erased one by one separately.
 be returned to user (through variable 'PageError').
 
 Once this operation is finished, page word programming operation will be performed 
-in the FLASH memory. The written data is then read back and checked.
+in the Flash memory. The written data is then read back and checked.
 
 STM32L053R8-Nucleo board's LED can be used to monitor the transfer status:
  - LED2 is ON when there are no errors detected after data programing

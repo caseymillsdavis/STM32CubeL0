@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    I2C/I2C_TwoBoards_AdvComIT/Src/stm32l0xx_it.c 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and 
   *          peripherals interrupt service routine.
@@ -45,7 +45,7 @@
   * @{
   */
 
-/** @addtogroup I2C_TwoBoards_ComIT
+/** @addtogroup I2C_TwoBoards_AdvComIT
   * @{
   */
 

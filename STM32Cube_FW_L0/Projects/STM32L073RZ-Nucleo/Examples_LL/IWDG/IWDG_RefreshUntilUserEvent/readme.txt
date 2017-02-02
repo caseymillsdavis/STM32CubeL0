@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    Examples_LL/IWDG/IWDG_RefreshUntilUserEvent/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the IWDG_RefreshUntilUserEvent example.
   ******************************************************************************
   *
@@ -38,7 +38,7 @@
 @par Example Description
 
 This example describes how to configure the IWDG and insure counter update at 
-regular period and generating an MCU IWDG reset on at User Button pressed. Peripheral 
+regular period and generating an MCU IWDG reset at User Button pressed. Peripheral 
 initialization done using LL unitary services functions for optimization purpose (performance and size).
 
 Example Configuration:
@@ -68,7 +68,7 @@ Waiting a new user button pressed to re-activate the IWDG
 
   - This example runs on STM32L073xx devices.
     
-  - This example has been tested with STM32L073-Nucleo Rev C board and can be
+  - This example has been tested with STM32L073RZ-Nucleo Rev C board and can be
     easily tailored to any other supported device and development board.
 
 

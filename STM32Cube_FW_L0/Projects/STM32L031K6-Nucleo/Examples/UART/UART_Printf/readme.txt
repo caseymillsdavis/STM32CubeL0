@@ -5,8 +5,8 @@
   ******************** (C) COPYRIGHT 2016 STMicroelectronics *******************
   * @file    UART/UART_Printf/readme.txt 
   * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    31-May-2016
+  * @version V1.8.0
+  * @date    25-November-2016
   * @brief   Description of the UART Printf example.
   ******************************************************************************
   *
@@ -40,7 +40,7 @@
 This example shows how to reroute the C library printf function to the UART. It 
 outputs a message sent by the UART on the HyperTerminal.
 
-Board: STM32L031-Nucleo
+Board: STM32L031K6-Nucleo
 Tx Pin: PA.02 (A7 : pin 5 on CN4)
 Rx Pin: PA.03 (A2 : pin 10 on CN4)
    _________________________ 
@@ -90,10 +90,10 @@ position of the transmitted data.
 
   - This example runs on STM32L031xx devices.
     
-  - This example has been tested with STM32L031-Nucleo board and can be
+  - This example has been tested with STM32L031K6-Nucleo board and can be
     easily tailored to any other supported device and development board.    
 
-  - STM32L031-Nucleo Set-up
+  - STM32L031K6-Nucleo Set-up
 
   - Hyperterminal configuration:
     - Data Length = 7 Bits
